@@ -16,7 +16,6 @@ public class AppDao {
 	public AppDao() {
 	}
 
-	// Method to add a Comment to a Post
 	public static boolean addComment(Post post, User user, String content) {
 		try {
 			Comment comment = new Comment(post, user, content);
@@ -32,7 +31,6 @@ public class AppDao {
 		}
 	}
 
-	// Method to update a Comment
 	public static boolean updateComment(int commentId, String newContent) {
 		try {
 			Comment comment = entityManager.find(Comment.class, commentId);
@@ -52,7 +50,6 @@ public class AppDao {
 		}
 	}
 
-	// Method to delete a Comment
 	public static boolean deleteComment(int commentId) {
 		try {
 			Comment comment = entityManager.find(Comment.class, commentId);
@@ -71,7 +68,6 @@ public class AppDao {
 		}
 	}
 
-	// Method to add and delete a Like to a Post
 	public static boolean addAndDeleteLike(Post post, User user) {
 		try {
 			TypedQuery<Like> query = entityManager
@@ -106,7 +102,6 @@ public class AppDao {
 		}
 	}
 
-	// Method to add a Post
 	public static boolean addPost(User user, String content, String imagePath) {
 		try {
 			Post post = new Post(user, content, imagePath);
@@ -178,7 +173,6 @@ public class AppDao {
 		}
 	}
 
-	// Method to delete a Post
 	public static boolean deletePost(int postId) {
 		try {
 			Post post = entityManager.find(Post.class, postId);

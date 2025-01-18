@@ -48,7 +48,6 @@ public class User {
 	public User() {
 	}
 
-	// Constructor with all fields, role and status are set here as well
 	public User(String username, String password, String email, String passwordRecovery) {
 		this.username = username;
 		this.password = password;
@@ -146,4 +145,10 @@ public class User {
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+
+	@Override
+	public String toString() {
+		return username;
+	}
+
 }
