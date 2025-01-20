@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import model.Post;
 import model.Role;
 import model.Status;
@@ -25,6 +27,8 @@ public interface Iservice {
 
 	public boolean deletePost(int postId);
 
+	public List<Post> searchPostsByContent(String keyword);
+
 	public boolean addUser(String username, String password, String email, String passwordRecovery);
 
 	public boolean addUser(String username, String password, String email);
@@ -33,6 +37,8 @@ public interface Iservice {
 			Status status);
 
 	public boolean addUser(String username, String password, String email, Role role, Status status);
+
+	public boolean deleteUser(int UserId);
 
 	public boolean updatePassword(int userId, String oldPassword, String newPassword);
 
@@ -44,4 +50,5 @@ public interface Iservice {
 
 	public boolean updateStatus(int userId, Status newStatus);
 
+	public List<User> searchByUsername(String keyword);
 }

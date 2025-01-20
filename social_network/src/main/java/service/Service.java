@@ -1,6 +1,8 @@
 package service;
 
-import dao.AppDao;
+import java.util.List;
+
+import dao.PostDao;
 import dao.UserDao;
 import model.Post;
 import model.Role;
@@ -11,47 +13,47 @@ public class Service implements Iservice {
 
 	@Override
 	public boolean addComment(Post post, User user, String content) {
-		return AppDao.addComment(post, user, content);
+		return PostDao.addComment(post, user, content);
 	}
 
 	@Override
 	public boolean updateComment(int commentId, String newContent) {
-		return AppDao.updateComment(commentId, newContent);
+		return PostDao.updateComment(commentId, newContent);
 	}
 
 	@Override
 	public boolean deleteComment(int commentId) {
-		return AppDao.deleteComment(commentId);
+		return PostDao.deleteComment(commentId);
 	}
 
 	@Override
 	public boolean addAndDeleteLike(Post post, User user) {
-		return AppDao.addAndDeleteLike(post, user);
+		return PostDao.addAndDeleteLike(post, user);
 	}
 
 	@Override
 	public boolean addPost(User user, String content, String imagePath) {
-		return AppDao.addPost(user, content, imagePath);
+		return PostDao.addPost(user, content, imagePath);
 	}
 
 	@Override
 	public boolean addPost(User user, String content) {
-		return AppDao.addPost(user, content);
+		return PostDao.addPost(user, content);
 	}
 
 	@Override
 	public boolean updatePost(int postId, String newContent, String newImagePath) {
-		return AppDao.updatePost(postId, newContent, newImagePath);
+		return PostDao.updatePost(postId, newContent, newImagePath);
 	}
 
 	@Override
 	public boolean updatePost(int postId, String newContent) {
-		return AppDao.updatePost(postId, newContent);
+		return PostDao.updatePost(postId, newContent);
 	}
 
 	@Override
 	public boolean deletePost(int postId) {
-		return AppDao.deletePost(postId);
+		return PostDao.deletePost(postId);
 	}
 
 	@Override
@@ -73,6 +75,11 @@ public class Service implements Iservice {
 	@Override
 	public boolean addUser(String username, String password, String email, Role role, Status status) {
 		return UserDao.addUser(username, password, email, role, status);
+	}
+
+	@Override
+	public boolean deleteUser(int UserId) {
+		return UserDao.deleteUser(UserId);
 	}
 
 	@Override
@@ -98,6 +105,16 @@ public class Service implements Iservice {
 	@Override
 	public boolean updateStatus(int userId, Status newStatus) {
 		return UserDao.updateStatus(userId, newStatus);
+	}
+
+	@Override
+	public List<Post> searchPostsByContent(String keyword) {
+		return PostDao.searchPostsByContent(keyword);
+	}
+
+	@Override
+	public List<User> searchByUsername(String keyword) {
+		return UserDao.searchByUsername(keyword);
 	}
 
 }

@@ -23,15 +23,12 @@ public class Check {
 		return matcher.matches();
 	}
 
-	public static boolean checkPasswordRecovery(String answer, String CORRECT_ANSWER) {
-		if (CORRECT_ANSWER.equalsIgnoreCase(answer.trim())) {
-			return true;
-		}
-		return false;
+	public static boolean checkPasswordRecovery(String enteredAnswer, String hashedAnswer) {
+		return BCrypt.checkpw(enteredAnswer, hashedAnswer);
 	}
 
-	public static boolean checkPassword(String enteredPassword, String Password) {
-		return BCrypt.checkpw(enteredPassword, Password);
+	public static boolean checkPassword(String enteredPassword, String hashedPassword) {
+		return BCrypt.checkpw(enteredPassword, hashedPassword);
 	}
 
 }

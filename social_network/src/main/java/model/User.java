@@ -22,8 +22,8 @@ public class User {
 	@Column(name = "user_id")
 	private Integer userId;
 
-	@Column(name = "username", length = 50, nullable = false)
-	private String username;
+	@Column(name = "user_name", length = 15, nullable = false)
+	private String userName;
 
 	@Column(name = "password", length = 50, nullable = false)
 	private String password;
@@ -48,8 +48,8 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String password, String email, String passwordRecovery) {
-		this.username = username;
+	public User(String userName, String password, String email, String passwordRecovery) {
+		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.passwordRecovery = passwordRecovery;
@@ -58,7 +58,7 @@ public class User {
 	}
 
 	public User(String username, String password, String email) {
-		this.username = username;
+		this.userName = username;
 		this.password = password;
 		this.email = email;
 		this.role = Role.USER;
@@ -66,7 +66,7 @@ public class User {
 	}
 
 	public User(String username, String password, String email, String passwordRecovery, Role role, Status status) {
-		this.username = username;
+		this.userName = username;
 		this.password = password;
 		this.email = email;
 		this.passwordRecovery = passwordRecovery;
@@ -74,8 +74,8 @@ public class User {
 		this.status = status;
 	}
 
-	public User(String username, String password, String email, Role role, Status status) {
-		this.username = username;
+	public User(String userName, String password, String email, Role role, Status status) {
+		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.role = role;
@@ -91,11 +91,11 @@ public class User {
 	}
 
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.userName = username;
 	}
 
 	public String getPassword() {
@@ -148,7 +148,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return username;
+		return userName;
 	}
 
 }

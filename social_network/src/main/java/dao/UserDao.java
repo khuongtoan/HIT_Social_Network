@@ -1,10 +1,13 @@
 package dao;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 import common.PasswordEncryptor;
 import controller.Check;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import model.Role;
 import model.Status;
 import model.User;
@@ -69,6 +72,24 @@ public class UserDao {
 			entityManager.persist(user);
 			entityManager.getTransaction().commit();
 			return true;
+		} catch (Exception e) {
+			if (entityManager.getTransaction().isActive()) {
+				entityManager.getTransaction().rollback();
+			}
+			return false;
+		}
+	}
+
+	public static boolean deleteUser(int UserId) {
+		try {
+			User user = entityManager.find(User.class, UserId);
+			if (user != null) {
+				entityManager.getTransaction().begin();
+				entityManager.remove(user);
+				entityManager.getTransaction().commit();
+				return true;
+			}
+			return false;
 		} catch (Exception e) {
 			if (entityManager.getTransaction().isActive()) {
 				entityManager.getTransaction().rollback();
@@ -196,4 +217,18 @@ public class UserDao {
 			return false;
 		}
 	}
+
+	public static List<User> searchByUsername(String keyword) {
+		try {
+			String queryStr = "SELECT u FROM User u WHERE u.username LIKE :keyword";
+			TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+
+			query.setParameter("keyword", "%" + keyword.trim() + "%");
+
+			return query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }

@@ -10,10 +10,10 @@ import model.Post;
 import model.User;
 import service.EntityManagerUtil;
 
-public class AppDao {
+public class PostDao {
 	static EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
-	public AppDao() {
+	public PostDao() {
 	}
 
 	public static boolean addComment(Post post, User user, String content) {
@@ -188,6 +188,18 @@ public class AppDao {
 				entityManager.getTransaction().rollback();
 			}
 			return false;
+		}
+	}
+
+	public static List<Post> searchPostsByContent(String keyword) {
+		try {
+			String queryStr = "SELECT p FROM Post p WHERE p.content LIKE :keyword";
+			TypedQuery<Post> query = entityManager.createQuery(queryStr, Post.class);
+			query.setParameter("keyword", "%" + keyword.trim() + "%");
+
+			return query.getResultList();
+		} catch (Exception e) {
+			return null;
 		}
 	}
 
