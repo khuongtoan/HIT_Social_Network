@@ -1,16 +1,25 @@
 package view.component;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class PanelPost extends javax.swing.JPanel {
+public class PanePost extends javax.swing.JPanel {
 
-public PanelPost(String postContentText, String imagePath) {
+
+
+public PanePost(String user, String postContentText, String imagePath , int like, int comment) {
     initComponents();
     setPostContent(postContentText);
     setImage(imagePath);
+    username.setText(user+"");
+    labelLike.setText(like+"");
+    buttonComment.setText(comment+"");
+    toggleLikeButtonColor(ButtonLike);
+
 }
 
 public void setPostContent(String content) {
@@ -22,31 +31,42 @@ public void setImage(String imagePath) {
     File imageFile = new File(imagePath);
 
     if (imageFile.exists()) {
-        // Tạo ImageIcon từ tệp ảnh
         ImageIcon imageIcon = new ImageIcon(imageFile.getAbsolutePath());
 
-        // Lấy kích thước JLabel để thay đổi kích thước ảnh sao cho vừa với JLabel
         int labelWidth = image.getWidth();
         int labelHeight = image.getHeight();
 
-        // Nếu JLabel chưa có kích thước, phải đợi sau khi hiển thị lần đầu
         if (labelWidth == 0 || labelHeight == 0) {
-            image.setPreferredSize(new java.awt.Dimension(570, 400)); // Đặt kích thước mặc định cho JLabel
+            image.setPreferredSize(new java.awt.Dimension(570, 400)); 
         }
-
-        // Chỉnh kích thước ảnh để phù hợp với JLabel mà không làm biến dạng
         Image img = imageIcon.getImage();
         Image resizedImg = img.getScaledInstance(570, 400, Image.SCALE_SMOOTH);
 
-        // Tạo ImageIcon mới từ ảnh đã thay đổi kích thước
         ImageIcon resizedIcon = new ImageIcon(resizedImg);
 
-        // Gán icon cho JLabel
         image.setIcon(resizedIcon);
     } else {
         System.out.println("File does not exist.");
     }
 }
+
+public void toggleLikeButtonColor(JButton button) {
+        boolean[] isSelected = {false}; 
+
+        button.addActionListener(e -> {
+            // Nếu chưa được chọn, chuyển sang màu xanh
+            if (!isSelected[0]) {
+                button.setBackground(Color.GREEN);
+                button.setText("Liked");
+            } else {
+                // Nếu đã được chọn, chuyển lại màu mặc định
+                button.setBackground(null);
+                button.setText("Like");
+            }
+            // Đảo trạng thái của button
+            isSelected[0] = !isSelected[0];
+        });
+    }
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -57,9 +77,9 @@ public void setImage(String imagePath) {
         username = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        labelLike = new javax.swing.JLabel();
+        ButtonLike = new javax.swing.JButton();
+        buttonComment = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
         contentw = new javax.swing.JLabel();
@@ -106,17 +126,18 @@ public void setImage(String imagePath) {
 
         jPanel5.setPreferredSize(new java.awt.Dimension(570, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like (2).png"))); // NOI18N
-        jLabel1.setText("1");
+        labelLike.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like (2).png"))); // NOI18N
+        labelLike.setText("1");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like (2).png"))); // NOI18N
-        jButton1.setText("Like");
-        jButton1.setDefaultCapable(false);
+        ButtonLike.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like (2).png"))); // NOI18N
+        ButtonLike.setText("Like");
+        ButtonLike.setDefaultCapable(false);
+        ButtonLike.setOpaque(true);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chat (2).png"))); // NOI18N
-        jButton2.setText("comment");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setOpaque(true);
+        buttonComment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chat (2).png"))); // NOI18N
+        buttonComment.setText("comment");
+        buttonComment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonComment.setOpaque(true);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -125,11 +146,11 @@ public void setImage(String imagePath) {
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelLike, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(ButtonLike)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonComment, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
         jPanel5Layout.setVerticalGroup(
@@ -139,14 +160,13 @@ public void setImage(String imagePath) {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(labelLike))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))
-                        .addContainerGap(10, Short.MAX_VALUE))))
+                            .addComponent(buttonComment)
+                            .addComponent(ButtonLike))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -168,20 +188,29 @@ public void setImage(String imagePath) {
         add(jPanel6, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+  public static void main(String[] args) {
+        JFrame frame = new JFrame("Test Like Button");
 
+        PanePost post = new PanePost("User Name", "This is a post content", "D:/SocialNetwork/social_network/src/main/resources/dragonBack.jpg", 5, 3);
 
+        frame.getContentPane().add(post);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack(); 
+        frame.setLocationRelativeTo(null); 
+        frame.setVisible(true); // Hiển thị cửa sổ
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonLike;
+    private javax.swing.JButton buttonComment;
     private javax.swing.JLabel contentw;
     private javax.swing.JLabel image;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel labelLike;
     private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

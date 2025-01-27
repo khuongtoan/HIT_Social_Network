@@ -34,4 +34,18 @@ protected void paintComponent(Graphics g) {
 @Override
 public void setBorder(Border border) {
 }
+
+
+public static void textF(JTextField searchTF,JPanel jPanel1 ){
+    RoundedTextField roundedSearchTF = new RoundedTextField(20, 15); 
+    roundedSearchTF.setText(searchTF.getText()); 
+    roundedSearchTF.setBounds(searchTF.getBounds());
+    roundedSearchTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+    jPanel1.remove(searchTF); 
+    jPanel1.add(roundedSearchTF); 
+    jPanel1.revalidate();
+    jPanel1.repaint();
+    searchTF = roundedSearchTF;
+}
 }
