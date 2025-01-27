@@ -11,6 +11,7 @@ public class PanePost extends javax.swing.JPanel {
 
 
 
+
 public PanePost(String user, String postContentText, String imagePath , int like, int comment) {
     initComponents();
     setPostContent(postContentText);

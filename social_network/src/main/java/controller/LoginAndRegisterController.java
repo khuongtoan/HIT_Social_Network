@@ -19,4 +19,7 @@ public class LoginAndRegisterController {
         forgotPassword.setVisible(true);
         loginAndRegister.dispose();
     }  
+    
+    
+    
 }

@@ -26,13 +26,13 @@ public UserSettingView() {
         game = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        changePass = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        changeUsername = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        changeEmail = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        changeQuestion = new javax.swing.JButton();
         mainArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,13 +101,13 @@ public UserSettingView() {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(390, 50));
 
-        jButton1.setBackground(new java.awt.Color(0, 105, 105));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
-        jButton1.setText("change password");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.setPreferredSize(new java.awt.Dimension(220, 27));
+        changePass.setBackground(new java.awt.Color(0, 105, 105));
+        changePass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        changePass.setForeground(new java.awt.Color(255, 255, 255));
+        changePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
+        changePass.setText("change password");
+        changePass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        changePass.setPreferredSize(new java.awt.Dimension(220, 27));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -115,14 +115,14 @@ public UserSettingView() {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changePass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changePass, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -131,13 +131,13 @@ public UserSettingView() {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(390, 50));
 
-        jButton2.setBackground(new java.awt.Color(0, 105, 105));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
-        jButton2.setText("change username");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeUsername.setBackground(new java.awt.Color(0, 105, 105));
+        changeUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        changeUsername.setForeground(new java.awt.Color(255, 255, 255));
+        changeUsername.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
+        changeUsername.setText("change username");
+        changeUsername.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        changeUsername.setPreferredSize(new java.awt.Dimension(220, 27));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -145,14 +145,14 @@ public UserSettingView() {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changeUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changeUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -161,13 +161,13 @@ public UserSettingView() {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setPreferredSize(new java.awt.Dimension(390, 50));
 
-        jButton4.setBackground(new java.awt.Color(0, 105, 105));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
-        jButton4.setText("change email");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeEmail.setBackground(new java.awt.Color(0, 105, 105));
+        changeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        changeEmail.setForeground(new java.awt.Color(255, 255, 255));
+        changeEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
+        changeEmail.setText("change email");
+        changeEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        changeEmail.setPreferredSize(new java.awt.Dimension(220, 27));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -175,14 +175,14 @@ public UserSettingView() {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changeEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(133, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changeEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
 
@@ -191,12 +191,12 @@ public UserSettingView() {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setPreferredSize(new java.awt.Dimension(390, 50));
 
-        jButton3.setBackground(new java.awt.Color(0, 105, 105));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
-        jButton3.setText("change Question recovery");
-        jButton3.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeQuestion.setBackground(new java.awt.Color(0, 105, 105));
+        changeQuestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        changeQuestion.setForeground(new java.awt.Color(255, 255, 255));
+        changeQuestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
+        changeQuestion.setText("change Question recovery");
+        changeQuestion.setPreferredSize(new java.awt.Dimension(220, 27));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -204,14 +204,14 @@ public UserSettingView() {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changeQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(128, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(changeQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -243,12 +243,12 @@ public static void main(String args[]) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JButton changeEmail;
+    private javax.swing.JButton changePass;
+    private javax.swing.JButton changeQuestion;
+    private javax.swing.JButton changeUsername;
     private javax.swing.JLabel game;
     private javax.swing.JLabel home;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

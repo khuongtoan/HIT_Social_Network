@@ -27,17 +27,17 @@ public SignUp() {
         back = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        usernameText = new javax.swing.JTextField();
+        passText = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        emailText = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        questionText = new javax.swing.JTextField();
+        agreeCheckBox = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        createAccText = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,34 +89,34 @@ public SignUp() {
         jLabel2.setText("Username :");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 110, 20));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        usernameText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        usernameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                usernameTextActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 360, 30));
+        jPanel3.add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 360, 30));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        passText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        passText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                passTextActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 360, 30));
+        jPanel3.add(passText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 360, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
         jLabel3.setText("Password :");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, 20));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        emailText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emailText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                emailTextActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 360, 30));
+        jPanel3.add(emailText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 360, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mail.png"))); // NOI18N
@@ -127,18 +127,18 @@ public SignUp() {
         jLabel5.setText("Question Recovery :");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 130, 20));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        questionText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        questionText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                questionTextActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 360, 30));
+        jPanel3.add(questionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 360, 30));
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(56, 181, 234));
-        jCheckBox1.setText("I agree with license");
-        jPanel3.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 170, 40));
+        agreeCheckBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        agreeCheckBox.setForeground(new java.awt.Color(56, 181, 234));
+        agreeCheckBox.setText("I agree with license");
+        jPanel3.add(agreeCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 170, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -152,12 +152,12 @@ public SignUp() {
         jLabel7.setText("Good");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 60, 30));
 
-        jButton2.setBackground(new java.awt.Color(0, 102, 102));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Create an Account");
-        jButton2.setOpaque(true);
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 200, 50));
+        createAccText.setBackground(new java.awt.Color(0, 102, 102));
+        createAccText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        createAccText.setForeground(new java.awt.Color(255, 255, 255));
+        createAccText.setText("Create an Account");
+        createAccText.setOpaque(true);
+        jPanel3.add(createAccText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 200, 50));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 20));
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -176,21 +176,21 @@ public SignUp() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_usernameTextActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void passTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_passTextActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void emailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_emailTextActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void questionTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_questionTextActionPerformed
 
 
 public static void main(String args[]) {
@@ -215,9 +215,10 @@ public static void main(String args[]) {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox agreeCheckBox;
     private javax.swing.JButton back;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JButton createAccText;
+    private javax.swing.JTextField emailText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -229,9 +230,8 @@ public static void main(String args[]) {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField passText;
+    private javax.swing.JTextField questionText;
+    private javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
 }

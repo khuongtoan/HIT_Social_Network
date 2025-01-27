@@ -20,16 +20,16 @@
               <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" pref="51" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-              <Component id="jRadioButton1" min="-2" pref="82" max="-2" attributes="0"/>
+              <Component id="activejRadioButton" min="-2" pref="82" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Component id="jRadioButton2" min="-2" pref="82" max="-2" attributes="0"/>
+              <Component id="BanRadioButton" min="-2" pref="82" max="-2" attributes="0"/>
               <EmptySpace pref="299" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" pref="166" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPasswordField1" min="-2" pref="424" max="-2" attributes="0"/>
+              <Component id="passText" min="-2" pref="424" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -39,14 +39,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jPasswordField1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="passText" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="activejRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BanRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="111" max="32767" attributes="0"/>
           </Group>
@@ -82,7 +82,7 @@
         <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+    <Component class="javax.swing.JRadioButton" name="activejRadioButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
@@ -93,7 +93,7 @@
         <Property name="text" type="java.lang.String" value="Active"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+    <Component class="javax.swing.JRadioButton" name="BanRadioButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
@@ -104,7 +104,7 @@
         <Property name="text" type="java.lang.String" value="Ban"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+    <Component class="javax.swing.JPasswordField" name="passText">
     </Component>
   </SubComponents>
 </Form>

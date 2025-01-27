@@ -40,13 +40,13 @@ public void addPostToMainLabel(PanePost post) {
         jPanel6 = new javax.swing.JPanel();
         home = new javax.swing.JLabel();
         game = new javax.swing.JLabel();
-        game1 = new javax.swing.JLabel();
+        reload = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        createPostLabel = new javax.swing.JLabel();
+        settingLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         mainLabel = new javax.swing.JPanel();
 
@@ -80,7 +80,7 @@ public void addPostToMainLabel(PanePost post) {
 
         game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game (2).png"))); // NOI18N
 
-        game1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redo (2).png"))); // NOI18N
+        reload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redo (2).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -92,7 +92,7 @@ public void addPostToMainLabel(PanePost post) {
                 .addGap(33, 33, 33)
                 .addComponent(game)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(game1)
+                .addComponent(reload)
                 .addGap(19, 19, 19))
         );
         jPanel6Layout.setVerticalGroup(
@@ -101,7 +101,7 @@ public void addPostToMainLabel(PanePost post) {
             .addComponent(game, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(game1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(reload, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -110,8 +110,8 @@ public void addPostToMainLabel(PanePost post) {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(289, 289, 289)
@@ -140,26 +140,26 @@ public void addPostToMainLabel(PanePost post) {
         jPanel4.setAlignmentY(0.0F);
         jPanel4.setPreferredSize(new java.awt.Dimension(219, 440));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user (2).png"))); // NOI18N
-        jLabel1.setText("name");
-        jLabel1.setOpaque(true);
+        nameLabel.setBackground(new java.awt.Color(255, 255, 255));
+        nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user (2).png"))); // NOI18N
+        nameLabel.setText("name");
+        nameLabel.setOpaque(true);
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/create (2).png"))); // NOI18N
-        jLabel2.setText("create post");
-        jLabel2.setOpaque(true);
+        createPostLabel.setBackground(new java.awt.Color(255, 255, 255));
+        createPostLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        createPostLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        createPostLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/create (2).png"))); // NOI18N
+        createPostLabel.setText("create post");
+        createPostLabel.setOpaque(true);
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/setting (4).png"))); // NOI18N
-        jLabel3.setText("setting");
-        jLabel3.setOpaque(true);
+        settingLabel.setBackground(new java.awt.Color(255, 255, 255));
+        settingLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        settingLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        settingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/setting (4).png"))); // NOI18N
+        settingLabel.setText("setting");
+        settingLabel.setOpaque(true);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -168,20 +168,20 @@ public void addPostToMainLabel(PanePost post) {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(createPostLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                    .addComponent(settingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addComponent(jLabel1)
+                .addComponent(nameLabel)
                 .addGap(63, 63, 63)
-                .addComponent(jLabel2)
+                .addComponent(createPostLabel)
                 .addGap(71, 71, 71)
-                .addComponent(jLabel3)
+                .addComponent(settingLabel)
                 .addContainerGap(150, Short.MAX_VALUE))
         );
 
@@ -244,12 +244,9 @@ public static void main(String args[]) {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel createPostLabel;
     private javax.swing.JLabel game;
-    private javax.swing.JLabel game1;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -260,6 +257,9 @@ public static void main(String args[]) {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel mainLabel;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel reload;
     private javax.swing.JTextField searchTF;
+    private javax.swing.JLabel settingLabel;
     // End of variables declaration//GEN-END:variables
 }
