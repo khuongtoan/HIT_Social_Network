@@ -1,5 +1,10 @@
 package view.component;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+
 
 public class ChangeRole extends javax.swing.JPanel {
 
@@ -84,4 +89,54 @@ public ChangeRole() {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton userRadioButton;
     // End of variables declaration//GEN-END:variables
+
+    public JRadioButton getAdminRadioButton() {
+        return adminRadioButton;
+    }
+
+    public void setAdminRadioButton(JRadioButton adminRadioButton) {
+        this.adminRadioButton = adminRadioButton;
+    }
+
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    public void setButtonGroup1(ButtonGroup buttonGroup1) {
+        this.buttonGroup1 = buttonGroup1;
+    }
+
+    public JPasswordField getIdUserText() {
+        return idUserText;
+    }
+
+    public void setIdUserText(JPasswordField idUserText) {
+        this.idUserText = idUserText;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JRadioButton getUserRadioButton() {
+        return userRadioButton;
+    }
+
+    public void setUserRadioButton(JRadioButton userRadioButton) {
+        this.userRadioButton = userRadioButton;
+    }
+
+    
 }

@@ -1,9 +1,13 @@
 D:\SocialNetwork\social_network\src\main\java\common\PasswordEncryptor.java
 D:\SocialNetwork\social_network\src\main\java\common\ValidateContant.java
+D:\SocialNetwork\social_network\src\main\java\controller\AdminSettingController.java
 D:\SocialNetwork\social_network\src\main\java\controller\Check.java
 D:\SocialNetwork\social_network\src\main\java\controller\FlashScreenController.java
 D:\SocialNetwork\social_network\src\main\java\controller\ForgotPasswordController.java
 D:\SocialNetwork\social_network\src\main\java\controller\LoginAndRegisterController.java
+D:\SocialNetwork\social_network\src\main\java\controller\PersonalViewController.java
+D:\SocialNetwork\social_network\src\main\java\controller\SignUpController.java
+D:\SocialNetwork\social_network\src\main\java\controller\UserSettingController.java
 D:\SocialNetwork\social_network\src\main\java\dao\PostDao.java
 D:\SocialNetwork\social_network\src\main\java\dao\UserDao.java
 D:\SocialNetwork\social_network\src\main\java\model\Comment.java
@@ -13,8 +17,8 @@ D:\SocialNetwork\social_network\src\main\java\model\Role.java
 D:\SocialNetwork\social_network\src\main\java\model\Status.java
 D:\SocialNetwork\social_network\src\main\java\model\User.java
 D:\SocialNetwork\social_network\src\main\java\service\EntityManagerUtil.java
-D:\SocialNetwork\social_network\src\main\java\service\Iservice.java
 D:\SocialNetwork\social_network\src\main\java\service\Service.java
+D:\SocialNetwork\social_network\src\main\java\service\ServiceInterfaces.java
 D:\SocialNetwork\social_network\src\main\java\view\AdminSettingView.java
 D:\SocialNetwork\social_network\src\main\java\view\component\ChangeEmail.java
 D:\SocialNetwork\social_network\src\main\java\view\component\ChangePassword.java

@@ -1,16 +1,20 @@
 package controller;
 
+import java.awt.event.ActionEvent;
 import view.ForgotPassword;
 import view.LoginAndRegister;
+import view.SignUp;
 
 public class LoginAndRegisterController {
 
     private LoginAndRegister loginAndRegister;
 
-    public LoginAndRegisterController(LoginAndRegister loginAndRegister) {
-        this.loginAndRegister = loginAndRegister;
-
+    public LoginAndRegisterController(LoginAndRegister view) {
+        this.loginAndRegister = view;
+        this.loginAndRegister.setVisible(true);
         this.loginAndRegister.getForgot().addActionListener(evt -> forgotActionPerformed(evt));
+        this.loginAndRegister.getSignUp().addActionListener(evt -> signUptActionPerformed(evt));
+        
     }
 
     private void forgotActionPerformed(java.awt.event.ActionEvent evt) {
@@ -19,6 +23,13 @@ public class LoginAndRegisterController {
         forgotPassword.setVisible(true);
         loginAndRegister.dispose();
     }  
+
+    private void signUptActionPerformed(ActionEvent evt) {
+        loginAndRegister.setVisible(false);
+        SignUp signUp = new SignUp();
+        signUp.setVisible(true);
+        loginAndRegister.dispose();
+    }
     
     
     

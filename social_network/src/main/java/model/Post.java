@@ -18,7 +18,6 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "posts")
 public class Post {
 
 	@Id

@@ -1,5 +1,6 @@
 package view;
 
+import controller.LoginAndRegisterController;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JButton;
@@ -18,7 +19,8 @@ public LoginAndRegister() {
     initComponents();
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
-
+    LoginAndRegisterController loginAndRegisterController = new LoginAndRegisterController(this);
+    
 }
 
 @SuppressWarnings("unchecked")
@@ -81,11 +83,6 @@ public LoginAndRegister() {
         login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("Login");
-        login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -113,12 +110,6 @@ public LoginAndRegister() {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Username: ");
-
-        userNameText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameTextActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Password:");
@@ -179,11 +170,6 @@ public LoginAndRegister() {
         forgot.setBackground(new java.awt.Color(0, 102, 102));
         forgot.setForeground(new java.awt.Color(255, 255, 255));
         forgot.setText("Forgot your password?");
-        forgot.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forgotActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -246,27 +232,8 @@ public LoginAndRegister() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginActionPerformed
-
-    private void userNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameTextActionPerformed
-
-    private void forgotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        (new ForgotPassword()).setVisible(true);
-        this.dispose(); 
-    }//GEN-LAST:event_forgotActionPerformed
-
 public static void main(String args[]) {
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new LoginAndRegister().setVisible(true);
-        }
-    });
+    LoginAndRegister loginAndRegister= new LoginAndRegister();
 }
 
 

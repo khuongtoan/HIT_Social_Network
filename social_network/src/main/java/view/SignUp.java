@@ -1,9 +1,14 @@
 package view;
 
-import java.awt.Color;
+import controller.SignUpController;
 import java.awt.Toolkit;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+
 
 public class SignUp extends javax.swing.JFrame {
 
@@ -13,7 +18,7 @@ public SignUp() {
     setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
     setTitle("Lifebook-WATO");
-    
+    SignUpController signUpController = new SignUpController(this);
 }
 
 
@@ -37,7 +42,7 @@ public SignUp() {
         agreeCheckBox = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        createAccText = new javax.swing.JButton();
+        createAccount = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,19 +95,9 @@ public SignUp() {
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 110, 20));
 
         usernameText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        usernameText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTextActionPerformed(evt);
-            }
-        });
         jPanel3.add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 360, 30));
 
         passText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        passText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passTextActionPerformed(evt);
-            }
-        });
         jPanel3.add(passText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 360, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -111,11 +106,6 @@ public SignUp() {
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, 20));
 
         emailText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        emailText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextActionPerformed(evt);
-            }
-        });
         jPanel3.add(emailText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 360, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -128,11 +118,6 @@ public SignUp() {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 130, 20));
 
         questionText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        questionText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                questionTextActionPerformed(evt);
-            }
-        });
         jPanel3.add(questionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 360, 30));
 
         agreeCheckBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -152,12 +137,12 @@ public SignUp() {
         jLabel7.setText("Good");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 60, 30));
 
-        createAccText.setBackground(new java.awt.Color(0, 102, 102));
-        createAccText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        createAccText.setForeground(new java.awt.Color(255, 255, 255));
-        createAccText.setText("Create an Account");
-        createAccText.setOpaque(true);
-        jPanel3.add(createAccText, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 200, 50));
+        createAccount.setBackground(new java.awt.Color(0, 102, 102));
+        createAccount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        createAccount.setForeground(new java.awt.Color(255, 255, 255));
+        createAccount.setText("Create an Account");
+        createAccount.setOpaque(true);
+        jPanel3.add(createAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 200, 50));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 20));
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -176,48 +161,15 @@ public SignUp() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTextActionPerformed
-
-    private void passTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passTextActionPerformed
-
-    private void emailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextActionPerformed
-
-    private void questionTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_questionTextActionPerformed
-
 
 public static void main(String args[]) {
-   java.awt.EventQueue.invokeLater(new Runnable() {
-    @Override
-    public void run() {
-        try {
-            // Thiết lập Look and Feel cho ứng dụng, đây là Nimbus Look and Feel
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-            // Khởi tạo giao diện của ứng dụng sau khi thiết lập Look and Feel
-            javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new SignUp().setVisible(true);
-            }
-            });
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-    });
+  SignUp signUp = new SignUp();
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox agreeCheckBox;
     private javax.swing.JButton back;
-    private javax.swing.JButton createAccText;
+    private javax.swing.JButton createAccount;
     private javax.swing.JTextField emailText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -234,4 +186,149 @@ public static void main(String args[]) {
     private javax.swing.JTextField questionText;
     private javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
+
+    public JCheckBox getAgreeCheckBox() {
+        return agreeCheckBox;
+    }
+
+    public void setAgreeCheckBox(JCheckBox agreeCheckBox) {
+        this.agreeCheckBox = agreeCheckBox;
+    }
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public void setBack(JButton back) {
+        this.back = back;
+    }
+
+    public JButton getCreateAccount() {
+        return createAccount;
+    }
+
+    public void setCreateAccount(JButton createAccount) {
+        this.createAccount = createAccount;
+    }
+
+    public JTextField getEmailText() {
+        return emailText;
+    }
+
+    public void setEmailText(JTextField emailText) {
+        this.emailText = emailText;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JSeparator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    public void setjSeparator1(JSeparator jSeparator1) {
+        this.jSeparator1 = jSeparator1;
+    }
+
+    public JTextField getPassText() {
+        return passText;
+    }
+
+    public void setPassText(JTextField passText) {
+        this.passText = passText;
+    }
+
+    public JTextField getQuestionText() {
+        return questionText;
+    }
+
+    public void setQuestionText(JTextField questionText) {
+        this.questionText = questionText;
+    }
+
+    public JTextField getUsernameText() {
+        return usernameText;
+    }
+
+    public void setUsernameText(JTextField usernameText) {
+        this.usernameText = usernameText;
+    }
+
 }

@@ -9,7 +9,7 @@ import model.Role;
 import model.Status;
 import model.User;
 
-public class Service implements Iservice {
+public class Service implements ServiceInterfaces {
 
 	@Override
 	public boolean addComment(Post post, User user, String content) {
@@ -58,7 +58,7 @@ public class Service implements Iservice {
 
 	@Override
 	public boolean addUser(String username, String password, String email, String passwordRecovery) {
-		return UserDao.addUser(username, passwordRecovery, email);
+		return UserDao.addUser(username, password, email, passwordRecovery);
 	}
 
 	@Override
@@ -116,5 +116,10 @@ public class Service implements Iservice {
 	public List<User> searchByUsername(String keyword) {
 		return UserDao.searchByUsername(keyword);
 	}
+
+    @Override
+    public List<Post> getAllPost() {
+        return PostDao.getAllPost();
+    }
 
 }

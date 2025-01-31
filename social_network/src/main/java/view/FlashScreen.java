@@ -1,5 +1,6 @@
 package view;
 
+import controller.FlashScreenController;
 import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.UIManager;
@@ -7,13 +8,21 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class FlashScreen extends javax.swing.JFrame {
 
+    private FlashScreenController control;
+    
 public FlashScreen() {
     initComponents();
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
-
-
+    
+    control = new FlashScreenController(this);
 }   
+
+
+    public static void main(String[] args) {
+        FlashScreen flashScreen = new FlashScreen();
+    }
+
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

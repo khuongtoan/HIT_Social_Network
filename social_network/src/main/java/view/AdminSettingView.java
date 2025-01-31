@@ -1,17 +1,34 @@
 package view;
 
+import controller.AdminSettingController;
 import java.awt.Toolkit;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
 import static view.component.RoundedTextField.textF;
 
 
 public class AdminSettingView extends javax.swing.JFrame {
+
+private AdminSettingController adminSettingController;
 
 public AdminSettingView() {
     initComponents();
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
     textF(searchTF,jPanel1);
+    this.adminSettingController = new AdminSettingController(this);
+    
 }
+
+public static void main(String []args){
+    AdminSettingView a = new AdminSettingView();
+    
+}
+
+
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -110,7 +127,7 @@ public AdminSettingView() {
         changePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
         changePass.setText("change password");
         changePass.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        changePass.setPreferredSize(new java.awt.Dimension(220, 27));
+        changePass.setPreferredSize(new java.awt.Dimension(220, 40));
         jPanel3.add(changePass);
 
         jPanel2.add(jPanel3);
@@ -124,14 +141,13 @@ public AdminSettingView() {
         changeUserName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
         changeUserName.setText("change username");
         changeUserName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        changeUserName.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeUserName.setPreferredSize(new java.awt.Dimension(220, 40));
         jPanel4.add(changeUserName);
 
         jPanel2.add(jPanel4);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setPreferredSize(new java.awt.Dimension(390, 50));
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
         changeEmail.setBackground(new java.awt.Color(0, 105, 105));
         changeEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -139,7 +155,7 @@ public AdminSettingView() {
         changeEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
         changeEmail.setText("change email");
         changeEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        changeEmail.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeEmail.setPreferredSize(new java.awt.Dimension(220, 40));
         jPanel6.add(changeEmail);
 
         jPanel2.add(jPanel6);
@@ -152,7 +168,8 @@ public AdminSettingView() {
         changeQuestion.setForeground(new java.awt.Color(255, 255, 255));
         changeQuestion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
         changeQuestion.setText("change Question recovery");
-        changeQuestion.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeQuestion.setMaximumSize(new java.awt.Dimension(220, 27));
+        changeQuestion.setPreferredSize(new java.awt.Dimension(225, 40));
         jPanel5.add(changeQuestion);
 
         jPanel2.add(jPanel5);
@@ -166,7 +183,7 @@ public AdminSettingView() {
         changeRole.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
         changeRole.setText("change Role user");
         changeRole.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        changeRole.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeRole.setPreferredSize(new java.awt.Dimension(220, 40));
         jPanel8.add(changeRole);
 
         jPanel2.add(jPanel8);
@@ -180,7 +197,7 @@ public AdminSettingView() {
         changeStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pass.png"))); // NOI18N
         changeStatus.setText("change status user");
         changeStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        changeStatus.setPreferredSize(new java.awt.Dimension(220, 27));
+        changeStatus.setPreferredSize(new java.awt.Dimension(220, 40));
         jPanel9.add(changeStatus);
 
         jPanel2.add(jPanel9);
@@ -198,14 +215,7 @@ public AdminSettingView() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-public static void main(String args[]) {
-   
-    java.awt.EventQueue.invokeLater(new Runnable() {
-    public void run() {
-        new AdminSettingView().setVisible(true);
-    }
-    });
-}
+
 
 
 
@@ -232,4 +242,176 @@ public static void main(String args[]) {
     private javax.swing.JPanel mainArea;
     private javax.swing.JTextField searchTF;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public void setBack(JButton back) {
+        this.back = back;
+    }
+
+    public JButton getChangeEmail() {
+        return changeEmail;
+    }
+
+    public void setChangeEmail(JButton changeEmail) {
+        this.changeEmail = changeEmail;
+    }
+
+    public JButton getChangePass() {
+        return changePass;
+    }
+
+    public void setChangePass(JButton changePass) {
+        this.changePass = changePass;
+    }
+
+    public JButton getChangeQuestion() {
+        return changeQuestion;
+    }
+
+    public void setChangeQuestion(JButton changeQuestion) {
+        this.changeQuestion = changeQuestion;
+    }
+
+    public JButton getChangeRole() {
+        return changeRole;
+    }
+
+    public void setChangeRole(JButton changeRole) {
+        this.changeRole = changeRole;
+    }
+
+    public JButton getChangeStatus() {
+        return changeStatus;
+    }
+
+    public void setChangeStatus(JButton changeStatus) {
+        this.changeStatus = changeStatus;
+    }
+
+    public JButton getChangeUserName() {
+        return changeUserName;
+    }
+
+    public void setChangeUserName(JButton changeUserName) {
+        this.changeUserName = changeUserName;
+    }
+
+    public JLabel getGame() {
+        return game;
+    }
+
+    public void setGame(JLabel game) {
+        this.game = game;
+    }
+
+    public JLabel getHome() {
+        return home;
+    }
+
+    public void setHome(JLabel home) {
+        this.home = home;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3) {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4) {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
+    }
+
+    public JPanel getjPanel6() {
+        return jPanel6;
+    }
+
+    public void setjPanel6(JPanel jPanel6) {
+        this.jPanel6 = jPanel6;
+    }
+
+    public JPanel getjPanel7() {
+        return jPanel7;
+    }
+
+    public void setjPanel7(JPanel jPanel7) {
+        this.jPanel7 = jPanel7;
+    }
+
+    public JPanel getjPanel8() {
+        return jPanel8;
+    }
+
+    public void setjPanel8(JPanel jPanel8) {
+        this.jPanel8 = jPanel8;
+    }
+
+    public JPanel getjPanel9() {
+        return jPanel9;
+    }
+
+    public void setjPanel9(JPanel jPanel9) {
+        this.jPanel9 = jPanel9;
+    }
+
+    public JSeparator getjSeparator2() {
+        return jSeparator2;
+    }
+
+    public void setjSeparator2(JSeparator jSeparator2) {
+        this.jSeparator2 = jSeparator2;
+    }
+
+    public JPanel getMainArea() {
+        return mainArea;
+    }
+
+    public void setMainArea(JPanel mainArea) {
+        this.mainArea = mainArea;
+    }
+
+    public JTextField getSearchTF() {
+        return searchTF;
+    }
+
+    public void setSearchTF(JTextField searchTF) {
+        this.searchTF = searchTF;
+    }
+
+
+
+
 }

@@ -202,5 +202,13 @@ public class PostDao {
 			return null;
 		}
 	}
-
+        public static List<Post> getAllPost(){
+            try{
+                String queryStr = "SELECT P FROM Post P";
+                TypedQuery<Post> query = entityManager.createQuery(queryStr, Post.class);
+                return query.getResultList();
+            }catch(Exception e){
+                return null;
+            }
+        }
 }

@@ -6,19 +6,19 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
 public class PanePost extends javax.swing.JPanel {
 
-
-
-
-public PanePost(String user, String postContentText, String imagePath , int like, int comment) {
+public PanePost(String user, String postContentText, String imagePath, int like, int comment) {
     initComponents();
     setPostContent(postContentText);
     setImage(imagePath);
-    username.setText(user+"");
-    labelLike.setText(like+"");
-    buttonComment.setText(comment+"");
+    username.setText(user + "");
+    labelLike.setText(like + "");
+    buttonComment.setText(comment + "");
     toggleLikeButtonColor(ButtonLike);
 
 }
@@ -28,46 +28,41 @@ public void setPostContent(String content) {
 }
 
 public void setImage(String imagePath) {
-    // Sử dụng đường dẫn tuyệt đối
+    if (imagePath == null || imagePath.trim().isEmpty()) {
+        return; 
+    }
     File imageFile = new File(imagePath);
-
     if (imageFile.exists()) {
         ImageIcon imageIcon = new ImageIcon(imageFile.getAbsolutePath());
-
         int labelWidth = image.getWidth();
         int labelHeight = image.getHeight();
 
         if (labelWidth == 0 || labelHeight == 0) {
-            image.setPreferredSize(new java.awt.Dimension(570, 400)); 
+            image.setPreferredSize(new java.awt.Dimension(570, 400));
         }
+
         Image img = imageIcon.getImage();
         Image resizedImg = img.getScaledInstance(570, 400, Image.SCALE_SMOOTH);
-
         ImageIcon resizedIcon = new ImageIcon(resizedImg);
-
         image.setIcon(resizedIcon);
     } else {
-        System.out.println("File does not exist.");
     }
 }
 
 public void toggleLikeButtonColor(JButton button) {
-        boolean[] isSelected = {false}; 
+    boolean[] isSelected = {false};
 
-        button.addActionListener(e -> {
-            // Nếu chưa được chọn, chuyển sang màu xanh
-            if (!isSelected[0]) {
-                button.setBackground(Color.GREEN);
-                button.setText("Liked");
-            } else {
-                // Nếu đã được chọn, chuyển lại màu mặc định
-                button.setBackground(null);
-                button.setText("Like");
-            }
-            // Đảo trạng thái của button
-            isSelected[0] = !isSelected[0];
-        });
-    }
+    button.addActionListener(e -> {
+        if (!isSelected[0]) {
+            button.setBackground(Color.GREEN);
+            button.setText("Liked");
+        } else {
+            button.setBackground(null);
+            button.setText("Like");
+        }
+        isSelected[0] = !isSelected[0];
+    });
+}
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -189,17 +184,17 @@ public void toggleLikeButtonColor(JButton button) {
         add(jPanel6, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-  public static void main(String[] args) {
-        JFrame frame = new JFrame("Test Like Button");
+public static void main(String[] args) {
+    JFrame frame = new JFrame("Test Like Button");
 
-        PanePost post = new PanePost("User Name", "This is a post content", "D:/SocialNetwork/social_network/src/main/resources/dragonBack.jpg", 5, 3);
+    PanePost post = new PanePost("User Name", "This is a post content", "D:/SocialNetwork/social_network/src/main/resources/dragonBack.jpg", 5, 3);
 
-        frame.getContentPane().add(post);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack(); 
-        frame.setLocationRelativeTo(null); 
-        frame.setVisible(true); // Hiển thị cửa sổ
-    }
+    frame.getContentPane().add(post);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.pack();
+    frame.setLocationRelativeTo(null);
+    frame.setVisible(true);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonLike;
@@ -214,4 +209,93 @@ public void toggleLikeButtonColor(JButton button) {
     private javax.swing.JLabel labelLike;
     private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
+
+public JButton getButtonLike() {
+    return ButtonLike;
+}
+
+public void setButtonLike(JButton ButtonLike) {
+    this.ButtonLike = ButtonLike;
+}
+
+public JButton getButtonComment() {
+    return buttonComment;
+}
+
+public void setButtonComment(JButton buttonComment) {
+    this.buttonComment = buttonComment;
+}
+
+public JLabel getContentw() {
+    return contentw;
+}
+
+public void setContentw(JLabel contentw) {
+    this.contentw = contentw;
+}
+
+public JLabel getImage() {
+    return image;
+}
+
+public void setImage(JLabel image) {
+    this.image = image;
+}
+
+public JLabel getjLabel3() {
+    return jLabel3;
+}
+
+public void setjLabel3(JLabel jLabel3) {
+    this.jLabel3 = jLabel3;
+}
+
+public JPanel getjPanel4() {
+    return jPanel4;
+}
+
+public void setjPanel4(JPanel jPanel4) {
+    this.jPanel4 = jPanel4;
+}
+
+public JPanel getjPanel5() {
+    return jPanel5;
+}
+
+public void setjPanel5(JPanel jPanel5) {
+    this.jPanel5 = jPanel5;
+}
+
+public JPanel getjPanel6() {
+    return jPanel6;
+}
+
+public void setjPanel6(JPanel jPanel6) {
+    this.jPanel6 = jPanel6;
+}
+
+public JSeparator getjSeparator2() {
+    return jSeparator2;
+}
+
+public void setjSeparator2(JSeparator jSeparator2) {
+    this.jSeparator2 = jSeparator2;
+}
+
+public JLabel getLabelLike() {
+    return labelLike;
+}
+
+public void setLabelLike(JLabel labelLike) {
+    this.labelLike = labelLike;
+}
+
+public JLabel getUsername() {
+    return username;
+}
+
+public void setUsername(JLabel username) {
+    this.username = username;
+}
+
 }
