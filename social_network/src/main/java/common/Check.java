@@ -1,4 +1,4 @@
-package controller;
+package common;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,12 +16,15 @@ public class Check {
 		return matcher.matches();
 	}
 
-	public static boolean checkValidPhoneNumber(String phoneNumber) {
-		String PHONE_NUMBER_PATTERN = ValidateContant.PHONE_NUMBER_PATTERN;
-		Pattern pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
-		Matcher matcher = pattern.matcher(phoneNumber);
-		return matcher.matches();
-	}
+	public static boolean checkValidPassword(String password) {
+        if (password.length() < 6) {
+            return false; 
+        }
+        String PASSWORD_PATTERN = "^(?=.*[A-Za-z])(?=.*\\d).{6,}$";
+        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
 
 	public static boolean checkPasswordRecovery(String enteredAnswer, String hashedAnswer) {
 		return BCrypt.checkpw(enteredAnswer, hashedAnswer);

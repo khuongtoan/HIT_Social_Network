@@ -23,7 +23,7 @@ private void ReloadActionPerformed(ActionEvent evt) {
 
     if (listPost != null) {
         for (Post p : listPost) {
-            String username = p.getUser().getUsername();
+            String username = p.getUser().getUserName();
             String postContentText = p.getContent();
             String imagePath = p.getImagePath() != null ? p.getImagePath() : "";
             int likeCount = p.getLikes().size();

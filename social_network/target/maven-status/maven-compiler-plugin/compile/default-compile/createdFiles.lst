@@ -1,5 +1,6 @@
 view\ForgotPassword.class
 view\ForgotPassword$3.class
+common\Check.class
 controller\FlashScreenController$1.class
 view\FlashScreen.class
 service\ServiceInterfaces.class

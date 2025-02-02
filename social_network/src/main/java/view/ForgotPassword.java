@@ -304,4 +304,44 @@ public void setjTextField4(JTextField jTextField4) {
     this.answerText = jTextField4;
 }
 
+    public JTextField getAnswerText() {
+        return answerText;
+    }
+
+    public void setAnswerText(JTextField answerText) {
+        this.answerText = answerText;
+    }
+
+    public JButton getChangePass() {
+        return changePass;
+    }
+
+    public void setChangePass(JButton changePass) {
+        this.changePass = changePass;
+    }
+
+    public JTextField getEmailText() {
+        return emailText;
+    }
+
+    public void setEmailText(JTextField emailText) {
+        this.emailText = emailText;
+    }
+
+    public JPasswordField getNewPassText() {
+        return newPassText;
+    }
+
+    public void setNewPassText(JPasswordField newPassText) {
+        this.newPassText = newPassText;
+    }
+
+    public JTextField getQuestionText() {
+        return questionText;
+    }
+
+    public void setQuestionText(JTextField questionText) {
+        this.questionText = questionText;
+    }
+
 }

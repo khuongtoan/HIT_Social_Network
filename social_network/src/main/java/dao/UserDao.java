@@ -5,7 +5,7 @@ import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
 import common.PasswordEncryptor;
-import controller.Check;
+import common.Check;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Role;
@@ -19,55 +19,9 @@ public class UserDao {
 	public UserDao() {
 	}
 
-	public static boolean addUser(String username, String password, String email, String passwordRecovery) {
+	public static boolean addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
 		try {
-			User user = new User(username, password, email, passwordRecovery);
-			entityManager.getTransaction().begin();
-			entityManager.persist(user);
-			entityManager.getTransaction().commit();
-			return true;
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static boolean addUser(String username, String password, String email) {
-		try {
-			User user = new User(username, password, email);
-			entityManager.getTransaction().begin();
-			entityManager.persist(user);
-			entityManager.getTransaction().commit();
-			return true;
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static boolean addUser(String username, String password, String email, String passwordRecovery, Role role,
-			Status status) {
-		try {
-			User user = new User(username, password, email, passwordRecovery, role, status);
-			entityManager.getTransaction().begin();
-			entityManager.persist(user);
-			entityManager.getTransaction().commit();
-			return true;
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static boolean addUser(String username, String password, String email, Role role, Status status) {
-		try {
-			User user = new User(username, password, email, role, status);
+			User user = new User(userName, password, email, passwordRecovery, passwordRecoveryAnswer );
 			entityManager.getTransaction().begin();
 			entityManager.persist(user);
 			entityManager.getTransaction().commit();
@@ -230,5 +184,56 @@ public class UserDao {
 			return null;
 		}
 	}
+        
+        public static boolean verifyRecoveryInfo(String email, String question, String answer) {
+        try {
+            // Truy vấn người dùng theo email
+            String queryStr = "SELECT u FROM User u WHERE u.email = :email";
+            TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+            query.setParameter("email", email);
+
+            User user = query.getSingleResult();
+
+            // Kiểm tra câu hỏi và câu trả lời khôi phục
+            if (user != null && user.getPasswordRecovery().equals(question) && user.getPasswordRecoveryAnswer().equals(answer)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false; 
+        }
+    }
+
+    // Thay đổi mật khẩu theo email
+    public static boolean changePasswordByEmail(String email, String newPassword) {
+        try {
+            // Kiểm tra nếu mật khẩu mới hợp lệ
+            String hashedNewPassword = PasswordEncryptor.hashPassword(newPassword);
+
+            // Truy vấn người dùng theo email
+            String queryStr = "SELECT u FROM User u WHERE u.email = :email";
+            TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+            query.setParameter("email", email);
+
+            User user = query.getSingleResult();
+
+            if (user != null) {
+                user.setPassword(hashedNewPassword);
+
+                entityManager.getTransaction().begin();
+                entityManager.merge(user);
+                entityManager.getTransaction().commit();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            return false;
+        }
+    }
 
 }

@@ -31,14 +31,7 @@ public List<Post> searchPostsByContent(String keyword);
 
 public List<Post> getAllPost();
 
-public boolean addUser(String username, String password, String email, String passwordRecovery);
-
-public boolean addUser(String username, String password, String email);
-
-public boolean addUser(String username, String password, String email, String passwordRecovery, Role role,
-        Status status);
-
-public boolean addUser(String username, String password, String email, Role role, Status status);
+public boolean addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer);
 
 public boolean deleteUser(int UserId);
 
@@ -53,5 +46,9 @@ public boolean updateRole(int userId, Role newRole);
 public boolean updateStatus(int userId, Status newStatus);
 
 public List<User> searchByUsername(String keyword);
+
+public boolean changePasswordByEmail(String email, String newPassword);
+
+public boolean verifyRecoveryInfo(String email, String question, String answer);
 
 }

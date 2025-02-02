@@ -16,138 +16,125 @@ import jakarta.persistence.Table;
 @Entity
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private Integer userId;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "user_id")
+private Integer userId;
 
-	@Column(name = "user_name", length = 15, nullable = false)
-	private String userName;
+@Column(name = "user_name", length = 15, nullable = false)
+private String userName;
 
-	@Column(name = "password", length = 50, nullable = false)
-	private String password;
+@Column(name = "password", length = 50, nullable = false)
+private String password;
 
-	@Column(name = "email", length = 50, nullable = false, unique = true)
-	private String email;
+@Column(name = "email", length = 50, nullable = false, unique = true)
+private String email;
 
-	@Column(name = "password_recovery", length = 100)
-	private String passwordRecovery;
+@Column(name = "password_recovery", length = 100)
+private String passwordRecovery;
 
-	@Column(name = "role")
-	@Enumerated(EnumType.STRING)
-	private Role role = Role.USER;
+@Column(name = "password_recovery_answer", length = 100, nullable = false)
+private String passwordRecoveryAnswer;
 
-	@Column(name = "status")
-	@Enumerated(EnumType.STRING)
-	private Status status = Status.ACTIVE;
+@Column(name = "role")
+@Enumerated(EnumType.STRING)
+private Role role = Role.USER;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Post> posts;
+@Column(name = "status")
+@Enumerated(EnumType.STRING)
+private Status status = Status.ACTIVE;
 
-	public User() {
-	}
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Post> posts;
 
-	public User(String userName, String password, String email, String passwordRecovery) {
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.passwordRecovery = passwordRecovery;
-		this.role = Role.USER;
-		this.status = Status.ACTIVE;
-	}
+public User() {
+}
 
-	public User(String username, String password, String email) {
-		this.userName = username;
-		this.password = password;
-		this.email = email;
-		this.role = Role.USER;
-		this.status = Status.ACTIVE;
-	}
+public User(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
+    this.userName = userName;
+    this.password = password;
+    this.email = email;
+    this.passwordRecovery = passwordRecovery;
+    this.passwordRecoveryAnswer = passwordRecoveryAnswer;
+    this.role = Role.USER;
+    this.status = Status.ACTIVE;
+}
 
-	public User(String username, String password, String email, String passwordRecovery, Role role, Status status) {
-		this.userName = username;
-		this.password = password;
-		this.email = email;
-		this.passwordRecovery = passwordRecovery;
-		this.role = role;
-		this.status = status;
-	}
+public Integer getUserId() {
+    return userId;
+}
 
-	public User(String userName, String password, String email, Role role, Status status) {
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.role = role;
-		this.status = status;
-	}
+public void setUserId(Integer userId) {
+    this.userId = userId;
+}
 
-	public Integer getUserId() {
-		return userId;
-	}
+public String getUserName() {
+    return userName;
+}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+public void setUserName(String userName) {
+    this.userName = userName;
+}
 
-	public String getUsername() {
-		return userName;
-	}
+public String getPassword() {
+    return password;
+}
 
-	public void setUsername(String username) {
-		this.userName = username;
-	}
+public void setPassword(String password) {
+    this.password = password;
+}
 
-	public String getPassword() {
-		return password;
-	}
+public String getEmail() {
+    return email;
+}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+public void setEmail(String email) {
+    this.email = email;
+}
 
-	public String getEmail() {
-		return email;
-	}
+public String getPasswordRecovery() {
+    return passwordRecovery;
+}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+public void setPasswordRecovery(String passwordRecovery) {
+    this.passwordRecovery = passwordRecovery;
+}
 
-	public String getPasswordRecovery() {
-		return passwordRecovery;
-	}
+public Role getRole() {
+    return role;
+}
 
-	public void setPasswordRecovery(String passwordRecovery) {
-		this.passwordRecovery = passwordRecovery;
-	}
+public void setRole(Role role) {
+    this.role = role;
+}
 
-	public Role getRole() {
-		return role;
-	}
+public Status getStatus() {
+    return status;
+}
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+public void setStatus(Status status) {
+    this.status = status;
+}
 
-	public Status getStatus() {
-		return status;
-	}
+public List<Post> getPosts() {
+    return posts;
+}
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+public void setPosts(List<Post> posts) {
+    this.posts = posts;
+}
 
-	public List<Post> getPosts() {
-		return posts;
-	}
+@Override
+public String toString() {
+    return userName;
+}
 
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
+public String getPasswordRecoveryAnswer() {
+    return passwordRecoveryAnswer;
+}
 
-	@Override
-	public String toString() {
-		return userName;
-	}
+public void setPasswordRecoveryAnswer(String passwordRecoveryAnswer) {
+    this.passwordRecoveryAnswer = passwordRecoveryAnswer;
+}
 
 }
