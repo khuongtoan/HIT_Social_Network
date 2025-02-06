@@ -28,5 +28,7 @@ public void showFlashScreen() {
 
     timer.setRepeats(false);
     timer.start();
+    
+    
 }
 }

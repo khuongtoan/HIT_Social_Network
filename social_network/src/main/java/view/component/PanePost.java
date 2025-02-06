@@ -1,5 +1,7 @@
 package view.component;
 
+import static common.EffectButtonLLabel.toggleLikeButtonColor;
+import common.SetScaledImage;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
@@ -9,60 +11,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import model.User;
 
 public class PanePost extends javax.swing.JPanel {
 
-public PanePost(String user, String postContentText, String imagePath, int like, int comment) {
+public PanePost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor, int like, int comment) {
+    
     initComponents();
-    setPostContent(postContentText);
-    setImage(imagePath);
-    username.setText(user + "");
-    labelLike.setText(like + "");
-    buttonComment.setText(comment + "");
-    toggleLikeButtonColor(ButtonLike);
-
+    this.contentw.setText(content);
+    SetScaledImage.setScaledImage(imagePath, this.image);
+    this.username.setText(user + "");
+    this.labelLike.setText(like + "");
+    this.buttonComment.setText(comment + "");
+    toggleLikeButtonColor(this.ButtonLike);
+    
 }
 
-public void setPostContent(String content) {
-    contentw.setText(content);
+public PanePost(){
+    
 }
 
-public void setImage(String imagePath) {
-    if (imagePath == null || imagePath.trim().isEmpty()) {
-        return; 
-    }
-    File imageFile = new File(imagePath);
-    if (imageFile.exists()) {
-        ImageIcon imageIcon = new ImageIcon(imageFile.getAbsolutePath());
-        int labelWidth = image.getWidth();
-        int labelHeight = image.getHeight();
 
-        if (labelWidth == 0 || labelHeight == 0) {
-            image.setPreferredSize(new java.awt.Dimension(570, 400));
-        }
 
-        Image img = imageIcon.getImage();
-        Image resizedImg = img.getScaledInstance(570, 400, Image.SCALE_SMOOTH);
-        ImageIcon resizedIcon = new ImageIcon(resizedImg);
-        image.setIcon(resizedIcon);
-    } else {
-    }
-}
 
-public void toggleLikeButtonColor(JButton button) {
-    boolean[] isSelected = {false};
-
-    button.addActionListener(e -> {
-        if (!isSelected[0]) {
-            button.setBackground(Color.GREEN);
-            button.setText("Liked");
-        } else {
-            button.setBackground(null);
-            button.setText("Like");
-        }
-        isSelected[0] = !isSelected[0];
-    });
-}
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -187,8 +158,8 @@ public void toggleLikeButtonColor(JButton button) {
 public static void main(String[] args) {
     JFrame frame = new JFrame("Test Like Button");
 
-    PanePost post = new PanePost("User Name", "This is a post content", "D:/SocialNetwork/social_network/src/main/resources/dragonBack.jpg", 5, 3);
-
+    //PanePost post = new PanePost("User Name", "This is a post content", "D:/SocialNetwork/social_network/src/main/resources/dragonBack.jpg", 5, 3);
+    PanePost post = new PanePost();
     frame.getContentPane().add(post);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.pack();

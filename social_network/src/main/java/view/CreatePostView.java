@@ -31,6 +31,7 @@ public CreatePostView() {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
@@ -66,6 +67,10 @@ public CreatePostView() {
         nameLabel.setText("name");
         nameLabel.setOpaque(true);
 
+        home.setBackground(new java.awt.Color(255, 255, 255));
+        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home (3).png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -75,16 +80,22 @@ public CreatePostView() {
                 .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
@@ -191,6 +202,7 @@ public static void main(String args[]) {
     private javax.swing.JButton addImage;
     private javax.swing.JButton chooseColor;
     private javax.swing.JButton font;
+    private javax.swing.JLabel home;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -284,6 +296,14 @@ public JButton getfont() {
 
 public void setFont(JButton font) {
     this.font = font;
+}
+
+public JLabel getHome() {
+    return home;
+}
+
+public void setHome(JLabel home) {
+    this.home = home;
 }
 
 }

@@ -8,6 +8,9 @@ public class SetScaledImage {
 
 public static void setScaledImage(String imagePath, JLabel label) {
     try {
+        if(imagePath == null )
+            return;
+        
         ImageIcon imageIcon = new ImageIcon(imagePath);
         Image image = imageIcon.getImage();
 

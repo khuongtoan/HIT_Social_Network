@@ -15,12 +15,13 @@ private static Service serviced;
 
 public SignUpController(SignUp view) {
     this.signUpView = view;
-    this.signUpView.setVisible(true);
 
     this.signUpView.getBack().addActionListener(evt -> backActionPerformed(evt));
     this.serviced = new Service();
 
     this.signUpView.getCreateAccount().addActionListener(evt -> CreateAccountActionPerformed(evt));
+    this.signUpView.setVisible(true);
+
 }
 
 private void backActionPerformed(ActionEvent evt) {

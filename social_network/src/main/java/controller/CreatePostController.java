@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 import say.swing.JFontChooser;
 import service.Service;
 import view.CreatePostView;
+import view.PersonalView;
 
 public class CreatePostController {
 
@@ -34,6 +36,7 @@ public CreatePostController(CreatePostView createPostView) {
     this.view.getChooseColor().addActionListener(evt -> chooseColorActionPerformed(evt));
     this.view.getfont().addActionListener(evt -> fontActionPerformed(evt));
     this.view.getjButton1().addActionListener(evt -> postActionPerformed(evt));
+    switchView();
     this.view.setVisible(true);
 }
 
@@ -119,6 +122,20 @@ public void postActionPerformed(ActionEvent evt) {
 }
 private static String colorToHex(Color color) {
     return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+}
+
+private void switchView() {
+    this.view.getHome().addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        view.setVisible(false);
+        PersonalView personalView = new PersonalView();
+        personalView.setVisible(true);
+        view.dispose();
+
+    }
+    });
+
 }
 
 }

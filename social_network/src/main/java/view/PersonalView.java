@@ -23,17 +23,16 @@ public PersonalView() {
     setLocationRelativeTo(null);
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
+    
+    
     textF(searchTF,jPanel1);
     jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     jScrollPane2.getHorizontalScrollBar().setUnitIncrement(16);
     controll = new PersonalViewController(this);
+    
 }
 
-public void addPostToMainLabel(PanePost post) {
-    mainLabel.add(post,0);
-    mainLabel.revalidate();
-    mainLabel.repaint();
-}
+
 
 
 
@@ -238,7 +237,7 @@ public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(new Runnable() {
     @Override
     public void run() {
-        new PersonalView().setVisible(true);
+        new PersonalView();
     }
     });
 }
