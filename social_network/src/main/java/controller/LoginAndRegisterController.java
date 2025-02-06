@@ -11,10 +11,9 @@ public class LoginAndRegisterController {
 
     public LoginAndRegisterController(LoginAndRegister view) {
         this.loginAndRegister = view;
-        this.loginAndRegister.setVisible(true);
         this.loginAndRegister.getForgot().addActionListener(evt -> forgotActionPerformed(evt));
         this.loginAndRegister.getSignUp().addActionListener(evt -> signUptActionPerformed(evt));
-        
+        this.loginAndRegister.setVisible(true);
     }
 
     private void forgotActionPerformed(java.awt.event.ActionEvent evt) {

@@ -102,9 +102,9 @@ public class PostDao {
 		}
 	}
 
-	public static boolean addPost(User user, String content, String imagePath) {
+	public static boolean addPost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
 		try {
-			Post post = new Post(user, content, imagePath);
+			Post post = new Post(user, content, imagePath, fontFamily, fontSize, textColor, backgroundColor);
 			entityManager.getTransaction().begin();
 			entityManager.persist(post);
 			entityManager.getTransaction().commit();
@@ -117,9 +117,9 @@ public class PostDao {
 		}
 	}
 
-	public static boolean addPost(User user, String content) {
+	public static boolean addPost(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
 		try {
-			Post post = new Post(user, content);
+			Post post = new Post(user, content, fontFamily, fontSize, textColor, backgroundColor);
 
 			entityManager.getTransaction().begin();
 			entityManager.persist(post);

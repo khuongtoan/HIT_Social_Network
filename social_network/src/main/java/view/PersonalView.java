@@ -1,5 +1,6 @@
 package view;
 
+import controller.PersonalViewController;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,21 +15,24 @@ import static view.component.RoundedTextField.textF;
 
 public class PersonalView extends javax.swing.JFrame {
 
+private PersonalViewController controll ;
+
+
 public PersonalView() {
     initComponents();
     setLocationRelativeTo(null);
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
+    
+    
     textF(searchTF,jPanel1);
     jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     jScrollPane2.getHorizontalScrollBar().setUnitIncrement(16);
+    controll = new PersonalViewController(this);
+    
 }
 
-public void addPostToMainLabel(PanePost post) {
-    mainLabel.add(post,0);
-    mainLabel.revalidate();
-    mainLabel.repaint();
-}
+
 
 
 
@@ -38,7 +42,7 @@ public void addPostToMainLabel(PanePost post) {
 
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        LabelSearch = new javax.swing.JLabel();
         searchTF = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         home = new javax.swing.JLabel();
@@ -65,9 +69,9 @@ public void addPostToMainLabel(PanePost post) {
         jPanel1.setBackground(new java.awt.Color(0, 105, 105));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 50));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search (2).png"))); // NOI18N
-        jLabel4.setOpaque(true);
+        LabelSearch.setBackground(new java.awt.Color(255, 255, 255));
+        LabelSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search (2).png"))); // NOI18N
+        LabelSearch.setOpaque(true);
 
         searchTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         searchTF.setText("search");
@@ -112,7 +116,7 @@ public void addPostToMainLabel(PanePost post) {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LabelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
@@ -124,7 +128,7 @@ public void addPostToMainLabel(PanePost post) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -169,20 +173,20 @@ public void addPostToMainLabel(PanePost post) {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(createPostLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(settingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(settingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addGap(46, 46, 46)
                 .addComponent(nameLabel)
-                .addGap(63, 63, 63)
-                .addComponent(createPostLabel)
-                .addGap(71, 71, 71)
-                .addComponent(settingLabel)
+                .addGap(98, 98, 98)
+                .addComponent(createPostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(settingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(150, Short.MAX_VALUE))
         );
 
@@ -233,7 +237,7 @@ public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(new Runnable() {
     @Override
     public void run() {
-        new PersonalView().setVisible(true);
+        new PersonalView();
     }
     });
 }
@@ -241,10 +245,10 @@ public static void main(String args[]) {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelSearch;
     private javax.swing.JLabel createPostLabel;
     private javax.swing.JLabel game;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -283,12 +287,12 @@ public static void main(String args[]) {
         this.home = home;
     }
 
-    public JLabel getjLabel4() {
-        return jLabel4;
+    public JLabel getLabelSearch() {
+        return LabelSearch;
     }
 
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
+    public void setLabelSearch(JLabel labelSearch) {
+        this.LabelSearch = labelSearch;
     }
 
     public JPanel getjPanel1() {

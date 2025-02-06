@@ -17,9 +17,9 @@ public boolean deleteComment(int commentId);
 
 public boolean addAndDeleteLike(Post post, User user);
 
-public boolean addPost(User user, String content, String imagePath);
+public boolean addPost(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor);
 
-public boolean addPost(User user, String content);
+public boolean addPost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor);
 
 public boolean updatePost(int postId, String newContent, String newImagePath);
 

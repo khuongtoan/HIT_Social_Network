@@ -10,18 +10,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
-
 public class SignUp extends javax.swing.JFrame {
 
+SignUpController signUpController;
 
 public SignUp() {
     initComponents();
     setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
     setTitle("Lifebook-WATO");
-    SignUpController signUpController = new SignUpController(this);
+    signUpController = new SignUpController(this);
 }
-
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -234,9 +233,8 @@ public SignUp() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
 public static void main(String args[]) {
-  SignUp signUp = new SignUp();
+    SignUp signUp = new SignUp();
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -263,172 +261,172 @@ public static void main(String args[]) {
     private javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
 
-    public JCheckBox getAgreeCheckBox() {
-        return agreeCheckBox;
-    }
+public JCheckBox getAgreeCheckBox() {
+    return agreeCheckBox;
+}
 
-    public void setAgreeCheckBox(JCheckBox agreeCheckBox) {
-        this.agreeCheckBox = agreeCheckBox;
-    }
+public void setAgreeCheckBox(JCheckBox agreeCheckBox) {
+    this.agreeCheckBox = agreeCheckBox;
+}
 
-    public JButton getBack() {
-        return back;
-    }
+public JButton getBack() {
+    return back;
+}
 
-    public void setBack(JButton back) {
-        this.back = back;
-    }
+public void setBack(JButton back) {
+    this.back = back;
+}
 
-    public JButton getCreateAccount() {
-        return createAccount;
-    }
+public JButton getCreateAccount() {
+    return createAccount;
+}
 
-    public void setCreateAccount(JButton createAccount) {
-        this.createAccount = createAccount;
-    }
+public void setCreateAccount(JButton createAccount) {
+    this.createAccount = createAccount;
+}
 
-    public JTextField getEmailText() {
-        return emailText;
-    }
+public JTextField getEmailText() {
+    return emailText;
+}
 
-    public void setEmailText(JTextField emailText) {
-        this.emailText = emailText;
-    }
+public void setEmailText(JTextField emailText) {
+    this.emailText = emailText;
+}
 
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
+public JLabel getjLabel1() {
+    return jLabel1;
+}
 
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
+public void setjLabel1(JLabel jLabel1) {
+    this.jLabel1 = jLabel1;
+}
 
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
+public JLabel getjLabel2() {
+    return jLabel2;
+}
 
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
+public void setjLabel2(JLabel jLabel2) {
+    this.jLabel2 = jLabel2;
+}
 
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
+public JLabel getjLabel3() {
+    return jLabel3;
+}
 
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
+public void setjLabel3(JLabel jLabel3) {
+    this.jLabel3 = jLabel3;
+}
 
-    public JLabel getjLabel4() {
-        return jLabel4;
-    }
+public JLabel getjLabel4() {
+    return jLabel4;
+}
 
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
-    }
+public void setjLabel4(JLabel jLabel4) {
+    this.jLabel4 = jLabel4;
+}
 
-    public JLabel getjLabel5() {
-        return jLabel5;
-    }
+public JLabel getjLabel5() {
+    return jLabel5;
+}
 
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
-    }
+public void setjLabel5(JLabel jLabel5) {
+    this.jLabel5 = jLabel5;
+}
 
-    public JLabel getjLabel6() {
-        return jLabel6;
-    }
+public JLabel getjLabel6() {
+    return jLabel6;
+}
 
-    public void setjLabel6(JLabel jLabel6) {
-        this.jLabel6 = jLabel6;
-    }
+public void setjLabel6(JLabel jLabel6) {
+    this.jLabel6 = jLabel6;
+}
 
-    public JLabel getjLabel7() {
-        return jLabel7;
-    }
+public JLabel getjLabel7() {
+    return jLabel7;
+}
 
-    public void setjLabel7(JLabel jLabel7) {
-        this.jLabel7 = jLabel7;
-    }
+public void setjLabel7(JLabel jLabel7) {
+    this.jLabel7 = jLabel7;
+}
 
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
+public JPanel getjPanel1() {
+    return jPanel1;
+}
 
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
+public void setjPanel1(JPanel jPanel1) {
+    this.jPanel1 = jPanel1;
+}
 
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
+public JPanel getjPanel2() {
+    return jPanel2;
+}
 
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
+public void setjPanel2(JPanel jPanel2) {
+    this.jPanel2 = jPanel2;
+}
 
-    public JPanel getjPanel3() {
-        return jPanel3;
-    }
+public JPanel getjPanel3() {
+    return jPanel3;
+}
 
-    public void setjPanel3(JPanel jPanel3) {
-        this.jPanel3 = jPanel3;
-    }
+public void setjPanel3(JPanel jPanel3) {
+    this.jPanel3 = jPanel3;
+}
 
-    public JSeparator getjSeparator1() {
-        return jSeparator1;
-    }
+public JSeparator getjSeparator1() {
+    return jSeparator1;
+}
 
-    public void setjSeparator1(JSeparator jSeparator1) {
-        this.jSeparator1 = jSeparator1;
-    }
+public void setjSeparator1(JSeparator jSeparator1) {
+    this.jSeparator1 = jSeparator1;
+}
 
-    public JTextField getPassText() {
-        return passText;
-    }
+public JTextField getPassText() {
+    return passText;
+}
 
-    public void setPassText(JPasswordField passText) {
-        this.passText = passText;
-    }
+public void setPassText(JPasswordField passText) {
+    this.passText = passText;
+}
 
-    public JTextField getQuestionText() {
-        return questionText;
-    }
+public JTextField getQuestionText() {
+    return questionText;
+}
 
-    public void setQuestionText(JTextField questionText) {
-        this.questionText = questionText;
-    }
+public void setQuestionText(JTextField questionText) {
+    this.questionText = questionText;
+}
 
-    public JTextField getUsernameText() {
-        return usernameText;
-    }
+public JTextField getUsernameText() {
+    return usernameText;
+}
 
-    public void setUsernameText(JTextField usernameText) {
-        this.usernameText = usernameText;
-    }
+public void setUsernameText(JTextField usernameText) {
+    this.usernameText = usernameText;
+}
 
-    public JTextField getAnswer() {
-        return answer;
-    }
+public JTextField getAnswer() {
+    return answer;
+}
 
-    public void setAnswer(JTextField answer) {
-        this.answer = answer;
-    }
+public void setAnswer(JTextField answer) {
+    this.answer = answer;
+}
 
-    public JLabel getjLabel8() {
-        return jLabel8;
-    }
+public JLabel getjLabel8() {
+    return jLabel8;
+}
 
-    public void setjLabel8(JLabel jLabel8) {
-        this.jLabel8 = jLabel8;
-    }
+public void setjLabel8(JLabel jLabel8) {
+    this.jLabel8 = jLabel8;
+}
 
-    public JSeparator getjSeparator2() {
-        return jSeparator2;
-    }
+public JSeparator getjSeparator2() {
+    return jSeparator2;
+}
 
-    public void setjSeparator2(JSeparator jSeparator2) {
-        this.jSeparator2 = jSeparator2;
-    }
-    
+public void setjSeparator2(JSeparator jSeparator2) {
+    this.jSeparator2 = jSeparator2;
+}
+
 }

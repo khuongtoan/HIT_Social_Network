@@ -31,14 +31,14 @@ public boolean addAndDeleteLike(Post post, User user) {
     return PostDao.addAndDeleteLike(post, user);
 }
 
-@Override
-public boolean addPost(User user, String content, String imagePath) {
-    return PostDao.addPost(user, content, imagePath);
+    @Override
+public boolean addPost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
+    return PostDao.addPost(user, content, imagePath, fontFamily, fontSize, textColor, backgroundColor);
 }
 
 @Override
-public boolean addPost(User user, String content) {
-    return PostDao.addPost(user, content);
+public boolean addPost(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
+    return PostDao.addPost(user, content, fontFamily, fontSize, textColor, backgroundColor);
 }
 
 @Override

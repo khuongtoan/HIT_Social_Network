@@ -14,13 +14,15 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class LoginAndRegister extends javax.swing.JFrame {
 
+private LoginAndRegisterController loginAndRegisterController;
+
 public LoginAndRegister() {
 
     initComponents();
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
-    LoginAndRegisterController loginAndRegisterController = new LoginAndRegisterController(this);
-    
+    loginAndRegisterController = new LoginAndRegisterController(this);
+
 }
 
 @SuppressWarnings("unchecked")
@@ -233,7 +235,7 @@ public LoginAndRegister() {
     }// </editor-fold>//GEN-END:initComponents
 
 public static void main(String args[]) {
-    LoginAndRegister loginAndRegister= new LoginAndRegister();
+    LoginAndRegister loginAndRegister = new LoginAndRegister();
 }
 
 
@@ -256,135 +258,132 @@ public static void main(String args[]) {
     private javax.swing.JTextField userNameText;
     // End of variables declaration//GEN-END:variables
 
-    public JPasswordField getPasswordText() {
-        return PasswordText;
-    }
+public JPasswordField getPasswordText() {
+    return PasswordText;
+}
 
-    public void setPasswordText(JPasswordField PasswordText) {
-        this.PasswordText = PasswordText;
-    }
+public void setPasswordText(JPasswordField PasswordText) {
+    this.PasswordText = PasswordText;
+}
 
-    public JButton getForgot() {
-        return forgot;
-    }
+public JButton getForgot() {
+    return forgot;
+}
 
-    public void setForgot(JButton forgot) {
-        this.forgot = forgot;
-    }
+public void setForgot(JButton forgot) {
+    this.forgot = forgot;
+}
 
-    public JCheckBox getjCheckBox1() {
-        return jCheckBox1;
-    }
+public JCheckBox getjCheckBox1() {
+    return jCheckBox1;
+}
 
-    public void setjCheckBox1(JCheckBox jCheckBox1) {
-        this.jCheckBox1 = jCheckBox1;
-    }
+public void setjCheckBox1(JCheckBox jCheckBox1) {
+    this.jCheckBox1 = jCheckBox1;
+}
 
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
+public JLabel getjLabel1() {
+    return jLabel1;
+}
 
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
+public void setjLabel1(JLabel jLabel1) {
+    this.jLabel1 = jLabel1;
+}
 
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
+public JLabel getjLabel2() {
+    return jLabel2;
+}
 
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
+public void setjLabel2(JLabel jLabel2) {
+    this.jLabel2 = jLabel2;
+}
 
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
+public JLabel getjLabel3() {
+    return jLabel3;
+}
 
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
+public void setjLabel3(JLabel jLabel3) {
+    this.jLabel3 = jLabel3;
+}
 
-    public JLabel getjLabel5() {
-        return jLabel5;
-    }
+public JLabel getjLabel5() {
+    return jLabel5;
+}
 
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
-    }
+public void setjLabel5(JLabel jLabel5) {
+    this.jLabel5 = jLabel5;
+}
 
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
+public JPanel getjPanel1() {
+    return jPanel1;
+}
 
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
+public void setjPanel1(JPanel jPanel1) {
+    this.jPanel1 = jPanel1;
+}
 
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
+public JPanel getjPanel2() {
+    return jPanel2;
+}
 
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
+public void setjPanel2(JPanel jPanel2) {
+    this.jPanel2 = jPanel2;
+}
 
-    public JPanel getjPanel3() {
-        return jPanel3;
-    }
+public JPanel getjPanel3() {
+    return jPanel3;
+}
 
-    public void setjPanel3(JPanel jPanel3) {
-        this.jPanel3 = jPanel3;
-    }
+public void setjPanel3(JPanel jPanel3) {
+    this.jPanel3 = jPanel3;
+}
 
-    public JPanel getjPanel4() {
-        return jPanel4;
-    }
+public JPanel getjPanel4() {
+    return jPanel4;
+}
 
-    public void setjPanel4(JPanel jPanel4) {
-        this.jPanel4 = jPanel4;
-    }
+public void setjPanel4(JPanel jPanel4) {
+    this.jPanel4 = jPanel4;
+}
 
-    public JPanel getjPanel5() {
-        return jPanel5;
-    }
+public JPanel getjPanel5() {
+    return jPanel5;
+}
 
-    public void setjPanel5(JPanel jPanel5) {
-        this.jPanel5 = jPanel5;
-    }
+public void setjPanel5(JPanel jPanel5) {
+    this.jPanel5 = jPanel5;
+}
 
-    public JPanel getjPanel7() {
-        return jPanel7;
-    }
+public JPanel getjPanel7() {
+    return jPanel7;
+}
 
-    public void setjPanel7(JPanel jPanel7) {
-        this.jPanel7 = jPanel7;
-    }
+public void setjPanel7(JPanel jPanel7) {
+    this.jPanel7 = jPanel7;
+}
 
-    public JButton getLogin() {
-        return login;
-    }
+public JButton getLogin() {
+    return login;
+}
 
-    public void setLogin(JButton login) {
-        this.login = login;
-    }
+public void setLogin(JButton login) {
+    this.login = login;
+}
 
-    public JButton getSignUp() {
-        return signUp;
-    }
+public JButton getSignUp() {
+    return signUp;
+}
 
-    public void setSignUp(JButton signUp) {
-        this.signUp = signUp;
-    }
+public void setSignUp(JButton signUp) {
+    this.signUp = signUp;
+}
 
-    public JTextField getUserNameText() {
-        return userNameText;
-    }
+public JTextField getUserNameText() {
+    return userNameText;
+}
 
-    public void setUserNameText(JTextField userNameText) {
-        this.userNameText = userNameText;
-    }
-
-
-
+public void setUserNameText(JTextField userNameText) {
+    this.userNameText = userNameText;
+}
 
 }

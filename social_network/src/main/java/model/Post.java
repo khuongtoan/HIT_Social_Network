@@ -15,111 +15,167 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
 
 @Entity
 public class Post {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "post_id")
-	private Integer postId;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "post_id")
+private Integer postId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "user_id", nullable = false)
+private User user;
 
-	@Column(name = "content", columnDefinition = "TEXT")
-	private String content;
+@Column(name = "content", columnDefinition = "TEXT", nullable = false)
+private String content;
 
-	@Column(name = "image_path", length = 255)
-	private String imagePath;
+@Column(name = "image_path", length = 500)
+private String imagePath;
 
-	@Column(name = "created_at")
-	private LocalDateTime createdAt;
+@Column(name = "font_family", length = 100)  // Lưu font chữ (tên font)
+private String fontFamily;
 
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<Comment> comments = new ArrayList<>();
+@Column(name = "font_size")
+private Integer fontSize; // Lưu cỡ chữ
 
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<Like> likes = new ArrayList<>();
+@Column(name = "text_color", length = 10)  // Lưu màu chữ (dạng mã hex)
+private String textColor;
 
-	@PrePersist
-	public void prePersist() {
-		if (this.createdAt == null) {
-			this.createdAt = LocalDateTime.now();
-		}
-	}
+@Column(name = "background_color", length = 10)  // Lưu màu nền (dạng mã hex)
+private String backgroundColor;
 
-	public Post(User user, String content, String imagePath) {
-		this.user = user;
-		this.content = content;
-		this.imagePath = imagePath;
-	}
 
-	public Post(User user, String content) {
-		this.user = user;
-		this.content = content;
-	}
+@Column(name = "created_at")
+private LocalDateTime createdAt;
 
-	public Post() {
+@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+private List<Comment> comments = new ArrayList<>();
 
-	}
+@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+private List<Like> likes = new ArrayList<>();
 
-	// Getters and Setters
-	public Integer getPostId() {
-		return postId;
-	}
+@PrePersist
+public void prePersist() {
+    if (this.createdAt == null) {
+        this.createdAt = LocalDateTime.now();
+    }
+}
 
-	public void setPostId(Integer postId) {
-		this.postId = postId;
-	}
+// Constructors
+public Post(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
+    this.user = user;
+    this.content = content;
+    this.imagePath = imagePath;
+    this.fontFamily = fontFamily;
+    this.fontSize = fontSize;
+    this.textColor = textColor;
+    this.backgroundColor = backgroundColor;
+}
 
-	public User getUser() {
-		return user;
-	}
+public Post() {
+}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+public Post(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
+    this.user = user;
+    this.content = content;
+    this.fontFamily = fontFamily;
+    this.fontSize = fontSize;
+    this.textColor = textColor;
+    this.backgroundColor = backgroundColor;
+}
 
-	public String getContent() {
-		return content;
-	}
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+// Getters and Setters
+public Integer getPostId() {
+    return postId;
+}
 
-	public String getImagePath() {
-		return imagePath;
-	}
+public void setPostId(Integer postId) {
+    this.postId = postId;
+}
 
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
+public User getUser() {
+    return user;
+}
 
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
+public void setUser(User user) {
+    this.user = user;
+}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
+public String getContent() {
+    return content;
+}
 
-	public List<Comment> getComments() {
-		return comments;
-	}
+public void setContent(String content) {
+    this.content = content;
+}
 
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
+public String getImagePath() {
+    return imagePath;
+}
 
-	public List<Like> getLikes() {
-		return likes;
-	}
+public void setImagePath(String imagePath) {
+    this.imagePath = imagePath;
+}
 
-	public void setLikes(List<Like> likes) {
-		this.likes = likes;
-	}
+public LocalDateTime getCreatedAt() {
+    return createdAt;
+}
+
+public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+}
+
+public List<Comment> getComments() {
+    return comments;
+}
+
+public void setComments(List<Comment> comments) {
+    this.comments = comments;
+}
+
+public List<Like> getLikes() {
+    return likes;
+}
+
+public void setLikes(List<Like> likes) {
+    this.likes = likes;
+}
+
+    public String getFontFamily() {
+        return fontFamily;
+    }
+
+    public void setFontFamily(String fontFamily) {
+        this.fontFamily = fontFamily;
+    }
+
+    public Integer getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(Integer fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public String getTextColor() {
+        return textColor;
+    }
+
+    public void setTextColor(String textColor) {
+        this.textColor = textColor;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+
+
 }
