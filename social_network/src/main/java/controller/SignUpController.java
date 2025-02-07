@@ -37,10 +37,10 @@ private void CreateAccountActionPerformed(ActionEvent evt) {
     String username = signUpView.getUsernameText().getText().trim();
     String password = signUpView.getPassText().getText().trim();
     String email = signUpView.getEmailText().getText().trim();
-    String passwordRecovery = signUpView.getQuestionText().getText().trim();
+    String passwordRecoveryQuestion = signUpView.getQuestionText().getText().trim();
     String passwordRecoveryAnswer = signUpView.getAnswer().getText().trim();
 
-    if (username.isEmpty() || password.isEmpty() || email.isEmpty() || passwordRecovery.isEmpty() || passwordRecoveryAnswer.isEmpty()) {
+    if (username.isEmpty() || password.isEmpty() || email.isEmpty() || passwordRecoveryQuestion.isEmpty() || passwordRecoveryAnswer.isEmpty()) {
         JOptionPane.showMessageDialog(signUpView, "Please fill all the fields!", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
@@ -64,12 +64,15 @@ private void CreateAccountActionPerformed(ActionEvent evt) {
     String hashedPassword = PasswordEncryptor.hashPassword(password);
     String hashedRecoveryAnswer = PasswordEncryptor.hashPassword(passwordRecoveryAnswer);
 
-    boolean isUserAdded = serviced.addUser(username, password, email, hashedPassword, hashedRecoveryAnswer);
+    int isUserAdded = serviced.addUser(username, hashedPassword, email, passwordRecoveryQuestion, hashedRecoveryAnswer);
 
-    if (isUserAdded) {
+    if (isUserAdded == 0) {
         JOptionPane.showMessageDialog(signUpView, "Account created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-    } else {
+    } else if (isUserAdded == -1) {
         JOptionPane.showMessageDialog(signUpView, "Failed to create account.", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(signUpView, "Username already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+
     }
 }
 }

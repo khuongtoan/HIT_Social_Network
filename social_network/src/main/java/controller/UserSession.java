@@ -4,7 +4,7 @@ import model.User;
 
 public class UserSession {
 
-private static User currentUser = new User("toan", "12", "kxydumobo@gmail.com", "ban thich an gi", "tao");
+private static User currentUser ;
 
 public static User getCurrentUser() {
     return currentUser;

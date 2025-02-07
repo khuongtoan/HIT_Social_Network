@@ -57,7 +57,7 @@ public boolean deletePost(int postId) {
 }
 
 @Override
-public boolean addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
+public int addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
     return UserDao.addUser(userName, password, email, passwordRecovery, passwordRecoveryAnswer);
 }
 
@@ -107,13 +107,23 @@ public List<Post> getAllPost() {
 }
 
     @Override
-    public boolean changePasswordByEmail(String email, String newPassword) {
-        return UserDao.changePasswordByEmail(email, newPassword);
+    public boolean changePasswordByUserName(String userName, String newPassword) {
+        return UserDao.changePasswordByUserName (userName, newPassword);
     }
 
     @Override
-    public boolean verifyRecoveryInfo(String email, String question, String answer) {
-        return UserDao.verifyRecoveryInfo(email, question, answer);
+    public boolean verifyRecoveryInfo(String email, String answer) {
+    return UserDao.verifyRecoveryInfo(email, answer);
+    }
+
+    @Override
+    public User authUser(String username, String password) {
+        return UserDao.authUser(username, password);
+    }
+
+    @Override
+    public String getPasswordRecoveryQuestion(String userName) {
+        return UserDao.getPasswordRecoveryQuestion(userName);
     }
 
 }

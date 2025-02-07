@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.util.List;
 import model.Post;
 import model.Role;
+import model.User;
 import service.Service;
 import view.AdminSettingView;
 import view.CreatePostView;
@@ -20,18 +21,19 @@ private Service serviced;
 
 public PersonalViewController(PersonalView personalView) {
     this.view = personalView;
+    
     this.serviced = new Service();
     view.getReload().addActionListener(evt -> ReloadActionPerformed(evt));
-    setLabelHoverEffect(this.view.getHome());
+    
     setLabelHoverEffect(this.view.getCreatePostLabel());
     setLabelHoverEffect(this.view.getGame());
     setLabelHoverEffect(this.view.getSettingLabel());
     setLabelHoverEffect(this.view.getNameLabel());
     setLabelHoverEffect(this.view.getLabelSearch());
 
-    this.view.getNameLabel().setText(UserSession.getCurrentUser().getUserName());
+    
     switchView();
-
+    this.view.getNameLabel().setText(UserSession.getCurrentUser().getUserName());
     this.view.setVisible(true);
 }
 
@@ -72,7 +74,8 @@ private void ReloadActionPerformed(ActionEvent evt) {
 
     if (listPost != null) {
         for (Post p : listPost) {
-
+            
+            User user = p.getUser();
             String content = p.getContent();
             String imagePath = p.getImagePath() != null ? p.getImagePath() : "";
             String fontFamily = p.getFontFamily();
@@ -82,7 +85,7 @@ private void ReloadActionPerformed(ActionEvent evt) {
             int likeCount = p.getLikes().size();
             int commentCount = p.getComments().size();
 
-            PanePost panePost = new PanePost(UserSession.getCurrentUser(), content, imagePath, fontFamily, fontSize, textColor, backgroundColor, likeCount, commentCount);
+            PanePost panePost = new PanePost( user, content, imagePath, fontFamily, fontSize, textColor, backgroundColor, likeCount, commentCount);
             this.view.getMainLabel().add(panePost, 0);
         }
     }

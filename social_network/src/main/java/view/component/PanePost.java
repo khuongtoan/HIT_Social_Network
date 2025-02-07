@@ -19,13 +19,14 @@ public PanePost(User user, String content, String imagePath, String fontFamily, 
     
     initComponents();
     this.contentw.setText(content);
-    SetScaledImage.setScaledImage(imagePath, this.image);
     this.username.setText(user + "");
     this.labelLike.setText(like + "");
     this.buttonComment.setText(comment + "");
     toggleLikeButtonColor(this.ButtonLike);
+    SetScaledImage.setScaledImage570(imagePath, this.image);
     
 }
+
 
 public PanePost(){
     
@@ -155,17 +156,16 @@ public PanePost(){
         add(jPanel6, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-public static void main(String[] args) {
-    JFrame frame = new JFrame("Test Like Button");
-
-    //PanePost post = new PanePost("User Name", "This is a post content", "D:/SocialNetwork/social_network/src/main/resources/dragonBack.jpg", 5, 3);
-    PanePost post = new PanePost();
-    frame.getContentPane().add(post);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.pack();
-    frame.setLocationRelativeTo(null);
-    frame.setVisible(true);
-}
+//public static void main(String[] args) {
+//    JFrame frame = new JFrame("Test Like Button");
+//
+//    PanePost post = new PanePost();
+//    frame.getContentPane().add(post);
+//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    frame.pack();
+//    frame.setLocationRelativeTo(null);
+//    frame.setVisible(true);
+//}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonLike;

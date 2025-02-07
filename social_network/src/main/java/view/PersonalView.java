@@ -45,7 +45,6 @@ public PersonalView() {
         LabelSearch = new javax.swing.JLabel();
         searchTF = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        home = new javax.swing.JLabel();
         game = new javax.swing.JLabel();
         reload = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -79,10 +78,6 @@ public PersonalView() {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        home.setBackground(new java.awt.Color(255, 255, 255));
-        home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home (3).png"))); // NOI18N
-
         game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game (2).png"))); // NOI18N
 
         reload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redo (2).png"))); // NOI18N
@@ -92,17 +87,14 @@ public PersonalView() {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(game)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reload, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(game, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
@@ -119,7 +111,7 @@ public PersonalView() {
                 .addComponent(LabelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(189, 189, 189))
         );
@@ -248,7 +240,6 @@ public static void main(String args[]) {
     private javax.swing.JLabel LabelSearch;
     private javax.swing.JLabel createPostLabel;
     private javax.swing.JLabel game;
-    private javax.swing.JLabel home;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -279,13 +270,7 @@ public static void main(String args[]) {
         this.game = game;
     }
 
-    public JLabel getHome() {
-        return home;
-    }
 
-    public void setHome(JLabel home) {
-        this.home = home;
-    }
 
     public JLabel getLabelSearch() {
         return LabelSearch;

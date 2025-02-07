@@ -1,5 +1,6 @@
 package controller;
 
+import static common.EffectButtonLLabel.setLabelHoverEffect;
 import common.SetScaledImage;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -21,7 +22,7 @@ import view.PersonalView;
 public class CreatePostController {
 
 private final CreatePostView view;
-private Service service;
+private Service serviced;
 private String content;
 private String fontFamily;
 private int fontSize;
@@ -31,12 +32,14 @@ private String imagePath;
 
 public CreatePostController(CreatePostView createPostView) {
     this.view = createPostView;
+    serviced = new Service();
     this.view.getNameLabel().setText(UserSession.getCurrentUser().getUserName());
     this.view.getAddImage().addActionListener(evt -> addImageActionPerformed(evt));
     this.view.getChooseColor().addActionListener(evt -> chooseColorActionPerformed(evt));
     this.view.getfont().addActionListener(evt -> fontActionPerformed(evt));
     this.view.getjButton1().addActionListener(evt -> postActionPerformed(evt));
     switchView();
+    setLabelHoverEffect(this.view.getHome());
     this.view.setVisible(true);
 }
 
@@ -107,11 +110,19 @@ public void addImageActionPerformed(ActionEvent evt) {
 }
 
 public void postActionPerformed(ActionEvent evt) {
+    this.content = this.view.getjTextArea1().getText();
+    if (this.content.trim().isEmpty() && this.imagePath == null) {
+        JOptionPane.showMessageDialog(this.view, "Please enter some text or select an image to post!", "Post Failed", JOptionPane.ERROR_MESSAGE);
+        return; 
+    }
+
     boolean isPostAdded;
     if (this.imagePath != null) {
-        isPostAdded = service.addPost(UserSession.getCurrentUser(), this.content, this.imagePath, this.fontFamily, this.fontSize, this.textColor, this.backgroundColor); // Sử dụng phương thức với ảnh
+        // Nếu có ảnh, gọi phương thức với ảnh
+        isPostAdded = serviced.addPost(UserSession.getCurrentUser(), this.content, this.imagePath, this.fontFamily, this.fontSize, this.textColor, this.backgroundColor);
     } else {
-        isPostAdded = service.addPost(UserSession.getCurrentUser(), this.content, this.fontFamily, this.fontSize, this.textColor, this.backgroundColor); // Sử dụng phương thức không có ảnh
+        // Nếu không có ảnh, gọi phương thức không có ảnh
+        isPostAdded = serviced.addPost(UserSession.getCurrentUser(), this.content, this.fontFamily, this.fontSize, this.textColor, this.backgroundColor);
     }
 
     if (isPostAdded) {
@@ -120,6 +131,7 @@ public void postActionPerformed(ActionEvent evt) {
         JOptionPane.showMessageDialog(this.view, "Failed to add post!");
     }
 }
+
 private static String colorToHex(Color color) {
     return String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
 }

@@ -14,211 +14,69 @@ import model.User;
 import service.EntityManagerUtil;
 
 public class UserDao {
-	static EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
-	public UserDao() {
-	}
+static EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
-	public static boolean addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
-		try {
-			User user = new User(userName, password, email, passwordRecovery, passwordRecoveryAnswer );
-			entityManager.getTransaction().begin();
-			entityManager.persist(user);
-			entityManager.getTransaction().commit();
-			return true;
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
+public UserDao() {
+}
 
-	public static boolean deleteUser(int UserId) {
-		try {
-			User user = entityManager.find(User.class, UserId);
-			if (user != null) {
-				entityManager.getTransaction().begin();
-				entityManager.remove(user);
-				entityManager.getTransaction().commit();
-				return true;
-			}
-			return false;
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
+public static int addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
+    try {
+        // Kiểm tra xem userName đã tồn tại trong hệ thống chưa
+        String query = "SELECT u FROM User u WHERE u.userName = :userName";
+        List<User> existingUsers = entityManager.createQuery(query, User.class)
+                .setParameter("userName", userName)
+                .getResultList();
 
-	public static boolean updatePassword(int userId, String oldPassword, String newPassword) {
-		try {
-			User user = entityManager.find(User.class, userId);
-
-			if (user != null) {
-				if (BCrypt.checkpw(oldPassword, user.getPassword())) {
-
-					String hashedNewPassword = PasswordEncryptor.hashPassword(newPassword);
-
-					user.setPassword(hashedNewPassword);
-
-					entityManager.getTransaction().begin();
-					entityManager.merge(user);
-					entityManager.getTransaction().commit();
-					return true;
-				} else {
-					return false;
-				}
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static boolean updateEmail(int userId, String newEmail) {
-		try {
-			if (!Check.checkValidEmail(newEmail)) {
-				return false;
-			}
-			User user = entityManager.find(User.class, userId);
-
-			if (user != null) {
-				user.setEmail(newEmail);
-
-				entityManager.getTransaction().begin();
-				entityManager.merge(user);
-				entityManager.getTransaction().commit();
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static boolean updatePasswordRecovery(int userId, String newPasswordRecovery) {
-		try {
-			User user = entityManager.find(User.class, userId);
-
-			if (user != null) {
-				user.setPasswordRecovery(newPasswordRecovery);
-
-				entityManager.getTransaction().begin();
-				entityManager.merge(user);
-				entityManager.getTransaction().commit();
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static boolean updateRole(int userId, Role newRole) {
-		try {
-			User user = entityManager.find(User.class, userId);
-
-			if (user != null) {
-				user.setRole(newRole);
-
-				entityManager.getTransaction().begin();
-				entityManager.merge(user);
-				entityManager.getTransaction().commit();
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static boolean updateStatus(int userId, Status newStatus) {
-		try {
-			User user = entityManager.find(User.class, userId);
-
-			if (user != null) {
-				user.setStatus(newStatus);
-
-				entityManager.getTransaction().begin();
-				entityManager.merge(user);
-				entityManager.getTransaction().commit();
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			if (entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			return false;
-		}
-	}
-
-	public static List<User> searchByUsername(String keyword) {
-		try {
-			String queryStr = "SELECT u FROM User u WHERE u.username LIKE :keyword";
-			TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
-
-			query.setParameter("keyword", "%" + keyword.trim() + "%");
-
-			return query.getResultList();
-		} catch (Exception e) {
-			return null;
-		}
-	}
-        
-        public static boolean verifyRecoveryInfo(String email, String question, String answer) {
-        try {
-            // Truy vấn người dùng theo email
-            String queryStr = "SELECT u FROM User u WHERE u.email = :email";
-            TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
-            query.setParameter("email", email);
-
-            User user = query.getSingleResult();
-
-            // Kiểm tra câu hỏi và câu trả lời khôi phục
-            if (user != null && user.getPasswordRecovery().equals(question) && user.getPasswordRecoveryAnswer().equals(answer)) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            return false; 
+        if (!existingUsers.isEmpty()) {
+            // Nếu có userName trùng thì trả về false
+            return 1;
         }
+
+        User user = new User(userName, password, email, passwordRecovery, passwordRecoveryAnswer);
+        entityManager.getTransaction().begin();
+        entityManager.persist(user);
+        entityManager.getTransaction().commit();
+        return 0;
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+
+        return -1;
     }
+}
 
-    // Thay đổi mật khẩu theo email
-    public static boolean changePasswordByEmail(String email, String newPassword) {
-        try {
-            // Kiểm tra nếu mật khẩu mới hợp lệ
-            String hashedNewPassword = PasswordEncryptor.hashPassword(newPassword);
+public static boolean deleteUser(int UserId) {
+    try {
+        User user = entityManager.find(User.class, UserId);
+        if (user != null) {
+            entityManager.getTransaction().begin();
+            entityManager.remove(user);
+            entityManager.getTransaction().commit();
+            return true;
+        }
+        return false;
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
 
-            // Truy vấn người dùng theo email
-            String queryStr = "SELECT u FROM User u WHERE u.email = :email";
-            TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
-            query.setParameter("email", email);
+        return false;
+    }
+}
 
-            User user = query.getSingleResult();
+public static boolean updatePassword(int userId, String oldPassword, String newPassword) {
+    try {
+        User user = entityManager.find(User.class, userId);
 
-            if (user != null) {
+        if (user != null) {
+            if (BCrypt.checkpw(oldPassword, user.getPassword())) {
+
+                String hashedNewPassword = PasswordEncryptor.hashPassword(newPassword);
+
                 user.setPassword(hashedNewPassword);
 
                 entityManager.getTransaction().begin();
@@ -228,12 +86,217 @@ public class UserDao {
             } else {
                 return false;
             }
-        } catch (Exception e) {
-            if (entityManager.getTransaction().isActive()) {
-                entityManager.getTransaction().rollback();
-            }
+        } else {
             return false;
         }
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+
+        return false;
     }
+}
+
+public static boolean updateEmail(int userId, String newEmail) {
+    try {
+        if (!Check.checkValidEmail(newEmail)) {
+            return false;
+        }
+        User user = entityManager.find(User.class, userId);
+
+        if (user != null) {
+            user.setEmail(newEmail);
+
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+
+        return false;
+    }
+}
+
+public static boolean updatePasswordRecovery(int userId, String newPasswordRecovery) {
+    try {
+        User user = entityManager.find(User.class, userId);
+
+        if (user != null) {
+            user.setPasswordRecovery(newPasswordRecovery);
+
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+
+        return false;
+    }
+}
+
+public static boolean updateRole(int userId, Role newRole) {
+    try {
+        User user = entityManager.find(User.class, userId);
+
+        if (user != null) {
+            user.setRole(newRole);
+
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+
+        return false;
+    }
+}
+
+public static boolean updateStatus(int userId, Status newStatus) {
+    try {
+        User user = entityManager.find(User.class, userId);
+
+        if (user != null) {
+            user.setStatus(newStatus);
+
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+
+        return false;
+    }
+}
+
+public static List<User> searchByUsername(String keyword) {
+    try {
+        String queryStr = "SELECT u FROM User u WHERE u.userName LIKE :keyword";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+
+        query.setParameter("keyword", "%" + keyword.trim() + "%");
+
+        return query.getResultList();
+    } catch (Exception e) {
+        e.printStackTrace();
+
+        return null;
+    }
+}
+
+// kiểm tra câu hỏi khôi phục có đúng ko 1
+public static boolean verifyRecoveryInfo(String userName, String answer) {
+    try {
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :name";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("name", userName);
+
+        User user = query.getSingleResult();
+
+        return user != null && BCrypt.checkpw(answer, user.getPasswordRecoveryAnswer());
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+// thay đổi mật khẩu bằng user name 1
+public static boolean changePasswordByUserName(String userName, String newPassword) {
+    try {
+        String hashedNewPassword = PasswordEncryptor.hashPassword(newPassword);
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :name";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("name", userName);
+
+        User user = query.getSingleResult();
+
+        if (user != null) {
+            user.setPassword(hashedNewPassword);
+
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+
+        return false;
+    }
+}
+
+// đăng nhập 1
+public static User authUser(String username, String password) {
+    try {
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :username";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("username", username);
+
+        List<User> users = query.getResultList();
+
+        if (users.isEmpty()) {
+            return null;
+        }
+        User user = users.get(0);
+
+        if (BCrypt.checkpw(password, user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+
+// lấy câu hỏi khôi phục bằng user name 1
+public static String getPasswordRecoveryQuestion(String userName) {
+    try {
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :name";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("name", userName);
+
+        User user = query.getSingleResult();
+        return user != null ? user.getPasswordRecovery() : null;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
 
 }

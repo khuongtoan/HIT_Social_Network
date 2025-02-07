@@ -87,7 +87,6 @@ public Post(User user, String content, String fontFamily, Integer fontSize, Stri
 }
 
 
-// Getters and Setters
 public Integer getPostId() {
     return postId;
 }

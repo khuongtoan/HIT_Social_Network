@@ -1,35 +1,60 @@
 package controller;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+import model.User;
+import service.Service;
 import view.ForgotPassword;
 import view.LoginAndRegister;
+import view.PersonalView;
 import view.SignUp;
 
 public class LoginAndRegisterController {
 
-    private LoginAndRegister loginAndRegister;
-
+    private LoginAndRegister view;
+    private service.Service serviced;
+    
     public LoginAndRegisterController(LoginAndRegister view) {
-        this.loginAndRegister = view;
-        this.loginAndRegister.getForgot().addActionListener(evt -> forgotActionPerformed(evt));
-        this.loginAndRegister.getSignUp().addActionListener(evt -> signUptActionPerformed(evt));
-        this.loginAndRegister.setVisible(true);
+        this.view = view;
+        this.serviced = new Service();
+        this.view.getForgot().addActionListener(evt -> forgotActionPerformed(evt));
+        this.view.getSignUp().addActionListener(evt -> signUptActionPerformed(evt));
+        this.view.getLogin().addActionListener(evt -> logintActionPerformed(evt));
+        
+        
+        this.view.setVisible(true);
     }
 
-    private void forgotActionPerformed(java.awt.event.ActionEvent evt) {
-        loginAndRegister.setVisible(false);
+    private void forgotActionPerformed(ActionEvent evt) {
+        view.setVisible(false);
         ForgotPassword forgotPassword = new ForgotPassword();
         forgotPassword.setVisible(true);
-        loginAndRegister.dispose();
+        view.dispose();
     }  
 
     private void signUptActionPerformed(ActionEvent evt) {
-        loginAndRegister.setVisible(false);
+        view.setVisible(false);
         SignUp signUp = new SignUp();
         signUp.setVisible(true);
-        loginAndRegister.dispose();
+        view.dispose();
     }
     
+   private void logintActionPerformed(ActionEvent evt) {
+    String userName = this.view.getUserNameText().getText().trim();
+    String password = new String(this.view.getPasswordText().getPassword()).trim();
+    // Xác thực người dùng
+    User loginUserEnter = this.serviced.authUser(userName, password);
+    if (loginUserEnter == null) {
+        JOptionPane.showMessageDialog(this.view, "Invalid username or password. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+    } else {
+        UserSession.setCurrentUser(loginUserEnter);
+        this.view.setVisible(false);
+        PersonalView mainview = new PersonalView(); 
+        mainview.setVisible(true);
+        this.view.dispose();
+    }
+}
+
     
     
 }
