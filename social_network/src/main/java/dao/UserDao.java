@@ -22,14 +22,12 @@ public UserDao() {
 
 public static int addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
     try {
-        // Kiểm tra xem userName đã tồn tại trong hệ thống chưa
         String query = "SELECT u FROM User u WHERE u.userName = :userName";
         List<User> existingUsers = entityManager.createQuery(query, User.class)
                 .setParameter("userName", userName)
                 .getResultList();
 
         if (!existingUsers.isEmpty()) {
-            // Nếu có userName trùng thì trả về false
             return 1;
         }
 
@@ -67,6 +65,39 @@ public static boolean deleteUser(int UserId) {
         return false;
     }
 }
+
+public static boolean updateUserName(int userId, String newUserName) {
+    try {
+        // Kiểm tra xem username mới có tồn tại hay không
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :userName";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("userName", newUserName);
+        List<User> existingUsers = query.getResultList();
+
+        if (!existingUsers.isEmpty()) {
+            return false; // Username đã tồn tại
+        }
+
+        User user = entityManager.find(User.class, userId);
+        if (user != null) {
+            user.setUserName(newUserName);
+
+            entityManager.getTransaction().begin();
+            entityManager.merge(user);
+            entityManager.getTransaction().commit();
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+        return false;
+    }
+}
+
 
 public static boolean updatePassword(int userId, String oldPassword, String newPassword) {
     try {
@@ -281,6 +312,30 @@ public static User authUser(String username, String password) {
     } catch (Exception e) {
         e.printStackTrace();
         return null;
+    }
+}
+
+public static boolean checkPasswordCurrentUser (String username, String password) {
+    try {
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :username";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("username", username);
+
+        List<User> users = query.getResultList();
+
+        if (users.isEmpty()) {
+            return false;
+        }
+        User user = users.get(0);
+
+        if (BCrypt.checkpw(password, user.getPassword())) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
     }
 }
 

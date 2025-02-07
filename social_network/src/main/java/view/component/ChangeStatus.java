@@ -1,6 +1,7 @@
 
 package view.component;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -23,6 +24,7 @@ public ChangeStatus() {
         activejRadioButton = new javax.swing.JRadioButton();
         BanRadioButton = new javax.swing.JRadioButton();
         passText = new javax.swing.JPasswordField();
+        confirm = new javax.swing.JButton();
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -42,6 +44,11 @@ public ChangeStatus() {
         BanRadioButton.setForeground(new java.awt.Color(0, 105, 105));
         BanRadioButton.setText("Ban");
 
+        confirm.setBackground(new java.awt.Color(0, 105, 105));
+        confirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        confirm.setForeground(new java.awt.Color(255, 255, 255));
+        confirm.setText("confirm");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,7 +65,9 @@ public ChangeStatus() {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passText, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(127, 127, 127))
         );
         layout.setVerticalGroup(
@@ -73,7 +82,9 @@ public ChangeStatus() {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(activejRadioButton)
                     .addComponent(BanRadioButton))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirm)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -81,6 +92,7 @@ public ChangeStatus() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton BanRadioButton;
     private javax.swing.JRadioButton activejRadioButton;
+    private javax.swing.JButton confirm;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField passText;
@@ -124,6 +136,14 @@ public ChangeStatus() {
 
     public void setPassText(JPasswordField passText) {
         this.passText = passText;
+    }
+
+    public JButton getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(JButton confirm) {
+        this.confirm = confirm;
     }
 
     

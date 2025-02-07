@@ -1,6 +1,7 @@
 package view.component;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -23,6 +24,7 @@ public ChangeRole() {
         jLabel4 = new javax.swing.JLabel();
         userRadioButton = new javax.swing.JRadioButton();
         adminRadioButton = new javax.swing.JRadioButton();
+        confirm = new javax.swing.JButton();
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -44,6 +46,11 @@ public ChangeRole() {
         adminRadioButton.setForeground(new java.awt.Color(0, 105, 105));
         adminRadioButton.setText("Admin");
 
+        confirm.setBackground(new java.awt.Color(0, 105, 105));
+        confirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        confirm.setForeground(new java.awt.Color(255, 255, 255));
+        confirm.setText("confirm");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,7 +68,10 @@ public ChangeRole() {
                         .addGap(133, 133, 133)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(idUserText, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(idUserText, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,7 +86,9 @@ public ChangeRole() {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userRadioButton)
                     .addComponent(adminRadioButton))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(confirm)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -84,6 +96,7 @@ public ChangeRole() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton adminRadioButton;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton confirm;
     private javax.swing.JPasswordField idUserText;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -136,6 +149,14 @@ public ChangeRole() {
 
     public void setUserRadioButton(JRadioButton userRadioButton) {
         this.userRadioButton = userRadioButton;
+    }
+
+    public JButton getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(JButton confirm) {
+        this.confirm = confirm;
     }
 
     

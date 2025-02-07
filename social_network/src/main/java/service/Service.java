@@ -126,4 +126,14 @@ public List<Post> getAllPost() {
         return UserDao.getPasswordRecoveryQuestion(userName);
     }
 
+    @Override
+    public boolean checkPasswordCurrentUser(String username, String password) {
+        return UserDao.checkPasswordCurrentUser(username, password);
+    }
+
+    @Override
+    public boolean updateUserName(int userId, String newUserName) {
+        return UserDao.updateUserName(userId, newUserName);
+    }
+
 }

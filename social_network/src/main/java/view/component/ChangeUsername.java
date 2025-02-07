@@ -1,6 +1,7 @@
 
 package view.component;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -21,8 +22,9 @@ public ChangeUsername() {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         passText = new javax.swing.JPasswordField();
-        oldEmailText = new javax.swing.JTextField();
-        newEmailText = new javax.swing.JTextField();
+        oldUserNameText = new javax.swing.JTextField();
+        newUserNameText = new javax.swing.JTextField();
+        confirm = new javax.swing.JButton();
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -39,27 +41,37 @@ public ChangeUsername() {
         jLabel4.setForeground(new java.awt.Color(0, 105, 105));
         jLabel4.setText("New username:");
 
-        newEmailText.addActionListener(new java.awt.event.ActionListener() {
+        newUserNameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newEmailTextActionPerformed(evt);
+                newUserNameTextActionPerformed(evt);
             }
         });
+
+        confirm.setBackground(new java.awt.Color(0, 105, 105));
+        confirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        confirm.setForeground(new java.awt.Color(255, 255, 255));
+        confirm.setText("confirm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(oldEmailText)
-                    .addComponent(passText)
-                    .addComponent(newEmailText, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(oldUserNameText)
+                            .addComponent(passText)
+                            .addComponent(newUserNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(331, 331, 331)
+                        .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,26 +84,29 @@ public ChangeUsername() {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(oldEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(oldUserNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newUserNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(confirm)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newEmailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newEmailTextActionPerformed
+    private void newUserNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserNameTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_newEmailTextActionPerformed
+    }//GEN-LAST:event_newUserNameTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton confirm;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField newEmailText;
-    private javax.swing.JTextField oldEmailText;
+    private javax.swing.JTextField newUserNameText;
+    private javax.swing.JTextField oldUserNameText;
     private javax.swing.JPasswordField passText;
     // End of variables declaration//GEN-END:variables
 
@@ -119,20 +134,20 @@ public ChangeUsername() {
         this.jLabel4 = jLabel4;
     }
 
-    public JTextField getNewEmailText() {
-        return newEmailText;
+    public JTextField getNewUserNameText() {
+        return newUserNameText;
     }
 
-    public void setNewEmailText(JTextField newEmailText) {
-        this.newEmailText = newEmailText;
+    public void setNewUserNameText(JTextField newUserNameText) {
+        this.newUserNameText = newUserNameText;
     }
 
-    public JTextField getOldEmailText() {
-        return oldEmailText;
+    public JTextField getOldUserNameText() {
+        return oldUserNameText;
     }
 
-    public void setOldEmailText(JTextField oldEmailText) {
-        this.oldEmailText = oldEmailText;
+    public void setOldUserNameText(JTextField oldUserNameText) {
+        this.oldUserNameText = oldUserNameText;
     }
 
     public JPasswordField getPassText() {
@@ -143,6 +158,14 @@ public ChangeUsername() {
         this.passText = passText;
     }
 
-    
+    public JButton getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(JButton confirm) {
+        this.confirm = confirm;
+    }
+
+   
 
 }

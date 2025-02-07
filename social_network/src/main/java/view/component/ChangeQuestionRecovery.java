@@ -1,5 +1,6 @@
 package view.component;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -23,6 +24,7 @@ public ChangeQuestionRecovery() {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        confirm = new javax.swing.JButton();
 
         newQuestionText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,6 +47,11 @@ public ChangeQuestionRecovery() {
         jLabel4.setForeground(new java.awt.Color(0, 105, 105));
         jLabel4.setText("New Question Recovery:");
 
+        confirm.setBackground(new java.awt.Color(0, 105, 105));
+        confirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        confirm.setForeground(new java.awt.Color(255, 255, 255));
+        confirm.setText("confirm");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,6 +69,10 @@ public ChangeQuestionRecovery() {
                         .addComponent(oldPassText, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
                         .addComponent(oldQuestionText)))
                 .addContainerGap(105, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(263, 263, 263))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +89,9 @@ public ChangeQuestionRecovery() {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newQuestionText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(confirm)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -88,6 +101,7 @@ public ChangeQuestionRecovery() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton confirm;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -142,6 +156,14 @@ public ChangeQuestionRecovery() {
 
     public void setOldQuestionText(JTextField oldQuestionText) {
         this.oldQuestionText = oldQuestionText;
+    }
+
+    public JButton getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(JButton confirm) {
+        this.confirm = confirm;
     }
 
 

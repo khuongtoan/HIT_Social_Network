@@ -35,6 +35,8 @@ public int addUser(String userName, String password, String email, String passwo
 
 public boolean deleteUser(int UserId);
 
+public boolean updateUserName(int userId, String newUserName);
+
 public boolean updatePassword(int userId, String oldPassword, String newPassword);
 
 public boolean updateEmail(int userId, String newEmail);
@@ -51,8 +53,10 @@ public boolean changePasswordByUserName(String userName, String newPassword);
 
 public boolean verifyRecoveryInfo(String email, String answer);
 
-public  User authUser(String username, String password);
+public User authUser(String username, String password);
 
-public  String getPasswordRecoveryQuestion(String userName);
+public String getPasswordRecoveryQuestion(String userName);
+
+public boolean checkPasswordCurrentUser(String username, String password);
 
 }

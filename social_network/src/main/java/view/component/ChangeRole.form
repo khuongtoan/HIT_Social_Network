@@ -36,6 +36,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="idUserText" min="-2" pref="476" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                      <Component id="confirm" min="-2" pref="197" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="120" max="32767" attributes="0"/>
           </Group>
@@ -55,7 +59,9 @@
                   <Component id="userRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="adminRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="110" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="confirm" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="71" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,6 +123,20 @@
           <Color blue="69" green="69" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Admin"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="confirm">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="69" green="69" red="0" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="confirm"/>
       </Properties>
     </Component>
   </SubComponents>
