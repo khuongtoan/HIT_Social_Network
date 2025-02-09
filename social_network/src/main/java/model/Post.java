@@ -54,7 +54,7 @@ private LocalDateTime createdAt;
 private List<Comment> comments = new ArrayList<>();
 
 @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-private List<Like> likes = new ArrayList<>();
+private List<Likes> likes = new ArrayList<>();
 
 @PrePersist
 public void prePersist() {
@@ -135,11 +135,11 @@ public void setComments(List<Comment> comments) {
     this.comments = comments;
 }
 
-public List<Like> getLikes() {
+public List<Likes> getLikes() {
     return likes;
 }
 
-public void setLikes(List<Like> likes) {
+public void setLikes(List<Likes> likes) {
     this.likes = likes;
 }
 

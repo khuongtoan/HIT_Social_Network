@@ -10,12 +10,12 @@ public class EffectButtonLLabel {
 public static void setLabelHoverEffect(JLabel label) {
     label.addMouseListener(new java.awt.event.MouseAdapter() {
     public void mouseEntered(java.awt.event.MouseEvent evt) {
-        label.setBackground(Color.LIGHT_GRAY); // Màu khi chuột di vào
-        label.setOpaque(true); // Đảm bảo label có nền
+        label.setBackground(Color.LIGHT_GRAY); 
+        label.setOpaque(true); 
     }
 
     public void mouseExited(java.awt.event.MouseEvent evt) {
-        label.setBackground(null); // Đặt lại màu nền khi chuột ra
+        label.setBackground(null); 
     }
     });
 }
@@ -25,7 +25,7 @@ public static void toggleLikeButtonColor(JButton button) {
 
     button.addActionListener(e -> {
         if (!isSelected[0]) {
-            button.setBackground(Color.LIGHT_GRAY);
+            button.setBackground(new Color (10,105,105) );
             button.setText("Liked");
         } else {
             button.setBackground(null);

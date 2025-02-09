@@ -157,13 +157,13 @@ public static boolean updateEmail(int userId, String newEmail) {
     }
 }
 
-public static boolean updatePasswordRecovery(int userId, String newPasswordRecovery) {
+public static boolean updatePasswordRecovery(int userId, String newPasswordRecovery, String newAnswerRecovery ) {
     try {
         User user = entityManager.find(User.class, userId);
 
         if (user != null) {
             user.setPasswordRecovery(newPasswordRecovery);
-
+            user.setPasswordRecoveryAnswer(PasswordEncryptor.hashPassword(newAnswerRecovery));
             entityManager.getTransaction().begin();
             entityManager.merge(user);
             entityManager.getTransaction().commit();
@@ -180,54 +180,60 @@ public static boolean updatePasswordRecovery(int userId, String newPasswordRecov
         return false;
     }
 }
-
-public static boolean updateRole(int userId, Role newRole) {
+public static boolean updateRole(String userName, Role newRole) {
     try {
-        User user = entityManager.find(User.class, userId);
-
-        if (user != null) {
-            user.setRole(newRole);
-
-            entityManager.getTransaction().begin();
-            entityManager.merge(user);
-            entityManager.getTransaction().commit();
-            return true;
-        } else {
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :userName";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("userName", userName);
+        
+        List<User> users = query.getResultList();
+        if (users.isEmpty()) {
             return false;
         }
+
+        User user = users.get(0);
+        user.setRole(newRole);
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(user);
+        entityManager.getTransaction().commit();
+        return true;
     } catch (Exception e) {
         if (entityManager.getTransaction().isActive()) {
             entityManager.getTransaction().rollback();
         }
         e.printStackTrace();
-
         return false;
     }
 }
 
-public static boolean updateStatus(int userId, Status newStatus) {
+public static boolean updateStatus(String userName, Status newStatus) {
     try {
-        User user = entityManager.find(User.class, userId);
-
-        if (user != null) {
-            user.setStatus(newStatus);
-
-            entityManager.getTransaction().begin();
-            entityManager.merge(user);
-            entityManager.getTransaction().commit();
-            return true;
-        } else {
+        String queryStr = "SELECT u FROM User u WHERE u.userName = :userName";
+        TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
+        query.setParameter("userName", userName);
+        
+        List<User> users = query.getResultList();
+        if (users.isEmpty()) {
             return false;
         }
+
+        User user = users.get(0);
+        user.setStatus(newStatus);
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(user);
+        entityManager.getTransaction().commit();
+        return true;
     } catch (Exception e) {
         if (entityManager.getTransaction().isActive()) {
             entityManager.getTransaction().rollback();
         }
         e.printStackTrace();
-
         return false;
     }
 }
+
 
 public static List<User> searchByUsername(String keyword) {
     try {

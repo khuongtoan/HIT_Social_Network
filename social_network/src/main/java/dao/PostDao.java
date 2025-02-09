@@ -5,7 +5,8 @@ import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Comment;
-import model.Like;
+import model.Likes;
+import model.Likes;
 import model.Post;
 import model.User;
 import service.EntityManagerUtil;
@@ -16,6 +17,20 @@ static EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
 public PostDao() {
 }
+
+public static List<Comment> getAllComments(Post post) {
+    try {
+        String queryStr = "SELECT c FROM Comment c WHERE c.post = :post";
+        TypedQuery<Comment> query = entityManager.createQuery(queryStr, Comment.class);
+        query.setParameter("post", post);
+
+        return query.getResultList();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+
 
 public static boolean addComment(Post post, User user, String content) {
     try {
@@ -77,37 +92,74 @@ public static boolean deleteComment(int commentId) {
 
 public static boolean addAndDeleteLike(Post post, User user) {
     try {
-        TypedQuery<Like> query = entityManager
-                .createQuery("SELECT l FROM Like l WHERE l.post = :post AND l.user = :user", Like.class);
+        TypedQuery<Likes> query = entityManager
+                .createQuery("SELECT l FROM Likes l WHERE l.post = :post AND l.user = :user", Likes.class);
         query.setParameter("post", post);
         query.setParameter("user", user);
 
-        List<Like> existingLikes = query.getResultList();
+        List<Likes> existingLikes = query.getResultList();
+
+        entityManager.getTransaction().begin(); // Bắt đầu transaction
 
         if (!existingLikes.isEmpty()) {
-            Like existingLike = existingLikes.get(0);
-            entityManager.getTransaction().begin();
+            System.out.println("User đã like trước đó, xóa like...");
+            Likes existingLike = existingLikes.get(0);
+
+            if (!entityManager.contains(existingLike)) {
+                existingLike = entityManager.merge(existingLike); // Đảm bảo entity được quản lý trước khi xóa
+            }
+
             entityManager.remove(existingLike);
             entityManager.getTransaction().commit();
+            entityManager.clear(); // Xóa cache để đảm bảo dữ liệu mới nhất
+            System.out.println("Like đã bị xóa!");
             return false;
         }
 
-        Like like = new Like();
+        System.out.println("User chưa like, thêm like mới...");
+        Likes like = new Likes();
         like.setPost(post);
         like.setUser(user);
 
-        entityManager.getTransaction().begin();
         entityManager.persist(like);
         entityManager.getTransaction().commit();
+        entityManager.clear(); // Xóa cache để đảm bảo dữ liệu mới nhất
+        System.out.println("Like mới đã được thêm!");
         return true;
 
     } catch (Exception e) {
         if (entityManager.getTransaction().isActive()) {
             entityManager.getTransaction().rollback();
         }
+        System.out.println("Lỗi khi xử lý like: " + e.getMessage());
         e.printStackTrace();
-
         return false;
+    }
+}
+
+public static boolean isPostLikedByUser(Post post, User user) {
+    try {
+        String queryStr = "SELECT COUNT(l) FROM Likes l WHERE l.post = :post AND l.user = :user";
+        TypedQuery<Long> query = entityManager.createQuery(queryStr, Long.class);
+        query.setParameter("post", post);
+        query.setParameter("user", user);
+
+        return query.getSingleResult() > 0;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+public static int getLikeCount(Post post) {
+    try {
+        TypedQuery<Long> query = entityManager.createQuery(
+                "SELECT COUNT(l) FROM Likes l WHERE l.post = :post", Long.class);
+        query.setParameter("post", post);
+        return query.getSingleResult().intValue();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return 0;
     }
 }
 

@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "likes")
-public class Like {
+public class Likes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,12 +26,12 @@ public class Like {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
-	public Like(Post post, User user) {
+	public Likes(Post post, User user) {
 		this.post = post;
 		this.user = user;
 	}
 
-	public Like() {
+	public Likes() {
 
 	}
 

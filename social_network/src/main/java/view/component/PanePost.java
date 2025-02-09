@@ -11,19 +11,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import model.Post;
 import model.User;
 
 public class PanePost extends javax.swing.JPanel {
 
-public PanePost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor, int like, int comment) {
-    
+//public PanePost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor, int like, int comment) {
+ public PanePost(Post p){
     initComponents();
-    this.contentw.setText(content);
-    this.username.setText(user + "");
-    this.labelLike.setText(like + "");
-    this.buttonComment.setText(comment + "");
+    this.contentw.setText(p.getContent());
+    this.username.setText(p.getUser().getUserName()+ "");
+    int likeCount = p.getLikes().size();
+    int commentCount = p.getComments().size();
+    
+    this.labelLike.setText(likeCount + "");
+    this.commentLabel.setText(commentCount + "");
+    
     toggleLikeButtonColor(this.ButtonLike);
-    SetScaledImage.setScaledImage570(imagePath, this.image);
+    SetScaledImage.setScaledImage570(p.getImagePath(), this.image);
     
 }
 
@@ -48,6 +53,7 @@ public PanePost(){
         labelLike = new javax.swing.JLabel();
         ButtonLike = new javax.swing.JButton();
         buttonComment = new javax.swing.JButton();
+        commentLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
         contentw = new javax.swing.JLabel();
@@ -63,7 +69,6 @@ public PanePost(){
         jPanel4.setPreferredSize(new java.awt.Dimension(570, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user (2).png"))); // NOI18N
-        jLabel3.setPreferredSize(new java.awt.Dimension(25, 25));
 
         username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         username.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -75,7 +80,7 @@ public PanePost(){
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -95,7 +100,7 @@ public PanePost(){
         jPanel5.setPreferredSize(new java.awt.Dimension(570, 60));
 
         labelLike.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like (2).png"))); // NOI18N
-        labelLike.setText("1");
+        labelLike.setText("0");
 
         ButtonLike.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like (2).png"))); // NOI18N
         ButtonLike.setText("Like");
@@ -107,6 +112,9 @@ public PanePost(){
         buttonComment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonComment.setOpaque(true);
 
+        commentLabel.setText("0");
+        commentLabel.setPreferredSize(new java.awt.Dimension(37, 17));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -114,12 +122,14 @@ public PanePost(){
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(labelLike, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelLike, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(ButtonLike)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                 .addComponent(buttonComment, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(18, 18, 18)
+                .addComponent(commentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,8 +143,11 @@ public PanePost(){
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonComment)
-                            .addComponent(ButtonLike))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(ButtonLike)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(commentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -156,20 +169,12 @@ public PanePost(){
         add(jPanel6, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-//public static void main(String[] args) {
-//    JFrame frame = new JFrame("Test Like Button");
-//
-//    PanePost post = new PanePost();
-//    frame.getContentPane().add(post);
-//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//    frame.pack();
-//    frame.setLocationRelativeTo(null);
-//    frame.setVisible(true);
-//}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonLike;
     private javax.swing.JButton buttonComment;
+    private javax.swing.JLabel commentLabel;
     private javax.swing.JLabel contentw;
     private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel3;
@@ -267,6 +272,14 @@ public JLabel getUsername() {
 
 public void setUsername(JLabel username) {
     this.username = username;
+}
+
+public JLabel getCommentLabel() {
+    return commentLabel;
+}
+
+public void setCommentLabel(JLabel commentLabel) {
+    this.commentLabel = commentLabel;
 }
 
 }

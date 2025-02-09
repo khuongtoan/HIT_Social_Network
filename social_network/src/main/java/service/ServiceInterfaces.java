@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import model.Comment;
 
 import model.Post;
 import model.Role;
@@ -9,6 +10,8 @@ import model.User;
 
 public interface ServiceInterfaces {
 
+public List<Comment> getAllComments(Post post);
+
 public boolean addComment(Post post, User user, String content);
 
 public boolean updateComment(int commentId, String newContent);
@@ -16,6 +19,10 @@ public boolean updateComment(int commentId, String newContent);
 public boolean deleteComment(int commentId);
 
 public boolean addAndDeleteLike(Post post, User user);
+
+public boolean isPostLikedByUser(Post post, User user);
+
+public int getLikeCount(Post post);
 
 public boolean addPost(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor);
 
@@ -41,11 +48,11 @@ public boolean updatePassword(int userId, String oldPassword, String newPassword
 
 public boolean updateEmail(int userId, String newEmail);
 
-public boolean updatePasswordRecovery(int userId, String newPasswordRecovery);
+public boolean updatePasswordRecovery(int userId, String newPasswordRecovery, String newAnswerRecovery);
 
-public boolean updateRole(int userId, Role newRole);
+public boolean updateRole(String userName, Role newRole);
 
-public boolean updateStatus(int userId, Status newStatus);
+public boolean updateStatus(String userName, Status newStatus);
 
 public List<User> searchByUsername(String keyword);
 

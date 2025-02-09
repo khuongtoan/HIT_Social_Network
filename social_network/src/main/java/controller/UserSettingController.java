@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import service.Service;
 import service.ServiceInterfaces;
+import view.LoginAndRegister;
 import view.PersonalView;
 import view.UserSettingView;
 import view.component.ChangeEmail;
@@ -25,6 +26,8 @@ public UserSettingController(UserSettingView view) {
     this.view.getChangePass().addActionListener(evt -> showChangePasswordPanel(evt));
     this.view.getChangeQuestion().addActionListener(evt -> showChangeQuestionRecoveryPanel(evt));
     this.view.getChangeUsername().addActionListener(evt -> showChangeUserNamePanel(evt));
+
+    this.view.getLogoutButton().addActionListener(evt -> logoutActionperformed(evt));
     this.view.setVisible(true);
 }
 
@@ -46,9 +49,12 @@ private void showChangeEmailPanel(ActionEvent evt) {
     view.getMainArea().add(changeEmailPanel);
     view.getMainArea().revalidate();
     view.getMainArea().repaint();
+    changeEmailPanel.getConfirm().addActionListener(e -> updateEmailActionperformed(changeEmailPanel));
 
+}
+
+private void updateEmailActionperformed(ChangeEmail changeEmailPanel) {
     String passEnter = new String(changeEmailPanel.getPassText().getPassword());
-    String oldEmailEnter = changeEmailPanel.getOldEmailText().getText();
     String newEmailEnter = changeEmailPanel.getNewEmailText().getText();
 
     boolean auth = serviced.checkPasswordCurrentUser(UserSession.getCurrentUser().getUserName(), passEnter);
@@ -78,11 +84,17 @@ private void showChangePasswordPanel(ActionEvent evt) {
 
     view.getMainArea().revalidate();
     view.getMainArea().repaint();
+    changePasswordPanel.getConfirm().addActionListener(e -> updatePassActionperformed(changePasswordPanel));
+
+}
+
+private void updatePassActionperformed(ChangePassword changePasswordPanel) {
 
     String oldPasslEnter = new String(changePasswordPanel.getOldPassText().getPassword());
     String newPasslEnter = changePasswordPanel.getNewPassText().getText();
 
     boolean auth = serviced.checkPasswordCurrentUser(UserSession.getCurrentUser().getUserName(), oldPasslEnter);
+
     if (auth) {
         if (!Check.checkValidPassword(newPasslEnter)) {
             JOptionPane.showMessageDialog(view, "Invalid password format!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -110,15 +122,20 @@ private void showChangeQuestionRecoveryPanel(ActionEvent evt) {
 
     view.getMainArea().revalidate();
     view.getMainArea().repaint();
+    changeQuestionRecoveryPanel.getConfirm().addActionListener(e -> updateQuestionActionperformed(changeQuestionRecoveryPanel));
+
+}
+
+private void updateQuestionActionperformed(ChangeQuestionRecovery changeQuestionRecoveryPanel) {
 
     String passEnter = new String(changeQuestionRecoveryPanel.getOldPassText().getPassword());
-    String oldQuestionEnter = changeQuestionRecoveryPanel.getOldQuestionText().getText();
     String newQuestionEnter = changeQuestionRecoveryPanel.getNewQuestionText().getText();
+    String newAnswerEnter = changeQuestionRecoveryPanel.getNewAnswerText().getText();
 
     boolean auth = serviced.checkPasswordCurrentUser(UserSession.getCurrentUser().getUserName(), passEnter);
     if (auth) {
 
-        boolean updated = serviced.updatePasswordRecovery(UserSession.getCurrentUser().getUserId(), newQuestionEnter);
+        boolean updated = serviced.updatePasswordRecovery(UserSession.getCurrentUser().getUserId(), newQuestionEnter, newAnswerEnter);
         if (updated) {
             JOptionPane.showMessageDialog(view, "Question recovery updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -135,13 +152,26 @@ private void showChangeUserNamePanel(ActionEvent evt) {
 
     view.getMainArea().removeAll();
     view.getMainArea().add(changeUserNamePanel);
-
     view.getMainArea().revalidate();
     view.getMainArea().repaint();
 
+    changeUserNamePanel.getConfirm().addActionListener(e -> updateUserNameActionperformed(changeUserNamePanel));
+}
+
+private void updateUserNameActionperformed(ChangeUsername changeUserNamePanel) {
     String passEnter = new String(changeUserNamePanel.getPassText().getPassword());
-    String oldUserNameEnter = changeUserNamePanel.getOldUserNameText().getText();
     String newUserNameEnter = changeUserNamePanel.getNewUserNameText().getText();
+
+    if (passEnter.isEmpty() || newUserNameEnter.isEmpty()) {
+        JOptionPane.showMessageDialog(view, "Please enter all required fields!", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Kiểm tra username không vượt quá 15 ký tự trước khi kiểm tra mật khẩu
+    if (newUserNameEnter.length() > 15) {
+        JOptionPane.showMessageDialog(view, "Failed to update username. The username must not exceed 15 characters!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
     boolean auth = serviced.checkPasswordCurrentUser(UserSession.getCurrentUser().getUserName(), passEnter);
     if (auth) {
@@ -154,7 +184,13 @@ private void showChangeUserNamePanel(ActionEvent evt) {
     } else {
         JOptionPane.showMessageDialog(view, "Incorrect password!", "Error", JOptionPane.ERROR_MESSAGE);
     }
-
 }
 
+private void logoutActionperformed(ActionEvent evt) {
+    this.view.setVisible(false);
+    LoginAndRegister login = new LoginAndRegister();
+    login.setVisible(true);
+    this.view.dispose();
+    UserSession.setCurrentUser(null);
+}
 }

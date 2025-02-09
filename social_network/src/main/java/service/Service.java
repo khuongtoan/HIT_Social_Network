@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.PostDao;
 import dao.UserDao;
+import model.Comment;
 import model.Post;
 import model.Role;
 import model.Status;
@@ -31,7 +32,7 @@ public boolean addAndDeleteLike(Post post, User user) {
     return PostDao.addAndDeleteLike(post, user);
 }
 
-    @Override
+@Override
 public boolean addPost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
     return PostDao.addPost(user, content, imagePath, fontFamily, fontSize, textColor, backgroundColor);
 }
@@ -77,18 +78,18 @@ public boolean updateEmail(int userId, String newEmail) {
 }
 
 @Override
-public boolean updatePasswordRecovery(int userId, String newPasswordRecovery) {
-    return UserDao.updatePasswordRecovery(userId, newPasswordRecovery);
+public boolean updatePasswordRecovery(int userId, String newPasswordRecovery, String newAnswerRecovery) {
+    return UserDao.updatePasswordRecovery(userId, newPasswordRecovery, newAnswerRecovery);
 }
 
 @Override
-public boolean updateRole(int userId, Role newRole) {
-    return UserDao.updateRole(userId, newRole);
+public boolean updateRole(String userName, Role newRole) {
+    return UserDao.updateRole(userName, newRole);
 }
 
 @Override
-public boolean updateStatus(int userId, Status newStatus) {
-    return UserDao.updateStatus(userId, newStatus);
+public boolean updateStatus(String userName, Status newStatus) {
+    return UserDao.updateStatus(userName, newStatus);
 }
 
 @Override
@@ -106,34 +107,49 @@ public List<Post> getAllPost() {
     return PostDao.getAllPost();
 }
 
-    @Override
-    public boolean changePasswordByUserName(String userName, String newPassword) {
-        return UserDao.changePasswordByUserName (userName, newPassword);
-    }
+@Override
+public boolean changePasswordByUserName(String userName, String newPassword) {
+    return UserDao.changePasswordByUserName(userName, newPassword);
+}
 
-    @Override
-    public boolean verifyRecoveryInfo(String email, String answer) {
+@Override
+public boolean verifyRecoveryInfo(String email, String answer) {
     return UserDao.verifyRecoveryInfo(email, answer);
+}
+
+@Override
+public User authUser(String username, String password) {
+    return UserDao.authUser(username, password);
+}
+
+@Override
+public String getPasswordRecoveryQuestion(String userName) {
+    return UserDao.getPasswordRecoveryQuestion(userName);
+}
+
+@Override
+public boolean checkPasswordCurrentUser(String username, String password) {
+    return UserDao.checkPasswordCurrentUser(username, password);
+}
+
+@Override
+public boolean updateUserName(int userId, String newUserName) {
+    return UserDao.updateUserName(userId, newUserName);
+}
+
+    @Override
+    public boolean isPostLikedByUser(Post post, User user) {
+        return PostDao.isPostLikedByUser(post, user);
     }
 
     @Override
-    public User authUser(String username, String password) {
-        return UserDao.authUser(username, password);
+    public int getLikeCount(Post post) {
+        return PostDao.getLikeCount(post);
     }
 
     @Override
-    public String getPasswordRecoveryQuestion(String userName) {
-        return UserDao.getPasswordRecoveryQuestion(userName);
-    }
-
-    @Override
-    public boolean checkPasswordCurrentUser(String username, String password) {
-        return UserDao.checkPasswordCurrentUser(username, password);
-    }
-
-    @Override
-    public boolean updateUserName(int userId, String newUserName) {
-        return UserDao.updateUserName(userId, newUserName);
+    public List<Comment> getAllComments(Post post) {
+        return PostDao.getAllComments(post);
     }
 
 }

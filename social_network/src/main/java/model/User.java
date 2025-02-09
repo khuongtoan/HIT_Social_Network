@@ -50,6 +50,8 @@ private List<Post> posts;
 public User() {
 }
 
+
+
 public User(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer) {
     this.userName = userName;
     this.password = password;

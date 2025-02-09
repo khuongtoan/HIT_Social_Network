@@ -2,6 +2,7 @@ D:\SocialNetwork\social_network\src\main\java\common\Check.java
 D:\SocialNetwork\social_network\src\main\java\common\EffectButtonLLabel.java
 D:\SocialNetwork\social_network\src\main\java\common\PasswordEncryptor.java
 D:\SocialNetwork\social_network\src\main\java\common\SetScaledImage.java
+D:\SocialNetwork\social_network\src\main\java\common\Trash.java
 D:\SocialNetwork\social_network\src\main\java\common\ValidateContant.java
 D:\SocialNetwork\social_network\src\main\java\controller\AdminSettingController.java
 D:\SocialNetwork\social_network\src\main\java\controller\CreatePostController.java
@@ -15,7 +16,7 @@ D:\SocialNetwork\social_network\src\main\java\controller\UserSettingController.j
 D:\SocialNetwork\social_network\src\main\java\dao\PostDao.java
 D:\SocialNetwork\social_network\src\main\java\dao\UserDao.java
 D:\SocialNetwork\social_network\src\main\java\model\Comment.java
-D:\SocialNetwork\social_network\src\main\java\model\Like.java
+D:\SocialNetwork\social_network\src\main\java\model\Likes.java
 D:\SocialNetwork\social_network\src\main\java\model\Post.java
 D:\SocialNetwork\social_network\src\main\java\model\Role.java
 D:\SocialNetwork\social_network\src\main\java\model\Status.java
@@ -24,6 +25,7 @@ D:\SocialNetwork\social_network\src\main\java\service\EntityManagerUtil.java
 D:\SocialNetwork\social_network\src\main\java\service\Service.java
 D:\SocialNetwork\social_network\src\main\java\service\ServiceInterfaces.java
 D:\SocialNetwork\social_network\src\main\java\view\AdminSettingView.java
+D:\SocialNetwork\social_network\src\main\java\view\component\ACommentPanel.java
 D:\SocialNetwork\social_network\src\main\java\view\component\ChangeEmail.java
 D:\SocialNetwork\social_network\src\main\java\view\component\ChangePassword.java
 D:\SocialNetwork\social_network\src\main\java\view\component\ChangeQuestionRecovery.java

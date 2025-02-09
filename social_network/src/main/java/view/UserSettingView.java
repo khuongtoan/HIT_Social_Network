@@ -34,6 +34,7 @@ public UserSettingView() {
         searchTF = new javax.swing.JTextField();
         home = new javax.swing.JLabel();
         game = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         changePass = new javax.swing.JButton();
@@ -75,6 +76,8 @@ public UserSettingView() {
 
         game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game (2).png"))); // NOI18N
 
+        logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logout (2).png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -88,7 +91,9 @@ public UserSettingView() {
                 .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94)
                 .addComponent(game)
-                .addGap(180, 180, 180))
+                .addGap(132, 132, 132)
+                .addComponent(logoutButton)
+                .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +103,10 @@ public UserSettingView() {
                     .addComponent(game, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(home, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(searchTF, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(back, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(back, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(logoutButton)))
                 .addContainerGap())
         );
 
@@ -199,6 +207,7 @@ public static void main(String args[]) {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JPanel mainArea;
     private javax.swing.JTextField searchTF;
     // End of variables declaration//GEN-END:variables
@@ -337,6 +346,14 @@ public static void main(String args[]) {
 
     public void setSearchTF(JTextField searchTF) {
         this.searchTF = searchTF;
+    }
+
+    public JButton getLogoutButton() {
+        return logoutButton;
+    }
+
+    public void setLogoutButton(JButton logoutButton) {
+        this.logoutButton = logoutButton;
     }
 
     
