@@ -45,7 +45,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/mail.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="create by Group WATO HIT15-HAUI"/>
+        <Property name="text" type="java.lang.String" value="Create by group WATO HIT15-HAUI"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>

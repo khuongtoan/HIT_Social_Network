@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import view.component.ImageIconCustom;
 
 public class FlashScreen extends javax.swing.JFrame {
 
@@ -14,6 +15,8 @@ public FlashScreen() {
     initComponents();
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
+    
+   // jLabel2.setIcon(new ImageIconCustom("/mail.png"   ,jLabel2.getWidth(),  jLabel2.getHeight())); 
 
     control = new FlashScreenController(this);
 }
@@ -40,7 +43,7 @@ public static void main(String[] args) {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mail.png"))); // NOI18N
-        jLabel2.setText("create by Group WATO HIT15-HAUI");
+        jLabel2.setText("Create by group WATO HIT15-HAUI");
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 400, 40));
 
