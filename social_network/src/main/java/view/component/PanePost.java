@@ -2,52 +2,47 @@ package view.component;
 
 import static common.EffectButtonLLabel.toggleLikeButtonColor;
 import common.SetScaledImage;
-import java.awt.Color;
-import java.awt.Image;
-import java.io.File;
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import model.Post;
-import model.User;
 
 public class PanePost extends javax.swing.JPanel {
 
 //public PanePost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor, int like, int comment) {
- public PanePost(Post p){
+public PanePost(Post p) {
     initComponents();
     this.contentw.setText(p.getContent());
-    this.username.setText(p.getUser().getUserName()+ "");
+    this.username.setText(p.getUser().getUserName() + "");
     int likeCount = p.getLikes().size();
     int commentCount = p.getComments().size();
-    
+
     this.labelLike.setText(likeCount + "");
     this.commentLabel.setText(commentCount + "");
-    
+
     toggleLikeButtonColor(this.ButtonLike);
     SetScaledImage.setScaledImage570(p.getImagePath(), this.image);
-    
+
 }
 
+public PanePost() {
 
-public PanePost(){
-    
 }
-
-
-
-
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dPopupMenu = new javax.swing.JPopupMenu();
+        deleteMenuItem = new javax.swing.JMenuItem();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         username = new javax.swing.JLabel();
+        deletePostLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         labelLike = new javax.swing.JLabel();
@@ -58,7 +53,9 @@ public PanePost(){
         image = new javax.swing.JLabel();
         contentw = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        deleteMenuItem.setText("Delete post");
+        dPopupMenu.add(deleteMenuItem);
+
         setMaximumSize(new java.awt.Dimension(570, 400));
         setMinimumSize(new java.awt.Dimension(570, 400));
         setOpaque(false);
@@ -74,6 +71,8 @@ public PanePost(){
         username.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         username.setText("name");
 
+        deletePostLabel.setText(". . . .");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -82,16 +81,20 @@ public PanePost(){
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(deletePostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(username)
+                        .addComponent(deletePostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -104,13 +107,17 @@ public PanePost(){
 
         ButtonLike.setIcon(new javax.swing.ImageIcon(getClass().getResource("/like (2).png"))); // NOI18N
         ButtonLike.setText("Like");
+        ButtonLike.setBorderPainted(false);
+        ButtonLike.setContentAreaFilled(false);
         ButtonLike.setDefaultCapable(false);
-        ButtonLike.setOpaque(true);
+        ButtonLike.setFocusPainted(false);
 
-        buttonComment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chat (2).png"))); // NOI18N
+        buttonComment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chat (3).png"))); // NOI18N
         buttonComment.setText("comment");
-        buttonComment.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        buttonComment.setOpaque(true);
+        buttonComment.setBorder(null);
+        buttonComment.setBorderPainted(false);
+        buttonComment.setContentAreaFilled(false);
+        buttonComment.setFocusPainted(false);
 
         commentLabel.setText("0");
         commentLabel.setPreferredSize(new java.awt.Dimension(37, 17));
@@ -123,9 +130,9 @@ public PanePost(){
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(labelLike, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtonLike)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
                 .addComponent(buttonComment, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(commentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,7 +154,7 @@ public PanePost(){
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(commentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -170,12 +177,14 @@ public PanePost(){
     }// </editor-fold>//GEN-END:initComponents
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonLike;
     private javax.swing.JButton buttonComment;
     private javax.swing.JLabel commentLabel;
     private javax.swing.JLabel contentw;
+    private javax.swing.JPopupMenu dPopupMenu;
+    private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JLabel deletePostLabel;
     private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
@@ -281,5 +290,29 @@ public JLabel getCommentLabel() {
 public void setCommentLabel(JLabel commentLabel) {
     this.commentLabel = commentLabel;
 }
+
+public JLabel getDeletePostLabel() {
+    return deletePostLabel;
+}
+
+public void setDeletePostLabel(JLabel deletePostLabel) {
+    this.deletePostLabel = deletePostLabel;
+}
+
+    public JPopupMenu getdPopupMenu() {
+        return dPopupMenu;
+    }
+
+    public void setdPopupMenu(JPopupMenu dPopupMenu) {
+        this.dPopupMenu = dPopupMenu;
+    }
+
+    public JMenuItem getDeleteMenuItem() {
+        return deleteMenuItem;
+    }
+
+    public void setDeleteMenuItem(JMenuItem deleteMenuItem) {
+        this.deleteMenuItem = deleteMenuItem;
+    }
 
 }

@@ -18,16 +18,6 @@ public boolean addComment(Post post, User user, String content) {
 }
 
 @Override
-public boolean updateComment(int commentId, String newContent) {
-    return PostDao.updateComment(commentId, newContent);
-}
-
-@Override
-public boolean deleteComment(int commentId) {
-    return PostDao.deleteComment(commentId);
-}
-
-@Override
 public boolean addAndDeleteLike(Post post, User user) {
     return PostDao.addAndDeleteLike(post, user);
 }
@@ -40,16 +30,6 @@ public boolean addPost(User user, String content, String imagePath, String fontF
 @Override
 public boolean addPost(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
     return PostDao.addPost(user, content, fontFamily, fontSize, textColor, backgroundColor);
-}
-
-@Override
-public boolean updatePost(int postId, String newContent, String newImagePath) {
-    return PostDao.updatePost(postId, newContent, newImagePath);
-}
-
-@Override
-public boolean updatePost(int postId, String newContent) {
-    return PostDao.updatePost(postId, newContent);
 }
 
 @Override
@@ -137,19 +117,19 @@ public boolean updateUserName(int userId, String newUserName) {
     return UserDao.updateUserName(userId, newUserName);
 }
 
-    @Override
-    public boolean isPostLikedByUser(Post post, User user) {
-        return PostDao.isPostLikedByUser(post, user);
-    }
+@Override
+public boolean isPostLikedByUser(Post post, User user) {
+    return PostDao.isPostLikedByUser(post, user);
+}
 
-    @Override
-    public int getLikeCount(Post post) {
-        return PostDao.getLikeCount(post);
-    }
+@Override
+public int getLikeCount(Post post) {
+    return PostDao.getLikeCount(post);
+}
 
-    @Override
-    public List<Comment> getAllComments(Post post) {
-        return PostDao.getAllComments(post);
-    }
+@Override
+public List<Comment> getAllComments(Post post) {
+    return PostDao.getAllComments(post);
+}
 
 }

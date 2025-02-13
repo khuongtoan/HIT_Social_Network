@@ -14,10 +14,6 @@ public List<Comment> getAllComments(Post post);
 
 public boolean addComment(Post post, User user, String content);
 
-public boolean updateComment(int commentId, String newContent);
-
-public boolean deleteComment(int commentId);
-
 public boolean addAndDeleteLike(Post post, User user);
 
 public boolean isPostLikedByUser(Post post, User user);
@@ -27,10 +23,6 @@ public int getLikeCount(Post post);
 public boolean addPost(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor);
 
 public boolean addPost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor);
-
-public boolean updatePost(int postId, String newContent, String newImagePath);
-
-public boolean updatePost(int postId, String newContent);
 
 public boolean deletePost(int postId);
 

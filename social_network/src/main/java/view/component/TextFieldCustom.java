@@ -5,6 +5,8 @@ import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -14,7 +16,6 @@ private final JLabel lbltitle;
 private final JTextField txttitle;
 private final JLabel lblicon;
 private int yLocate = 25;
-
 
 public TextFieldCustom() {
     setLayout(null);
@@ -41,6 +42,14 @@ public TextFieldCustom() {
     lblicon = new JLabel();
     lblicon.setBounds((340 - 30), 30, 30, 30);
     add(lblicon);
+
+    this.addComponentListener(new ComponentAdapter() {
+    @Override
+    public void componentResized(ComponentEvent e) {
+        lblicon.setBounds(getWidth() - 30, 30, 30, 30);
+        repaint();
+    }
+    });
 
     txttitle.addFocusListener(new FocusListener() {
     private Timer t;
@@ -115,7 +124,6 @@ public String getText() {
 public void setText(String text) {
     txttitle.setText(text);
 }
-
 
 public void setUrl(String url) {
     lblicon.setIcon(new ImageIconCustom(url, 30, 30));

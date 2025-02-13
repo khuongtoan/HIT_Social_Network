@@ -98,7 +98,6 @@ public static boolean updateUserName(int userId, String newUserName) {
     }
 }
 
-
 public static boolean updatePassword(int userId, String oldPassword, String newPassword) {
     try {
         User user = entityManager.find(User.class, userId);
@@ -157,7 +156,7 @@ public static boolean updateEmail(int userId, String newEmail) {
     }
 }
 
-public static boolean updatePasswordRecovery(int userId, String newPasswordRecovery, String newAnswerRecovery ) {
+public static boolean updatePasswordRecovery(int userId, String newPasswordRecovery, String newAnswerRecovery) {
     try {
         User user = entityManager.find(User.class, userId);
 
@@ -180,12 +179,13 @@ public static boolean updatePasswordRecovery(int userId, String newPasswordRecov
         return false;
     }
 }
+
 public static boolean updateRole(String userName, Role newRole) {
     try {
         String queryStr = "SELECT u FROM User u WHERE u.userName = :userName";
         TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
         query.setParameter("userName", userName);
-        
+
         List<User> users = query.getResultList();
         if (users.isEmpty()) {
             return false;
@@ -212,7 +212,7 @@ public static boolean updateStatus(String userName, Status newStatus) {
         String queryStr = "SELECT u FROM User u WHERE u.userName = :userName";
         TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);
         query.setParameter("userName", userName);
-        
+
         List<User> users = query.getResultList();
         if (users.isEmpty()) {
             return false;
@@ -233,7 +233,6 @@ public static boolean updateStatus(String userName, Status newStatus) {
         return false;
     }
 }
-
 
 public static List<User> searchByUsername(String keyword) {
     try {
@@ -321,7 +320,7 @@ public static User authUser(String username, String password) {
     }
 }
 
-public static boolean checkPasswordCurrentUser (String username, String password) {
+public static boolean checkPasswordCurrentUser(String username, String password) {
     try {
         String queryStr = "SELECT u FROM User u WHERE u.userName = :username";
         TypedQuery<User> query = entityManager.createQuery(queryStr, User.class);

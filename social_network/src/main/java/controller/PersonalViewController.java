@@ -36,6 +36,7 @@ public PersonalViewController(PersonalView personalView) {
 
     this.serviced = new Service();
     view.getReload().addActionListener(evt -> ReloadActionPerformed(evt));
+    this.view.getSearchTF().addActionListener(evt -> searchActionPerformed(evt));
     ReloadActionPerformed(null);
 
     setLabelHoverEffect(this.view.getCreatePostLabel());
@@ -113,6 +114,8 @@ private void likeActionPerformed(ActionEvent evt, Post post, JButton buttonLike,
     panePost.getLabelLike().setText(String.valueOf(updatedLikeCount));
 
     updateLikeButtonUI(buttonLike, isLiked);
+    panePost.revalidate();
+    panePost.repaint();
 }
 
 private void updateLikeButtonUI(JButton button, boolean isLiked) {
@@ -126,7 +129,7 @@ private void updateLikeButtonUI(JButton button, boolean isLiked) {
 }
 
 private void commentActionPerformed(ActionEvent evt3, Post post) {
-    
+
     JDialog commentDialog = new JDialog(view, "Lifebool COMMENT", true);
     commentDialog.setSize(400, 300);
     commentDialog.setLocationRelativeTo(view);
@@ -185,7 +188,7 @@ private void loadComments(Post post, JPanel commentListPanel) {
             ACommentPanel commentPanel = new ACommentPanel();
             commentPanel.getUserNameComment().setText(com.getUser().getUserName());
             commentPanel.getContent().setText(com.getContent());
-            commentListPanel.add(commentPanel,0);
+            commentListPanel.add(commentPanel, 0);
         }
     } else {
         JLabel noCommentsLabel = new JLabel("No comments available.");
@@ -193,6 +196,40 @@ private void loadComments(Post post, JPanel commentListPanel) {
     }
     commentListPanel.revalidate();
     commentListPanel.repaint();
+}
+
+private void searchActionPerformed(ActionEvent evt) {
+    String keyword = view.getSearchTF().getText().trim();
+    
+    if (keyword.isEmpty()) {
+        JOptionPane.showMessageDialog(view, "Please enter a keyword to search.", "Search Failed", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    List<Post> searchResults = serviced.searchPostsByContent(keyword);
+
+    if (searchResults == null || searchResults.isEmpty()) {
+        JOptionPane.showMessageDialog(view, "No posts found matching your search.", "Search Result", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        view.getMainLabel().removeAll();
+        
+        for (Post p : searchResults) {
+            boolean isLiked = serviced.isPostLikedByUser(p, UserSession.getCurrentUser());
+
+            PanePost panePost = new PanePost(p);
+            updateLikeButtonUI(panePost.getButtonLike(), isLiked);
+            panePost.getButtonLike().addActionListener(evt2 -> likeActionPerformed(evt2, p, panePost.getButtonLike(), panePost));
+
+            int countComment = (p.getComments() != null) ? p.getComments().size() : 0;
+            panePost.getCommentLabel().setText(countComment + "");
+
+            this.view.getMainLabel().add(panePost, 0);
+            panePost.getButtonComment().addActionListener(evt3 -> commentActionPerformed(evt3, p));
+        }
+
+        view.revalidate();
+        view.repaint();
+    }
 }
 
 

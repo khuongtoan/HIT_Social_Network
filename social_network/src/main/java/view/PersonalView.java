@@ -1,6 +1,6 @@
 package view;
 
-import controller.PersonalViewController;
+import controller.PersonalController;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -9,32 +9,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import view.component.PanePost;
-import view.component.RoundedTextField;
-import static view.component.RoundedTextField.textF;
-
 
 public class PersonalView extends javax.swing.JFrame {
 
-private PersonalViewController controll ;
-
+private PersonalController controll;
 
 public PersonalView() {
     initComponents();
     setLocationRelativeTo(null);
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
-    
-    
-    textF(searchTF,jPanel1);
+
     jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     jScrollPane2.getHorizontalScrollBar().setUnitIncrement(16);
-    controll = new PersonalViewController(this);
-    
+    controll = new PersonalController(this);
+
 }
-
-
-
-
 
 @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -224,9 +214,8 @@ public PersonalView() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
 public static void main(String args[]) {
-   
+
     java.awt.EventQueue.invokeLater(new Runnable() {
     @Override
     public void run() {
@@ -234,7 +223,6 @@ public static void main(String args[]) {
     }
     });
 }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -255,129 +243,124 @@ public static void main(String args[]) {
     private javax.swing.JLabel settingLabel;
     // End of variables declaration//GEN-END:variables
 
-    public JLabel getCreatePostLabel() {
-        return createPostLabel;
-    }
+public JLabel getCreatePostLabel() {
+    return createPostLabel;
+}
 
-    public void setCreatePostLabel(JLabel createPostLabel) {
-        this.createPostLabel = createPostLabel;
-    }
+public void setCreatePostLabel(JLabel createPostLabel) {
+    this.createPostLabel = createPostLabel;
+}
 
-    public JLabel getGame() {
-        return game;
-    }
+public JLabel getGame() {
+    return game;
+}
 
-    public void setGame(JLabel game) {
-        this.game = game;
-    }
+public void setGame(JLabel game) {
+    this.game = game;
+}
 
+public JLabel getLabelSearch() {
+    return LabelSearch;
+}
 
+public void setLabelSearch(JLabel labelSearch) {
+    this.LabelSearch = labelSearch;
+}
 
-    public JLabel getLabelSearch() {
-        return LabelSearch;
-    }
+public JPanel getjPanel1() {
+    return jPanel1;
+}
 
-    public void setLabelSearch(JLabel labelSearch) {
-        this.LabelSearch = labelSearch;
-    }
+public void setjPanel1(JPanel jPanel1) {
+    this.jPanel1 = jPanel1;
+}
 
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
+public JPanel getjPanel2() {
+    return jPanel2;
+}
 
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
+public void setjPanel2(JPanel jPanel2) {
+    this.jPanel2 = jPanel2;
+}
 
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
+public JPanel getjPanel3() {
+    return jPanel3;
+}
 
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
+public void setjPanel3(JPanel jPanel3) {
+    this.jPanel3 = jPanel3;
+}
 
-    public JPanel getjPanel3() {
-        return jPanel3;
-    }
+public JPanel getjPanel4() {
+    return jPanel4;
+}
 
-    public void setjPanel3(JPanel jPanel3) {
-        this.jPanel3 = jPanel3;
-    }
+public void setjPanel4(JPanel jPanel4) {
+    this.jPanel4 = jPanel4;
+}
 
-    public JPanel getjPanel4() {
-        return jPanel4;
-    }
+public JPanel getjPanel5() {
+    return jPanel5;
+}
 
-    public void setjPanel4(JPanel jPanel4) {
-        this.jPanel4 = jPanel4;
-    }
+public void setjPanel5(JPanel jPanel5) {
+    this.jPanel5 = jPanel5;
+}
 
-    public JPanel getjPanel5() {
-        return jPanel5;
-    }
+public JPanel getjPanel6() {
+    return jPanel6;
+}
 
-    public void setjPanel5(JPanel jPanel5) {
-        this.jPanel5 = jPanel5;
-    }
+public void setjPanel6(JPanel jPanel6) {
+    this.jPanel6 = jPanel6;
+}
 
-    public JPanel getjPanel6() {
-        return jPanel6;
-    }
+public JScrollPane getjScrollPane2() {
+    return jScrollPane2;
+}
 
-    public void setjPanel6(JPanel jPanel6) {
-        this.jPanel6 = jPanel6;
-    }
+public void setjScrollPane2(JScrollPane jScrollPane2) {
+    this.jScrollPane2 = jScrollPane2;
+}
 
-    public JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
+public JPanel getMainLabel() {
+    return mainLabel;
+}
 
-    public void setjScrollPane2(JScrollPane jScrollPane2) {
-        this.jScrollPane2 = jScrollPane2;
-    }
+public void setMainLabel(JPanel mainLabel) {
+    this.mainLabel = mainLabel;
+}
 
+public JLabel getNameLabel() {
+    return nameLabel;
+}
 
+public void setNameLabel(JLabel nameLabel) {
+    this.nameLabel = nameLabel;
+}
 
-    public JPanel getMainLabel() {
-        return mainLabel;
-    }
+public JButton getReload() {
+    return reload;
+}
 
-    public void setMainLabel(JPanel mainLabel) {
-        this.mainLabel = mainLabel;
-    }
+public void setReload(JButton reload) {
+    this.reload = reload;
+}
 
-    public JLabel getNameLabel() {
-        return nameLabel;
-    }
+public JTextField getSearchTF() {
+    return searchTF;
+}
 
-    public void setNameLabel(JLabel nameLabel) {
-        this.nameLabel = nameLabel;
-    }
+public void setSearchTF(JTextField searchTF) {
+    this.searchTF = searchTF;
+}
 
-    public JButton getReload() {
-        return reload;
-    }
+public JLabel getSettingLabel() {
+    return settingLabel;
+}
 
-    public void setReload(JButton reload) {
-        this.reload = reload;
-    }
+public void setSettingLabel(JLabel settingLabel) {
+    this.settingLabel = settingLabel;
+}
 
-    public JTextField getSearchTF() {
-        return searchTF;
-    }
-
-    public void setSearchTF(JTextField searchTF) {
-        this.searchTF = searchTF;
-    }
-
-    public JLabel getSettingLabel() {
-        return settingLabel;
-    }
-
-    public void setSettingLabel(JLabel settingLabel) {
-        this.settingLabel = settingLabel;
-    }
-
-    
 }

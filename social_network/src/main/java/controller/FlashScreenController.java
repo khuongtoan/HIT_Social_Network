@@ -3,7 +3,7 @@ package controller;
 import javax.swing.*;
 import java.awt.event.*;
 import view.FlashScreen;
-import view.LoginAndRegister;
+import view2.LoginAndRegister2;
 
 public class FlashScreenController {
 
@@ -21,7 +21,7 @@ public void showFlashScreen() {
     @Override
     public void actionPerformed(ActionEvent e) {
         flashScreen.setVisible(false);
-        new LoginAndRegister().setVisible(true);
+        new LoginAndRegister2().setVisible(true);
         flashScreen.dispose();
     }
     });

@@ -1,23 +1,32 @@
 package view2;
 
+import controller2.LoginAndRegisterController2;
 import java.awt.geom.RoundRectangle2D;
+import view.component.ButtonCustom;
+import view.component.ExitButton;
+import view.component.PasswordFieldCustom;
+import view.component.TextFieldCustom;
 
 public class LoginAndRegister2 extends javax.swing.JFrame {
+
+private LoginAndRegisterController2 controll;
 
 public LoginAndRegister2() {
     initComponents();
     setSize(400, 470);
     this.setLocationRelativeTo(null);
     setShape(new RoundRectangle2D.Double(0, 0, 400, 470, 40, 40));
-    userNamePanel.setTitle("User name");
-    passwordPanel.setTitle("Your password");
-    userNamePanel.setUrl("user.png");
-    passwordPanel.setUrl("pass.png");
+    setCommon();
+    controll = new LoginAndRegisterController2(this);
+}
+
+public void setCommon() {
+    userNameText.setTitle("User name");
+    PasswordText.setTitle("Your password");
+    userNameText.setUrl("user.png");
+    PasswordText.setUrl("pass.png");
     panelCustom1.setColorDark("#99f2c8");
     panelCustom1.setColorLight("#1f4037");
-    
-    this.setVisible(true);
-    
 }
 
 @SuppressWarnings("unchecked")
@@ -30,8 +39,8 @@ public LoginAndRegister2() {
         forgot = new view.component.ButtonCustom();
         login = new view.component.ButtonCustom();
         signUp = new view.component.ButtonCustom();
-        passwordPanel = new view.component.TextFieldCustom();
-        userNamePanel = new view.component.TextFieldCustom();
+        userNameText = new view.component.TextFieldCustom();
+        PasswordText = new view.component.PasswordFieldCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -62,10 +71,10 @@ public LoginAndRegister2() {
         signUp.setText("Sign up");
         panelCustom1.add(signUp);
         signUp.setBounds(40, 370, 130, 30);
-        panelCustom1.add(passwordPanel);
-        passwordPanel.setBounds(20, 160, 340, 60);
-        panelCustom1.add(userNamePanel);
-        userNamePanel.setBounds(20, 90, 340, 60);
+        panelCustom1.add(userNameText);
+        userNameText.setBounds(20, 90, 340, 60);
+        panelCustom1.add(PasswordText);
+        PasswordText.setBounds(20, 160, 340, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,17 +92,66 @@ public LoginAndRegister2() {
 
 public static void main(String args[]) {
     LoginAndRegister2 a = new LoginAndRegister2();
-    
+
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private view.component.PasswordFieldCustom PasswordText;
     private view.component.ExitButton exitButton1;
     private view.component.ButtonCustom forgot;
     private javax.swing.JLabel jLabel1;
     private view.component.ButtonCustom login;
     private view.component.PanelCustom panelCustom1;
-    private view.component.TextFieldCustom passwordPanel;
     private view.component.ButtonCustom signUp;
-    private view.component.TextFieldCustom userNamePanel;
+    private view.component.TextFieldCustom userNameText;
     // End of variables declaration//GEN-END:variables
+
+public PasswordFieldCustom getPasswordText() {
+    return PasswordText;
+}
+
+public void setPasswordText(PasswordFieldCustom PasswordText) {
+    this.PasswordText = PasswordText;
+}
+
+public ExitButton getExitButton1() {
+    return exitButton1;
+}
+
+public void setExitButton1(ExitButton exitButton1) {
+    this.exitButton1 = exitButton1;
+}
+
+public ButtonCustom getForgot() {
+    return forgot;
+}
+
+public void setForgot(ButtonCustom forgot) {
+    this.forgot = forgot;
+}
+
+public ButtonCustom getLogin() {
+    return login;
+}
+
+public void setLogin(ButtonCustom login) {
+    this.login = login;
+}
+
+public ButtonCustom getSignUp() {
+    return signUp;
+}
+
+public void setSignUp(ButtonCustom signUp) {
+    this.signUp = signUp;
+}
+
+public TextFieldCustom getUserNameText() {
+    return userNameText;
+}
+
+public void setUserNameText(TextFieldCustom userNameText) {
+    this.userNameText = userNameText;
+}
+
 }

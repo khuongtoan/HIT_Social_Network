@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import static view.component.RoundedTextField.textF;
 
 
 public class UserSettingView extends javax.swing.JFrame {
@@ -18,7 +17,6 @@ public UserSettingView() {
     initComponents();
     this.setLocationRelativeTo(null);
     setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
-    textF(searchTF,jPanel1);
     userSettingController = new UserSettingController(this);
     
 }
