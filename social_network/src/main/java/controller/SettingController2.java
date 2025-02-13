@@ -29,6 +29,11 @@ public SettingController2(SettingView2 view) {
     serviced = new Service();
     this.view.getBack().addActionListener(evt -> backActionPerformed(evt));
 
+    if (UserSession.getCurrentUser().getRole() != Role.ADMIN) {
+        this.view.getChangeStatus().setVisible(false);
+        this.view.getChangeRole().setVisible(false);
+    }
+
     this.view.getOptionButton().addActionListener(evt -> getOptionActionperformed(evt));
 
     this.view.getChangeEmail().addActionListener(evt -> showChangeEmailPanel(evt));
@@ -37,7 +42,7 @@ public SettingController2(SettingView2 view) {
     this.view.getChangeUserName().addActionListener(evt -> showChangeUserNamePanel(evt));
     this.view.getChangeRole().addActionListener(evt -> showChangeRolePanel(evt));
     this.view.getChangeStatus().addActionListener(evt -> showChangeStatusPanel(evt));
-    
+
     EffectButtonLLabel.buttonHoverEffect(this.view.getBack());
     EffectButtonLLabel.buttonHoverEffect(this.view.getLogoutButton());
 
@@ -270,7 +275,7 @@ private void updateStatusActionPerformed(ChangeStatus2 changeStatusPanel) {
 }
 
 private void getOptionActionperformed(ActionEvent evt) {
-    ButtonCustom button = (ButtonCustom) evt.getSource(); 
+    ButtonCustom button = (ButtonCustom) evt.getSource();
     this.view.getAdminPopupMenu().show(button, 0, button.getHeight());
 }
 

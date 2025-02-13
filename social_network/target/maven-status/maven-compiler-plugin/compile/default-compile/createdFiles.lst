@@ -8,7 +8,9 @@ service\ServiceInterfaces.class
 view\component\PasswordFieldCustom$1.class
 model\User.class
 view\LoginAndRegister2.class
+controller\Player.class
 controller\ForgotPasswordController2.class
+controller\ControlWindow.class
 controller\SettingController2.class
 view\component\ButtonCustom$1.class
 controller\FlashScreenController2$1.class
@@ -19,10 +21,12 @@ model\Role.class
 common\SetScaledImage.class
 controller\UserSession.class
 view\component\PanelCustomRec.class
+controller\Consts.class
 view\component\TextFieldCustom$2.class
 view\SettingView2.class
 view\component\PasswordFieldCustom$2$1.class
 view\component\PasswordFieldCustom.class
+controller\PersonalController2$4.class
 view\component\ImageIconCustom.class
 view\component\ChangeRole2.class
 dao\UserDao.class
@@ -56,8 +60,10 @@ controller\PersonalController2$2.class
 common\Trash.class
 view\component\SearchText.class
 view\component\ChangeUsername2.class
+controller\Ball.class
 controller\PersonalController2.class
 common\ValidateContant.class
+controller\GameTableTennis.class
 model\Status.class
 view\component\PanePost.class
 view\component\TextFieldCustom.class

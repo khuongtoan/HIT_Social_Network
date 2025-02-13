@@ -39,11 +39,12 @@ public void setCommon() {
         panelCustom1 = new view.component.PanelCustom();
         panelCustomRec1 = new view.component.PanelCustomRec();
         jLabel1 = new javax.swing.JLabel();
-        settingLabel = new javax.swing.JLabel();
+        gameLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         reload = new javax.swing.JButton();
         createPostLabel = new javax.swing.JLabel();
         exitButton1 = new view.component.ExitButton();
+        settingLabel = new javax.swing.JLabel();
         jpanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         searchTF = new view.component.SearchText();
@@ -68,12 +69,12 @@ public void setCommon() {
         panelCustomRec1.add(jLabel1);
         jLabel1.setBounds(30, 34, 100, 50);
 
-        settingLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        settingLabel.setForeground(new java.awt.Color(255, 255, 255));
-        settingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/9.png"))); // NOI18N
-        settingLabel.setText("Setting");
-        panelCustomRec1.add(settingLabel);
-        settingLabel.setBounds(20, 270, 160, 30);
+        gameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        gameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/4.png"))); // NOI18N
+        gameLabel.setText("Game");
+        panelCustomRec1.add(gameLabel);
+        gameLabel.setBounds(20, 320, 160, 30);
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,6 +105,13 @@ public void setCommon() {
         createPostLabel.setBounds(20, 220, 160, 30);
         panelCustomRec1.add(exitButton1);
         exitButton1.setBounds(360, 0, 35, 35);
+
+        settingLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        settingLabel.setForeground(new java.awt.Color(255, 255, 255));
+        settingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/9.png"))); // NOI18N
+        settingLabel.setText("Setting");
+        panelCustomRec1.add(settingLabel);
+        settingLabel.setBounds(20, 270, 160, 30);
 
         panelCustom1.add(panelCustomRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 500));
 
@@ -168,6 +176,7 @@ public void setCommon() {
     private javax.swing.JLabel createPostLabel;
     private view.component.ExitButton exitButton1;
     private view.component.ExitButton exitButton2;
+    private javax.swing.JLabel gameLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -232,6 +241,14 @@ public void setReload(JButton reload) {
 public SearchText getSearchTF() {
     return searchTF;
 }
+
+    public JLabel getGameLabel() {
+        return gameLabel;
+    }
+
+    public void setGameLabel(JLabel gameLabel) {
+        this.gameLabel = gameLabel;
+    }
 
 public void setSearchTF(SearchText searchText1) {
     this.searchTF = searchText1;

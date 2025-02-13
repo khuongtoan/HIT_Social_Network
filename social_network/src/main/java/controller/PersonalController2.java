@@ -17,7 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import model.Comment;
 import model.Post;
-import model.Role;
 import service.Service;
 import service.ServiceInterfaces;
 import view.component.ACommentPanel;
@@ -44,7 +43,10 @@ public PersonalController2(PersonalView2 personalView) {
 
     EffectButtonLLabel.setLabelHoverEffect(this.view.getCreatePostLabel());
     EffectButtonLLabel.setLabelHoverEffect(this.view.getSettingLabel());
+    EffectButtonLLabel.setLabelHoverEffect(this.view.getGameLabel());
+
     EffectButtonLLabel.buttonHoverEffect(this.view.getReload());
+
     this.view.setVisible(true);
 }
 
@@ -65,6 +67,16 @@ private void switchView() {
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         view.setVisible(false);
         new SettingView2().setVisible(true);
+        view.dispose();
+    }
+    });
+
+    this.view.getGameLabel().addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        view.setVisible(false);
+        GameTableTennis a = new GameTableTennis();
+        a.setVisible(true);
         view.dispose();
     }
     });
