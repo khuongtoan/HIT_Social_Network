@@ -6,6 +6,7 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import view.component.ExitButton;
 
 import view.component.ModernScrollBarUI;
@@ -29,7 +30,7 @@ public void setCommon() {
     this.jScrollPane1.getVerticalScrollBar().setUI(new ModernScrollBarUI());
     this.jScrollPane1.getHorizontalScrollBar().setUI(new ModernScrollBarUI());
     this.jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
-    
+
 }
 
 @SuppressWarnings("unchecked")
@@ -242,13 +243,13 @@ public SearchText getSearchTF() {
     return searchTF;
 }
 
-    public JLabel getGameLabel() {
-        return gameLabel;
-    }
+public JLabel getGameLabel() {
+    return gameLabel;
+}
 
-    public void setGameLabel(JLabel gameLabel) {
-        this.gameLabel = gameLabel;
-    }
+public void setGameLabel(JLabel gameLabel) {
+    this.gameLabel = gameLabel;
+}
 
 public void setSearchTF(SearchText searchText1) {
     this.searchTF = searchText1;
@@ -256,6 +257,14 @@ public void setSearchTF(SearchText searchText1) {
 
 public JLabel getSettingLabel() {
     return settingLabel;
+}
+
+public JScrollPane getjScrollPane1() {
+    return jScrollPane1;
+}
+
+public void setjScrollPane1(JScrollPane jScrollPane1) {
+    this.jScrollPane1 = jScrollPane1;
 }
 
 public void setSettingLabel(JLabel settingLabel) {

@@ -8,12 +8,14 @@ service\ServiceInterfaces.class
 view\component\PasswordFieldCustom$1.class
 model\User.class
 view\LoginAndRegister2.class
+controller\PersonalController2$6.class
 controller\Player.class
 controller\ForgotPasswordController2.class
 controller\ControlWindow.class
 controller\SettingController2.class
 view\component\ButtonCustom$1.class
 controller\FlashScreenController2$1.class
+controller\PersonalController2$5.class
 controller\LoginAndRegisterController2.class
 view\component\PanelCustom.class
 common\EffectButtonLLabel$1.class

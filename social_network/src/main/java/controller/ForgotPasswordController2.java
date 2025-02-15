@@ -21,7 +21,7 @@ public ForgotPasswordController2(ForgotPassword2 forgotPassword) {
     this.view.getBack().addActionListener(evt -> backActionPerformed(evt));
     this.view.getChangePass().addActionListener(evt -> changePasswordActionPerformed(evt));
     this.view.getGetQuestion().addActionListener(evt -> getQuestionActionPerformed(evt));
-    
+
     EffectButtonLLabel.buttonHoverEffect(this.view.getBack());
 
     this.view.setVisible(true);
@@ -36,7 +36,14 @@ private void backActionPerformed(ActionEvent evt) {
 
 private void getQuestionActionPerformed(ActionEvent evt) {
     String userName = view.getUserNameText().getText().trim();
-    this.view.getQuestionLabel().setText(serviced.getPasswordRecoveryQuestion(userName));
+    String question = serviced.getPasswordRecoveryQuestion(userName);
+
+    if (question == null || question.isEmpty()) {
+        JOptionPane.showMessageDialog(view, "User not found or no recovery question set.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    this.view.getQuestionLabel().setText(question);
 }
 
 private void changePasswordActionPerformed(ActionEvent evt) {

@@ -20,11 +20,11 @@ import view.PersonalView2;
 
 public class GameTableTennis extends JFrame {
 
-private ControlWindow cw = new ControlWindow(this);
+private final ControlWindow controllww = new ControlWindow(this);
 
 public GameTableTennis() {
     this.setUndecorated(true);
-    this.add(cw);
+    this.add(controllww);
     this.pack();
     this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/logo (3).jpg")));
     this.setSize(Consts.WIDTH, Consts.HEIGHT);
@@ -40,12 +40,12 @@ public GameTableTennis() {
 
 class ControlWindow extends JPanel implements ActionListener, KeyListener {
 
-private Ball ball = new Ball(Consts.WIDTH / 2, Consts.HEIGHT / 2, 30);
-private Timer timer = new Timer(6, this);
-private Player lp = new Player(0, Consts.HEIGHT / 2);
-private Player rp = new Player(Consts.WIDTH - lp.width - lp.width / 2, Consts.HEIGHT / 2);
-private Font gameFont = new Font("Consolas", Font.PLAIN, 20);
-private JButton backButton;
+private final Ball ball = new Ball(Consts.WIDTH / 2, Consts.HEIGHT / 2, 30);
+private final Timer timer = new Timer(6, this);
+private final Player lp = new Player(0, Consts.HEIGHT / 2);
+private final Player rp = new Player(Consts.WIDTH - lp.width - lp.width / 2, Consts.HEIGHT / 2);
+private final Font gameFont = new Font("Consolas", Font.PLAIN, 20);
+private final JButton backButton;
 
 public ControlWindow(JFrame parentFrame) {
     timer.start();
@@ -56,7 +56,7 @@ public ControlWindow(JFrame parentFrame) {
 
     backButton = new JButton("Back");
 
-    backButton.setForeground(Color.WHITE); // Chữ màu trắng
+    backButton.setForeground(Color.WHITE); 
     backButton.setFont(gameFont);
     backButton.setBounds(Consts.WIDTH / 2 - 50, 10, 100, 30);
     backButton.setOpaque(false);
@@ -66,7 +66,6 @@ public ControlWindow(JFrame parentFrame) {
 
     add(backButton);
 
-    // Xử lý sự kiện khi nhấn Back
     backButton.addActionListener(e -> {
         parentFrame.dispose();
         new PersonalView2().setVisible(true);

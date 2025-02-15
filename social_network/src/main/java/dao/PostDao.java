@@ -36,6 +36,7 @@ public static boolean addComment(Post post, User user, String content) {
         Comment comment = new Comment(post, user, content);
         entityManager.getTransaction().begin();
         entityManager.persist(comment);
+        entityManager.flush();
         entityManager.getTransaction().commit();
         return true;
     } catch (Exception e) {
@@ -121,6 +122,18 @@ public static int getLikeCount(Post post) {
     }
 }
 
+public static int getCommentCount(Post post) {
+    try {
+        TypedQuery<Long> query = entityManager.createQuery(
+                "SELECT COUNT(l) FROM Comment l WHERE l.post = :post", Long.class);
+        query.setParameter("post", post);
+        return query.getSingleResult().intValue();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return 0;
+    }
+}
+
 public static boolean addPost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor) {
     try {
         Post post = new Post(user, content, imagePath, fontFamily, fontSize, textColor, backgroundColor);
@@ -190,15 +203,56 @@ public static List<Post> searchPostsByContent(String keyword) {
     }
 }
 
-public static List<Post> getAllPost() {
+public static List<Post> getAllPost(int page) {
     try {
-        String queryStr = "SELECT P FROM Post P";
+        String queryStr = "SELECT P FROM Post P "; //ORDER BY P.createdAt DESC";
         TypedQuery<Post> query = entityManager.createQuery(queryStr, Post.class);
+        query.setFirstResult((page - 1) * 10); // Bỏ qua số bài viết đã tải
+        query.setMaxResults(10); // Lấy 10 bài viết mỗi lần
         return query.getResultList();
     } catch (Exception e) {
         e.printStackTrace();
-
         return null;
     }
 }
+
+public static boolean deleteComment(int commentId) {
+    try {
+        Comment comment = entityManager.find(Comment.class, commentId);
+        if (comment == null) {
+            return false;
+        }
+        entityManager.getTransaction().begin();
+        entityManager.remove(comment);
+        entityManager.getTransaction().commit();
+        return true;
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+        return false;
+    }
+}
+
+public static boolean updateComment(int commentId, String newContent) {
+    try {
+        Comment comment = entityManager.find(Comment.class, commentId);
+        if (comment == null) {
+            return false;
+        }
+        entityManager.getTransaction().begin();
+        comment.setContent(newContent);
+        entityManager.merge(comment);
+        entityManager.getTransaction().commit();
+        return true;
+    } catch (Exception e) {
+        if (entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().rollback();
+        }
+        e.printStackTrace();
+        return false;
+    }
+}
+
 }

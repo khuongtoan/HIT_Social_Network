@@ -20,6 +20,8 @@ public boolean isPostLikedByUser(Post post, User user);
 
 public int getLikeCount(Post post);
 
+public int getCommentCount(Post post);
+
 public boolean addPost(User user, String content, String fontFamily, Integer fontSize, String textColor, String backgroundColor);
 
 public boolean addPost(User user, String content, String imagePath, String fontFamily, Integer fontSize, String textColor, String backgroundColor);
@@ -28,7 +30,7 @@ public boolean deletePost(int postId);
 
 public List<Post> searchPostsByContent(String keyword);
 
-public List<Post> getAllPost();
+public List<Post> getAllPost(int page);
 
 public int addUser(String userName, String password, String email, String passwordRecovery, String passwordRecoveryAnswer);
 
@@ -57,5 +59,9 @@ public User authUser(String username, String password);
 public String getPasswordRecoveryQuestion(String userName);
 
 public boolean checkPasswordCurrentUser(String username, String password);
+
+public boolean updateComment(int commentId, String newContent);
+
+public boolean deleteComment ( int commentId);
 
 }

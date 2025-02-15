@@ -83,8 +83,8 @@ public List<User> searchByUsername(String keyword) {
 }
 
 @Override
-public List<Post> getAllPost() {
-    return PostDao.getAllPost();
+public List<Post> getAllPost(int page) {
+    return PostDao.getAllPost(page);
 }
 
 @Override
@@ -123,13 +123,28 @@ public boolean isPostLikedByUser(Post post, User user) {
 }
 
 @Override
+public List<Comment> getAllComments(Post post) {
+    return PostDao.getAllComments(post);
+}
+
+@Override
+public boolean updateComment(int commentId, String newContent) {
+    return PostDao.updateComment(commentId, newContent);
+}
+
+@Override
+public boolean deleteComment(int commentId) {
+    return PostDao.deleteComment(commentId);
+}
+
+@Override
 public int getLikeCount(Post post) {
     return PostDao.getLikeCount(post);
 }
 
 @Override
-public List<Comment> getAllComments(Post post) {
-    return PostDao.getAllComments(post);
+public int getCommentCount(Post post) {
+    return PostDao.getCommentCount(post);
 }
 
 }

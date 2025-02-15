@@ -4,6 +4,8 @@ import common.EffectButtonLLabel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -29,6 +31,8 @@ public class PersonalController2 {
 
 private final PersonalView2 view;
 private final ServiceInterfaces serviced;
+private int currentPage;
+private boolean isLoading = false;
 
 public PersonalController2(PersonalView2 personalView) {
     this.view = personalView;
@@ -37,6 +41,7 @@ public PersonalController2(PersonalView2 personalView) {
     view.getReload().addActionListener(evt -> ReloadActionPerformed(evt));
     this.view.getSearchTF().addActionListener(evt -> searchActionPerformed(evt));
     ReloadActionPerformed(null);
+    setupScrollListener();
 
     switchView();
     this.view.getNameLabel().setText(UserSession.getCurrentUser().getUserName());
@@ -82,11 +87,29 @@ private void switchView() {
     });
 }
 
-private void ReloadActionPerformed(ActionEvent evt) {
-    List<Post> listPost = serviced.getAllPost();
-    view.getMainLabel().removeAll();
+private void setupScrollListener() {
+    JScrollPane scrollPane = view.getjScrollPane1();
+    scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+    @Override
+    public void adjustmentValueChanged(AdjustmentEvent e) {
+        if (!isLoading && e.getAdjustable().getMaximum() == e.getAdjustable().getValue() + e.getAdjustable().getVisibleAmount()) {
+            loadMorePosts();
+        }
+    }
+    });
+}
 
-    if (listPost != null) {
+private void ReloadActionPerformed(ActionEvent evt) {
+    currentPage = 1;
+    view.getMainLabel().removeAll();
+    loadMorePosts();
+}
+
+private void loadMorePosts() {
+    isLoading = true;
+    List<Post> listPost = serviced.getAllPost(currentPage);
+
+    if (listPost != null && !listPost.isEmpty()) {
         for (Post p : listPost) {
 
             boolean isLiked = serviced.isPostLikedByUser(p, UserSession.getCurrentUser());
@@ -97,11 +120,11 @@ private void ReloadActionPerformed(ActionEvent evt) {
             EffectButtonLLabel.buttonHoverEffect(panePost.getButtonLike());
             EffectButtonLLabel.buttonHoverEffect(panePost.getButtonComment());
 
-            int countComment = (p.getComments() != null) ? p.getComments().size() : 0;
+            int countComment = serviced.getCommentCount(p);
             panePost.getCommentLabel().setText(countComment + "");
 
             this.view.getMainLabel().add(panePost, 0);
-            panePost.getButtonComment().addActionListener(evt3 -> commentActionPerformed(evt3, p));
+            panePost.getButtonComment().addActionListener(evt3 -> commentActionPerformed(evt3, p, panePost));
             panePost.getDeletePostLabel().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
@@ -110,10 +133,12 @@ private void ReloadActionPerformed(ActionEvent evt) {
             });
             panePost.getDeleteMenuItem().addActionListener(evt4 -> deletePostActionPerformed(evt4, p.getPostId()));
         }
+        currentPage++;
     }
 
     view.revalidate();
     view.repaint();
+    isLoading = false;
 }
 
 private void likeActionPerformed(ActionEvent evt, Post post, JButton buttonLike, PanePost panePost) {
@@ -123,8 +148,6 @@ private void likeActionPerformed(ActionEvent evt, Post post, JButton buttonLike,
     panePost.getLabelLike().setText(String.valueOf(updatedLikeCount));
 
     updateLikeButtonUI(buttonLike, isLiked);
-    panePost.revalidate();
-    panePost.repaint();
 }
 
 private void updateLikeButtonUI(JButton button, boolean isLiked) {
@@ -135,7 +158,7 @@ private void updateLikeButtonUI(JButton button, boolean isLiked) {
     }
 }
 
-private void commentActionPerformed(ActionEvent evt3, Post post) {
+private void commentActionPerformed(ActionEvent evt3, Post post, PanePost panePost) {
 
     JDialog commentDialog = new JDialog(view, "Lifebool COMMENT", true);
     commentDialog.setSize(400, 300);
@@ -165,8 +188,17 @@ private void commentActionPerformed(ActionEvent evt3, Post post) {
         if (!content.isEmpty()) {
             boolean success = serviced.addComment(post, UserSession.getCurrentUser(), content);
             if (success) {
-                loadComments(post, commentListPanel);
+                ACommentPanel newCommentPanel = new ACommentPanel();
+                newCommentPanel.getUserNameComment().setText(UserSession.getCurrentUser().getUserName());
+                newCommentPanel.getContent().setText(content);
+                commentListPanel.add(newCommentPanel, 0);
+                commentListPanel.revalidate();
+                commentListPanel.repaint();
+
                 userComment.setText("");
+                int updatedCommentCount = serviced.getCommentCount(post);
+                panePost.getCommentLabel().setText(String.valueOf(updatedCommentCount));
+
             } else {
                 JOptionPane.showMessageDialog(commentDialog, "Failed to add comment. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -189,11 +221,49 @@ private void loadComments(Post post, JPanel commentListPanel) {
             ACommentPanel commentPanel = new ACommentPanel();
             commentPanel.getUserNameComment().setText(com.getUser().getUserName());
             commentPanel.getContent().setText(com.getContent());
+
+            if (com.getUser().getUserId() != UserSession.getCurrentUser().getUserId()) {
+                commentPanel.getUpDeLabel().setVisible(false);
+                commentListPanel.add(commentPanel, 0);
+            } else {
+                commentPanel.getUpDeLabel().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent evt) {
+                    commentPanel.getCommentPopupMenu().show(commentPanel.getUpDeLabel(), evt.getX(), evt.getY());
+                }
+                });
+
+                // Xử lý sự kiện update comment 
+                commentPanel.getUpdateComment().addActionListener(e -> {
+                    String newContent = JOptionPane.showInputDialog(view, "Edit your comment:", com.getContent());
+                    if (newContent != null && !newContent.trim().isEmpty()) {
+                        boolean updated = serviced.updateComment(com.getCommentId(), newContent.trim());
+                        if (updated) {
+                            commentPanel.getContent().setText(newContent.trim());
+                            JOptionPane.showMessageDialog(view, "Comment updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(view, "Failed to update comment.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                });
+
+                // Xử lý sự kiện delete comment
+                commentPanel.getDeleteComment().addActionListener(e -> {
+                    int confirm = JOptionPane.showConfirmDialog(view, "Are you sure you want to delete this comment?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        boolean deleted = serviced.deleteComment(com.getCommentId());
+                        if (deleted) {
+                            commentListPanel.remove(commentPanel);
+                            commentListPanel.revalidate();
+                            commentListPanel.repaint();
+                        } else {
+                            JOptionPane.showMessageDialog(view, "Failed to delete comment.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                });
+            }
             commentListPanel.add(commentPanel, 0);
         }
-    } else {
-        JLabel noCommentsLabel = new JLabel("No comments available.");
-        commentListPanel.add(noCommentsLabel);
     }
     commentListPanel.revalidate();
     commentListPanel.repaint();
@@ -225,7 +295,7 @@ private void searchActionPerformed(ActionEvent evt) {
             panePost.getCommentLabel().setText(countComment + "");
 
             this.view.getMainLabel().add(panePost, 0);
-            panePost.getButtonComment().addActionListener(evt3 -> commentActionPerformed(evt3, p));
+            panePost.getButtonComment().addActionListener(evt3 -> commentActionPerformed(evt3, p, panePost));
         }
 
         view.revalidate();
