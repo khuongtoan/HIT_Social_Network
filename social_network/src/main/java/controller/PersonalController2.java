@@ -12,7 +12,6 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,6 +23,7 @@ import service.ServiceInterfaces;
 import view.component.ACommentPanel;
 import view.component.PanePost;
 import view.CreatePostView2;
+import view.HelpView;
 import view.PersonalView2;
 import view.SettingView2;
 
@@ -49,6 +49,7 @@ public PersonalController2(PersonalView2 personalView) {
     EffectButtonLLabel.setLabelHoverEffect(this.view.getCreatePostLabel());
     EffectButtonLLabel.setLabelHoverEffect(this.view.getSettingLabel());
     EffectButtonLLabel.setLabelHoverEffect(this.view.getGameLabel());
+    EffectButtonLLabel.setLabelHoverEffect(this.view.getHelpLabel());
 
     EffectButtonLLabel.buttonHoverEffect(this.view.getReload());
 
@@ -82,6 +83,15 @@ private void switchView() {
         view.setVisible(false);
         GameTableTennis a = new GameTableTennis();
         a.setVisible(true);
+        view.dispose();
+    }
+    });
+    
+    this.view.getHelpLabel().addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        view.setVisible(false);
+        new HelpView().setVisible(true);
         view.dispose();
     }
     });

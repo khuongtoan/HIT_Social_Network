@@ -16,6 +16,7 @@ controller\SettingController2.class
 view\component\ButtonCustom$1.class
 controller\FlashScreenController2$1.class
 controller\PersonalController2$5.class
+view\HelpView$1.class
 controller\LoginAndRegisterController2.class
 view\component\PanelCustom.class
 common\EffectButtonLLabel$1.class
@@ -34,6 +35,7 @@ view\component\ChangeRole2.class
 dao\UserDao.class
 view\component\ButtonCustom.class
 common\Check.class
+controller\PersonalController2$7.class
 view\component\ChangeStatus2.class
 view\PersonalView2.class
 controller\FlashScreenController2.class
@@ -41,6 +43,7 @@ service\Service.class
 dao\PostDao.class
 view\component\ModernScrollBarUI$InvisibleScrollBarButton.class
 view\component\TextFieldCustom$2$2.class
+view\HelpView.class
 model\Likes.class
 view\component\ACommentPanel.class
 view\component\ChangeQuestionRecovery2.class
