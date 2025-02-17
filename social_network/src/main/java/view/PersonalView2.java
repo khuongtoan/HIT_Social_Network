@@ -76,7 +76,7 @@ public void setCommon() {
         gameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/4.png"))); // NOI18N
         gameLabel.setText("Game");
         panelCustomRec1.add(gameLabel);
-        gameLabel.setBounds(20, 310, 160, 30);
+        gameLabel.setBounds(20, 270, 160, 30);
 
         nameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,14 +97,14 @@ public void setCommon() {
         reload.setInheritsPopupMenu(true);
         reload.setMargin(new java.awt.Insets(2, 0, 3, 7));
         panelCustomRec1.add(reload);
-        reload.setBounds(20, 178, 160, 30);
+        reload.setBounds(20, 150, 160, 30);
 
         createPostLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         createPostLabel.setForeground(new java.awt.Color(255, 255, 255));
         createPostLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/1.png"))); // NOI18N
         createPostLabel.setText("Create post");
         panelCustomRec1.add(createPostLabel);
-        createPostLabel.setBounds(20, 220, 160, 30);
+        createPostLabel.setBounds(20, 190, 160, 30);
         panelCustomRec1.add(exitButton1);
         exitButton1.setBounds(360, 0, 35, 35);
 
@@ -113,14 +113,14 @@ public void setCommon() {
         settingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/9.png"))); // NOI18N
         settingLabel.setText("Setting");
         panelCustomRec1.add(settingLabel);
-        settingLabel.setBounds(20, 270, 160, 30);
+        settingLabel.setBounds(20, 230, 160, 30);
 
         helpLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         helpLabel.setForeground(new java.awt.Color(255, 255, 255));
         helpLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/6.png"))); // NOI18N
         helpLabel.setText("Help");
         panelCustomRec1.add(helpLabel);
-        helpLabel.setBounds(20, 350, 160, 30);
+        helpLabel.setBounds(20, 330, 160, 30);
 
         panelCustom1.add(panelCustomRec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 500));
 

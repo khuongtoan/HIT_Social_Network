@@ -199,6 +199,7 @@ private void commentActionPerformed(ActionEvent evt3, Post post, PanePost panePo
             boolean success = serviced.addComment(post, UserSession.getCurrentUser(), content);
             if (success) {
                 ACommentPanel newCommentPanel = new ACommentPanel();
+                EffectButtonLLabel.setLabelHoverEffect(newCommentPanel.getUpDeLabel());
                 newCommentPanel.getUserNameComment().setText(UserSession.getCurrentUser().getUserName());
                 newCommentPanel.getContent().setText(content);
                 commentListPanel.add(newCommentPanel, 0);

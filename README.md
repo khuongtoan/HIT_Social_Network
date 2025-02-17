@@ -1,27 +1,46 @@
-# HIT_PROJECT
+# Lifebook-Wato
 
-This is an online library application that allows you to read books and search for your favorite ones. It helps you
-organize and track the books you have read or wish to read.
+**Lifebook** là một ứng dụng mạng xã hội cho phép bạn đăng bài viết, 
+trạng thái, chia sẻ hình ảnh và tương tác với người khác. Mục tiêu hoàn thành
+bài tập lớn của lớp java private của câu lạc bộ HIT (HAUI)
 
-## Installation
+### các tinh năng chính:
+- Đăng nhập 
+- Đăng kí tài khoản mới
+- lấy lại mật khẩu bằng câu hỏi khôi phục
+- xem bài viết
+- tạo, xóa bài đăng
+- Thích, bỏ thích bài đăng  
+- thêm, sửa, xóa bình luận
+- trò chơi bóng bàn
+- cài đặt tài khoản :
+  - thay đổi mật khẩu
+  - thay đổi tên người dùng
+  - thay đổi email
+  - thay đổi câu hỏi khôi phục mật khẩu
+  - thay đổi vai trò người dùng (admin)
+  - thay đổi trạng thái tài khoản (admin)
 
-### Require
-
-- Java 11+
+## Hướng dẫn cài đặt và sử dụng
+### yêu cầu
+- Mysql.
+- Java 17+
 - Maven.
-- IDE: IntelliJ or Netbeans.
+- IDE: IntelliJ hoặc Netbeans.
 
-### How to run the project?
+### làm sao để chạy project ?
 
-- Clone the project.
-- Install the library necessary.
+- sao chép dự án từ github về máy cá nhân .
+- cài đặt các thư viện cần thiết.
+- đổi tên và mật khẩu của mysql trong file persistence.xml
+- đổi phiên bản java phù hợp trong file pom.xml 
 
-## How to Use
+## cách sử dụng
 
-1. Ensure you are connected to the internet.
-2. Run the project in the main class.
-3. If you don't have an account, create one.
-4. Log in using your account credentials.
+1. kết nối với cơ sở dữ liệu.
+2. chạy dự án.
+3. tạo tài admin
+4. 
 5. Retrieve your account information if needed.
 
 <p>
@@ -98,44 +117,35 @@ Read books on this screen. You can navigate between chapters using the next or p
 Search for books by typing the book name in the text field.  
 <img src="app_image/img_28.png" width="250">
 
-## TECHNOLOGY USED
+## Các công nghệ đã dùng
 
-### UI (User Interface)
+### Java Swing
+- **Kéo thả và code tạo giao diện chính**: Java Swing được sử dụng để xây dựng giao diện người dùng của ứng dụng.
+- **Các thư viện cài đặt thêm của Java Swing**:
+  - **FlatLaf**: Giúp tạo giao diện hiện đại hơn cho Java Swing, cải thiện trải nghiệm người dùng với giao diện phẳng, tối giản.
+  - **JFontChooser**: Hỗ trợ người dùng chọn font chữ trong ứng dụng, mang lại tính linh hoạt trong việc thay đổi kiểu chữ.
 
-- **FlatLaf** (flatlaf, flatlaf-extras) – A modern look and feel for Java Swing applications.
-- **AbsoluteLayout** – A layout manager from NetBeans for drag-and-drop UI design.
-- **Font Awesome** – A library for UI icons.
+### MySQL
+- **Kết nối với cơ sở dữ liệu MySQL**: Sử dụng MySQL làm hệ quản trị cơ sở dữ liệu để lưu trữ và quản lý dữ liệu của người dùng và các bài viết.
 
-### JSON processing
+### Hibernate
+- Quản lý kết nối, ánh xạ các class từ java với các bảng trong database  
 
-- **Gson** – Used for converting Java objects to JSON and vice versa.
-
-### Database
-
-- **MongoDB Driver** – A synchronous driver for MongoDB database connectivity.
-
-### Email Handling
-
-- **Jakarta Mail** – A library for handling email sending and receiving in Java applications.
-- **Javax Mail** – An older version of JavaMail for email handling.
-
-### Image Processing
-
-- **Thumbnailator** – A library for generating high-quality thumbnails.
-- **OpenCV** – A library for computer vision and image processing.
-
-### Security & Authentication
-
-- **JBCrypt** – A library for password hashing and encryption.
-
-### Concurrency & Multi-threading
-
-- **SwingWorker** – Used for performing background tasks in Swing applications.
-- **Multi-threading** – Used for faster processing.
+### JBCrypt
+- **Mã hóa thông tin người dùng**: Sử dụng JBCrypt để mã hóa mật khẩu và các thông tin nhạy cảm của người dùng khi lưu vào cơ sở dữ liệu, bảo mật thông tin tốt hơn.
 
 ## Folder Structure
 
-📁pet_project  
+📁HIT_Social_Network
+social_network
+  src
+    main
+  pom.xml
+README.md
+
+
+
+
 ┣📁.idea  
 ┣📁src/main/java  
 ┃ ┣📁api (API-related classes and services)  
