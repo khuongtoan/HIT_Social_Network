@@ -10,7 +10,7 @@ public class Trash {
 
         EntityManagerUtil.getEntityManager();
 
-        String userName = "admine";
+        String userName = "admin";
         String password = "123456a";
         String email = "admineSetting@gmail.com";
         String passwordRecovery = "code";
