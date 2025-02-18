@@ -4,7 +4,7 @@
 trạng thái, chia sẻ hình ảnh và tương tác với người khác. Mục tiêu hoàn thành
 bài tập lớn của lớp java private của câu lạc bộ HIT (HAUI)
 
-### các tinh năng chính:
+### Các tính năng chính:
 - Đăng nhập 
 - Đăng kí tài khoản mới
 - lấy lại mật khẩu bằng câu hỏi khôi phục
@@ -12,6 +12,7 @@ bài tập lớn của lớp java private của câu lạc bộ HIT (HAUI)
 - tạo, xóa bài đăng
 - Thích, bỏ thích bài đăng  
 - thêm, sửa, xóa bình luận
+- tìm kiếm bài đăng
 - trò chơi bóng bàn
 - cài đặt tài khoản :
   - thay đổi mật khẩu
@@ -41,78 +42,49 @@ bài tập lớn của lớp java private của câu lạc bộ HIT (HAUI)
 2. tạo tài khoản admin ( chạy file Trash).
 3. đăng ký nếu chưa có tài khoản
 4. đăng nhập
+
+### trang chủ
 <p>
-  <img src="app_image/erd.png" width="250">
+    <img src="app_image/home.jpg" width = "500">
 </p>
 
-### Home Page
-
-- You can choose a book from the home page.
-    - View books in a list or grid layout.
-    - Browse books by style.
-
-You can search for books using the search label.  
-You can view more books by clicking on the "Thêm >" label.
+- bài viết mới nhất sẽ được hiển thị, hệ thống sẽ tải 10 bài đăng một nếu kéo đến cuối thanh scrollbar thì sẽ tải thêm 10 bài viết tiếp theo 
+- nếu là bài đăng của tài khoản đang đăng nhập thì sẽ có chức năng xóa.
+- nhập vài ô search để tìm kiếm dự trên nội dung text sau đó nhấn enter để tìm kiếm
+- có thể nhấn like để thích, hoặc nhấn thêm 1 lần để bỏ thích
+- nhấn vào comment để xem các bình luận
 <p>
-    <img src="app_image/img_29.png" width="250">
-    <img src="app_image/img_3.png" width="250">
+    <img src="app_image/comment.jpg" width = "400">
 </p>
 
-### Recent Page
+- nhập nội dung bình luận sau đó enter
+- nếu là bình luận của tài khoản đang đăng nhập sẽ có chức năng xóa hoặc cập nhật
 
-You can see a list of recently read books.  
-<img src="app_image/img_4.png" width="250">
-
-### Favorite Page
-
-This page displays the books you've marked as favorites.  
-<img src="app_image/img_5.png" width="250">
-
-### Account Page
-
-You can see the information of your account in this page. Moreover, you can choose options in setting.
-
-- Change your name.
-- Change your password.
-- Change the theme of the application.
-- Retrieve your password if forgotten.
-- Remove your account.
-
+### tạo bài đăng (Create post)
 <p>
-    <img src="app_image/img_20.png" width="250">
-    <img src="app_image/img_21.png" width="250">  
-    <img src="app_image/img_22.png" width="250">
-</p>
-<p>
-    <img src="app_image/img_23.png" width="250">
-    <img src="app_image/img_24.png" width="250">
-    <img src="app_image/img_25.png" width="250">  
+    <img src="app_image/create.jpg" width = "400" >  
 </p>
 
-### More Book Screen
-
-This screen lets you view books categorized by their status (e.g., ongoing, completed, new, etc.).  
-<img src="app_image/img_12.png" width="250">
-
-### One Book Screen
-
-In this screen, you can read the book by clicking "Bắt đầu đọc". You can also see a list of chapters and choose one to
-read. If you've already read a chapter, it will be marked. You can also add this book to your favorites list.
+- lựa chọn ảnh bằng nút image
+- nhập thông tin muốn chia sẻ vào ô text trống phía trên
+- lựa chọn màu chữ màu nền kiểu chữ cho văn bản
+- để hoàn thành ấn nút post 
+### cài đặt tài khoản (Setting)
 <p>
-    <img src="app_image/img_26.png" width="250">
-    <img src="app_image/img_14.png" width="250">
+    <img src="app_image/setting.jpg" width = "400">  
 </p>
 
-### Chapter Screen
+- ấn click nút option sẽ hiện ra 1 pop up chứa các chức năng
+- lưu ý: chỉ có thể tạo tài khoản admin bằng cách dùng 1 tài khoản admin đổi role của 1 user (mặc định khi tạo là user)
+- hệ thống sẽ tự nhận diện vai trò của tài khoản đang dùng nếu là admin sẽ có 6 chức năng, user sẽ có 4 chức năng
+- chỉ admin mới có quyền thay đổi vai trò và trạng thái của tài khoản
+- có thể đăng xuất trong Setting
 
-Read books on this screen. You can navigate between chapters using the next or previous chapter labels.  
-<img src="app_image/img_27.png" width="250">
-
-### Search Screen
-
-Search for books by typing the book name in the text field.  
-<img src="app_image/img_28.png" width="250">
-
+### trò chơi bóng bàn (Game)
+- người chơi bên trái di chuyển lên : "w"  xuống : "s"
+- người chơi bên phải di chuyển lên xuống bằng mũi tên
+- bóng đi qua gôn bên nào thì đối thủ ghi 1 điểm
+  
 ## Các công nghệ đã dùng
 
 ### Java Swing
@@ -129,8 +101,14 @@ Search for books by typing the book name in the text field.
 
 ### JBCrypt
 - **Mã hóa thông tin người dùng**: Sử dụng JBCrypt để mã hóa mật khẩu và các thông tin nhạy cảm của người dùng khi lưu vào cơ sở dữ liệu, bảo mật thông tin tốt hơn.
+- 
+## Sơ đồ quan hệ 
 
-## cấu trúc thư mục
+<p>
+  <img src="app_image/erd.jpg">
+</p>
+
+## Cấu trúc thư mục
 ⚒️ **HIT_Social_Network**
 
 🗂️ social_network  

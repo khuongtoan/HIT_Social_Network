@@ -86,7 +86,7 @@ private void switchView() {
         view.dispose();
     }
     });
-    
+
     this.view.getHelpLabel().addMouseListener(new MouseAdapter() {
     @Override
     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,7 +141,7 @@ private void loadMorePosts() {
                 panePost.getdPopupMenu().show(panePost.getDeletePostLabel(), evt.getX(), evt.getY());
             }
             });
-            panePost.getDeleteMenuItem().addActionListener(evt4 -> deletePostActionPerformed(evt4, p.getPostId()));
+            panePost.getDeleteMenuItem().addActionListener(evt4 -> deletePostActionPerformed(evt4, p.getPostId(), p.getUser().getUserId()));
         }
         currentPage++;
     }
@@ -314,14 +314,16 @@ private void searchActionPerformed(ActionEvent evt) {
     }
 }
 
-private void deletePostActionPerformed(ActionEvent evt, int postId) {
-    boolean flag = serviced.deletePost(postId);
+private void deletePostActionPerformed(ActionEvent evt, int postId, int userId) {
 
-    if (flag) {
-        JOptionPane.showMessageDialog(view, "Post deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        ReloadActionPerformed(null);
-    } else {
-        JOptionPane.showMessageDialog(view, "Failed to delete post. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+    if (userId == UserSession.getCurrentUser().getUserId()) {
+        boolean flag = serviced.deletePost(postId);
+        if (flag) {
+            JOptionPane.showMessageDialog(view, "Post deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            ReloadActionPerformed(null);
+        } else {
+            JOptionPane.showMessageDialog(view, "Failed to delete post. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
 
