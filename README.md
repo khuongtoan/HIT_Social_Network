@@ -37,16 +37,12 @@ bài tập lớn của lớp java private của câu lạc bộ HIT (HAUI)
 
 ## cách sử dụng
 
-1. kết nối với cơ sở dữ liệu.
-2. chạy dự án.
-3. tạo tài admin
-4. 
-5. Retrieve your account information if needed.
-
+1. Khởi động cơ sở dữ liệu.
+2. tạo tài khoản admin ( chạy file Trash).
+3. đăng ký nếu chưa có tài khoản
+4. đăng nhập
 <p>
-    <img src="app_image/img_17.png" width="250">
-    <img src="app_image/img_18.png" width="250">
-    <img src="app_image/img_19.png" width="250">
+  <img src="app_image/erd.png" width="250">
 </p>
 
 ### Home Page
@@ -134,31 +130,56 @@ Search for books by typing the book name in the text field.
 ### JBCrypt
 - **Mã hóa thông tin người dùng**: Sử dụng JBCrypt để mã hóa mật khẩu và các thông tin nhạy cảm của người dùng khi lưu vào cơ sở dữ liệu, bảo mật thông tin tốt hơn.
 
-## Folder Structure
+## cấu trúc thư mục
+⚒️ **HIT_Social_Network**
 
-📁HIT_Social_Network
-social_network
-  src
-    main
-  pom.xml
-README.md
-
-
-
-
-┣📁.idea  
-┣📁src/main/java  
-┃ ┣📁api (API-related classes and services)  
-┃ ┣📁commons (Common utilities or constants used across the project)   
-┃ ┣📁controllers (Controller classes managing business logic)  
-┃ ┣📁dao (Data Access Object classes for database interaction)  
-┃ ┣📁data (Data handling and processing classes)  
-┃ ┣📁libs  (External libraries and dependencies)  
-┃ ┣📁models (Model classes representing data entities)  
-┃ ┣📁services (Service classes containing business logic)  
-┃ ┣📁utils (Utility classes for various helper functions)  
-┃ ┣📁view (UI components and screens)  
-┃ ┣📁assets (Images, fonts, and other static resources)  
-┃ ┗📜GitFlow.txt   
-┣📜pom.xml (Maven build configuration)  
-┗📜README.md  
+🗂️ social_network  
+  ├ 📁 src/main  
+  │    ├ 📁 java  
+  │    │    ├ 📁 common (các phương thức chung)  
+  │    │    │    ├ 🖇 check.java  
+  │    │    │    ├ 🖇 EffecButtonLable.java  
+  │    │    │    ├ 🖇 ImageIconCustom.java  
+  │    │    │    ├ 🖇 PasswordEncryptor.java  
+  │    │    │    ├ 🖇 SetScaledImage.java  
+  │    │    │    ├ 🖇 Trash.java  
+  │    │    │    └ 🖇 ValidateContant.java   
+  │    │    ├ 📁 controller (xử lý các hành động từ người dùng)      
+  │    │    │    ├ 🖇 CreatePostController2.java  
+  │    │    │    ├ 🖇 FlashScreenController2.java  
+  │    │    │    ├ 🖇 ForgotPasswordController2.java  
+  │    │    │    ├ 🖇 GameTableTennis.java  
+  │    │    │    ├ 🖇 LoginAndRegisterController2.java  
+  │    │    │    ├ 🖇 PersonalController2.java  
+  │    │    │    ├ 🖇 SettingController2.java  
+  │    │    │    ├ 🖇 SignUpController2.java  
+  │    │    │    └ 🖇 UserSession.java  
+  │    │    ├ 📁 dao (tương tác với cơ sở dữ liệu)   
+  │    │    │    ├ 🖇 PostDao.java  
+  │    │    │    └ 🖇 UserDao.java  
+  │    │    ├ 📁 model (các đối tượng )  
+  │    │    │    ├ 🖇 Comment.java  
+  │    │    │    ├ 🖇 Likes.java  
+  │    │    │    ├ 🖇 Post.java  
+  │    │    │    ├ 🖇 Role.java  
+  │    │    │    ├ 🖇 Status.java  
+  │    │    │    └ 🖇 User.java  
+  │    │    ├ 📁 service (liên kết với cơ sở dữ liệu thông qua DAO)    
+  │    │    │    ├ 🖇 EntityManagerUtil.java  
+  │    │    │    ├ 🖇 Service.java  
+  │    │    │    └ 🖇 ServiceInterfaces.java  
+  │    │    ├ 📁 view (giao diện chính )   
+  │    │    │    ├ 📁 component (các thành phần custom của giao diện )   
+  │    │    │    ├ 🖇 CreatePostView2.java  
+  │    │    │    ├ 🖇 FlashScreen2.java  
+  │    │    │    ├ 🖇 ForgotPassword2.java  
+  │    │    │    ├ 🖇 HelpView.java  
+  │    │    │    ├ 🖇 LoginAndRegister2.java  
+  │    │    │    ├ 🖇 PersonalView2.java  
+  │    │    │    ├ 🖇 SettingView2.java  
+  │    │    │    └ 🖇 SignUp2.java  
+  │    ├ 📁 resources (thông tin dự án)    
+  │    │    ├ 📁 META-INF  
+  │    │    │    └ 🛠️ persistence.xml  
+  ├ 🛠️ pom.xml  (thông tin thư viện)  
+  └ 📜 README.md (giới thiệu và Hướng dẫn sử dụng) 
